@@ -5,6 +5,7 @@ import (
 	"os"
 
 	"github.com/btwiuse/multicall"
+	"github.com/webteleport/ufo/apps/cookies"
 	"github.com/webteleport/ufo/apps/echo"
 	"github.com/webteleport/ufo/apps/gos"
 	"github.com/webteleport/ufo/apps/hdr"
@@ -24,6 +25,7 @@ func main() {
 }
 
 var cmdRun multicall.RunnerFuncMap = map[string]multicall.RunnerFunc{
+	"cookies":      cookies.Run,
 	"hello":        hello.Run,
 	"echo":         echo.Run,
 	"hdr":          hdr.Run,

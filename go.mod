@@ -3,25 +3,28 @@ module github.com/webteleport/ufo
 go 1.19
 
 require (
-	github.com/btwiuse/multicall v0.0.0
+	github.com/btwiuse/multicall v0.0.1
 	github.com/btwiuse/pretty v0.2.1
 	github.com/btwiuse/sse v0.0.1
 	github.com/lucas-clemente/quic-go v0.29.0
 	github.com/webteleport/webteleport v0.1.4
 	k0s.io/pkg/middleware v0.1.6
 	k0s.io/pkg/reverseproxy v0.1.6
+	k0s.io/pkg/uuid v0.1.6
 	k0s.io/pkg/wrap v0.1.6
 )
 
 require (
 	github.com/alexpantyukhin/go-pattern-match v0.0.0-20200628201436-c57d5ad3f2c5 // indirect
 	github.com/btwiuse/h3 v0.0.0-20220919172148-51b6e2f27e33 // indirect
+	github.com/denisbrodbeck/machineid v1.0.1 // indirect
 	github.com/ebi-yade/altsvc-go v0.1.1 // indirect
 	github.com/felixge/httpsnoop v1.0.2 // indirect
 	github.com/fsnotify/fsnotify v1.4.9 // indirect
 	github.com/ghodss/yaml v1.0.0 // indirect
 	github.com/go-task/slim-sprig v0.0.0-20210107165309-348f09dbbbc0 // indirect
 	github.com/golang/mock v1.6.0 // indirect
+	github.com/google/uuid v1.3.0 // indirect
 	github.com/gorilla/handlers v1.5.1 // indirect
 	github.com/gorilla/websocket v1.5.0 // indirect
 	github.com/klauspost/compress v1.15.0 // indirect
@@ -38,7 +41,7 @@ require (
 	golang.org/x/exp v0.0.0-20220722155223-a9213eeb770e // indirect
 	golang.org/x/mod v0.6.0-dev.0.20220106191415-9b9b3d81d5e3 // indirect
 	golang.org/x/net v0.0.0-20220624214902-1bab6f366d9e // indirect
-	golang.org/x/sys v0.0.0-20220520151302-bc2c85ada10a // indirect
+	golang.org/x/sys v0.0.0-20220712014510-0a85c31ab51e // indirect
 	golang.org/x/text v0.3.7 // indirect
 	golang.org/x/tools v0.1.10 // indirect
 	golang.org/x/xerrors v0.0.0-20200804184101-5ec99f83aff1 // indirect
