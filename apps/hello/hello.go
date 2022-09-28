@@ -6,11 +6,11 @@ import (
 	"log"
 	"net/http"
 
-	ufo "github.com/webteleport/webteleport"
+	"github.com/webteleport/webteleport"
 )
 
 func Run([]string) error {
-	ln, err := ufo.Listen(context.Background(), "https://ufo.k0s.io")
+	ln, err := webteleport.Listen(context.Background(), "https://ufo.k0s.io")
 	if err != nil {
 		return err
 	}

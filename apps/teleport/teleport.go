@@ -1,7 +1,7 @@
 package teleport
 
 import (
-	ufo "github.com/webteleport/webteleport"
+	"github.com/webteleport/webteleport"
 	"k0s.io/pkg/middleware"
 	"k0s.io/pkg/reverseproxy"
 )
@@ -24,5 +24,5 @@ func Run(args []string) error {
 	addr := Arg0(args, "https://ufo.k0s.io")
 	upstream := Arg1(args, "https://k0s.io")
 	handler := middleware.LoggingMiddleware(reverseproxy.Handler(upstream))
-	return ufo.Serve(addr, handler)
+	return webteleport.Serve(addr, handler)
 }

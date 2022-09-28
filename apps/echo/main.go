@@ -1,5 +1,5 @@
-// this is an example consumer of the ufo package
-// it listens on a random ufo with registered handlers for webtransport && websocket connections
+// this is an example consumer of the webteleport package
+// it listens on a random address with registered handlers for webtransport && websocket connections
 // currently websocket works fine
 // while webtransport is broken because reverseproxy doesn't support it yet
 
@@ -15,12 +15,12 @@ import (
 
 	"github.com/btwiuse/pretty"
 	"github.com/lucas-clemente/quic-go/http3"
-	ufo "github.com/webteleport/webteleport"
+	"github.com/webteleport/webteleport"
 	"k0s.io/pkg/wrap"
 )
 
 func Run([]string) error {
-	ln, err := ufo.Listen(context.Background(), "https://ufo.k0s.io")
+	ln, err := webteleport.Listen(context.Background(), "https://ufo.k0s.io")
 	if err != nil {
 		return err
 	}
