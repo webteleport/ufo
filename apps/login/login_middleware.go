@@ -1,13 +1,18 @@
 package login
 
 import (
+	"embed"
 	"fmt"
+	"io/fs"
 	"net/http"
 	"strings"
 	"sync"
 
 	"k0s.io/pkg/uuid"
 )
+
+//go:embed www/*
+var WWW embed.FS
 
 type LoginMiddleware struct {
 	// set login password
@@ -20,6 +25,7 @@ type LoginMiddleware struct {
 
 	sessions map[string]struct{}
 	mutex    *sync.RWMutex
+	login    http.Handler
 }
 
 func (lm *LoginMiddleware) AddSessionId(id string) {
@@ -45,8 +51,7 @@ func (lm *LoginMiddleware) RedirectToLogin(w http.ResponseWriter, r *http.Reques
 		http.Redirect(w, r, "/login/", 302)
 		return
 	}
-	login := http.StripPrefix("/login", http.FileServer(http.Dir("apps/login/www")))
-	login.ServeHTTP(w, r)
+	lm.login.ServeHTTP(w, r)
 }
 
 func (lm *LoginMiddleware) SetCookiesAndRedirect(w http.ResponseWriter, r *http.Request) {
@@ -81,6 +86,12 @@ func (lm *LoginMiddleware) initialize() {
 	}
 	if lm.sessions == nil {
 		lm.sessions = map[string]struct{}{}
+	}
+	if lm.login == nil {
+		fsys := fs.FS(WWW)
+		html, _ := fs.Sub(fsys, "www")
+		www := http.FileServer(http.FS(html))
+		lm.login = http.StripPrefix("/login", www)
 	}
 	if lm.PasswordKey == "" {
 		lm.PasswordKey = "password"
