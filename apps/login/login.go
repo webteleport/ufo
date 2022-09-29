@@ -24,6 +24,10 @@ func Run(args []string) error {
 	lm := &LoginMiddleware{
 		Password: u.Fragment,
 	}
-	pwd := http.FileServer(http.Dir("."))
-	return webteleport.Serve(stationURL, middleware.LoggingMiddleware(lm.Wrap(pwd)))
+	// support listing files under cwd, but not actual file is served
+	// making this perfect for demonstration purpose without compromising security
+	cwd := http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		http.StripPrefix(r.URL.Path, http.FileServer(http.Dir("."))).ServeHTTP(w, r)
+	})
+	return webteleport.Serve(stationURL, middleware.LoggingMiddleware(lm.Wrap(cwd)))
 }
