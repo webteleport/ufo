@@ -1,4 +1,4 @@
-package login
+package ufo
 
 import (
 	"embed"

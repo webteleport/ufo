@@ -5,7 +5,7 @@ import (
 	"net/http"
 
 	"github.com/btwiuse/pretty"
-	"github.com/webteleport/webteleport"
+	"github.com/webteleport/ufo"
 	"k0s.io/pkg/middleware"
 )
 
@@ -20,5 +20,5 @@ func Run(args []string) error {
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		io.WriteString(w, pretty.JSONStringLine(r.Header))
 	})
-	return webteleport.Serve(Arg0(args, "https://ufo.k0s.io"), middleware.LoggingMiddleware(http.DefaultServeMux))
+	return ufo.Serve(Arg0(args, "https://ufo.k0s.io"), middleware.LoggingMiddleware(http.DefaultServeMux))
 }

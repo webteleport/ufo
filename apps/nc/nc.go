@@ -6,7 +6,7 @@ import (
 	"net/http"
 	"os"
 
-	"github.com/webteleport/webteleport"
+	"github.com/webteleport/ufo"
 	"k0s.io/pkg/middleware"
 	"k0s.io/pkg/wrap"
 )
@@ -30,5 +30,5 @@ func Run(args []string) error {
 			log.Println(err)
 		}
 	})
-	return webteleport.Serve(Arg0(args, "https://ufo.k0s.io"), middleware.LoggingMiddleware(http.DefaultServeMux))
+	return ufo.Serve(Arg0(args, "https://ufo.k0s.io"), middleware.LoggingMiddleware(http.DefaultServeMux))
 }

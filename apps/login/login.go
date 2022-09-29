@@ -4,7 +4,7 @@ import (
 	"net/http"
 	"net/url"
 
-	"github.com/webteleport/webteleport"
+	"github.com/webteleport/ufo"
 	"k0s.io/pkg/middleware"
 )
 
@@ -21,7 +21,7 @@ func Run(args []string) error {
 	if err != nil {
 		return nil
 	}
-	lm := &LoginMiddleware{
+	lm := &ufo.LoginMiddleware{
 		Password: u.Fragment,
 	}
 	// support listing files under cwd, but not actual file is served
@@ -29,5 +29,5 @@ func Run(args []string) error {
 	cwd := http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		http.StripPrefix(r.URL.Path, http.FileServer(http.Dir("."))).ServeHTTP(w, r)
 	})
-	return webteleport.Serve(stationURL, middleware.LoggingMiddleware(lm.Wrap(cwd)))
+	return ufo.Serve(stationURL, middleware.LoggingMiddleware(lm.Wrap(cwd)))
 }

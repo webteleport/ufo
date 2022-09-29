@@ -7,7 +7,7 @@ require (
 	github.com/btwiuse/pretty v0.2.1
 	github.com/btwiuse/sse v0.0.1
 	github.com/lucas-clemente/quic-go v0.29.1
-	github.com/webteleport/webteleport v0.1.5-0.20220928180519-4837a5771b9a
+	github.com/webteleport/webteleport v0.1.5
 	k0s.io/pkg/middleware v0.1.6
 	k0s.io/pkg/reverseproxy v0.1.6
 	k0s.io/pkg/uuid v0.1.6
