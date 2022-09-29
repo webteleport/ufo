@@ -12,6 +12,7 @@ import (
 	"github.com/webteleport/ufo/apps/hello"
 	"github.com/webteleport/ufo/apps/login"
 	"github.com/webteleport/ufo/apps/nc"
+	"github.com/webteleport/ufo/apps/notfound"
 	"github.com/webteleport/ufo/apps/sse"
 	"github.com/webteleport/ufo/apps/teleport"
 	"github.com/webteleport/webteleport/server"
@@ -27,6 +28,7 @@ func main() {
 
 var cmdRun multicall.RunnerFuncMap = map[string]multicall.RunnerFunc{
 	"cookies":      cookies.Run,
+	"notfound":     notfound.Run,
 	"hello":        hello.Run,
 	"echo":         echo.Run,
 	"login":        login.Run,
