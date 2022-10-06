@@ -17,6 +17,7 @@ import (
 	"github.com/webteleport/ufo/apps/sows"
 	"github.com/webteleport/ufo/apps/sse"
 	"github.com/webteleport/ufo/apps/teleport"
+	"github.com/webteleport/ufo/apps/term"
 	"github.com/webteleport/webteleport/server"
 )
 
@@ -39,6 +40,7 @@ var cmdRun multicall.RunnerFuncMap = map[string]multicall.RunnerFunc{
 	"so":           so.Run,
 	"sows":         sows.Run,
 	"sse":          sse.Run,
+	"term":         term.Run,
 	"fileserver":   gos.Run,      // renamed from "gos" to "fileserver"
 	"gos":          gos.Run,      // TODO delete this
 	"teleport":     teleport.Run, // renamed from "reverseproxy" to "teleport"
