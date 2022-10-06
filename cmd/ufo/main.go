@@ -13,6 +13,7 @@ import (
 	"github.com/webteleport/ufo/apps/login"
 	"github.com/webteleport/ufo/apps/nc"
 	"github.com/webteleport/ufo/apps/notfound"
+	"github.com/webteleport/ufo/apps/so"
 	"github.com/webteleport/ufo/apps/sse"
 	"github.com/webteleport/ufo/apps/teleport"
 	"github.com/webteleport/webteleport/server"
@@ -34,6 +35,7 @@ var cmdRun multicall.RunnerFuncMap = map[string]multicall.RunnerFunc{
 	"login":        login.Run,
 	"hdr":          hdr.Run,
 	"nc":           nc.Run,
+	"so":           so.Run,
 	"sse":          sse.Run,
 	"fileserver":   gos.Run,      // renamed from "gos" to "fileserver"
 	"gos":          gos.Run,      // TODO delete this
