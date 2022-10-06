@@ -8,6 +8,8 @@
 // for HTTP_PROXY r.Host = google.com r.Method = Get
 // for HTTPS_PROXY r.Host = google.com r.Method = Connect
 // they will not be supported by ufo server
+//
+// use sows instead
 package so
 
 import (
