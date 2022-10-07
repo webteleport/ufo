@@ -11,12 +11,16 @@ require (
 	github.com/ginuerzh/gost v0.0.0-20220903125123-b0bb26fc952b
 	github.com/lucas-clemente/quic-go v0.29.1
 	github.com/webteleport/webteleport v0.1.5
+	google.golang.org/grpc v1.36.0
+	google.golang.org/grpc/examples v0.0.0-20221006202345-c03925db8d3c
+	k0s.io v0.1.6
 	k0s.io/pkg/agent v0.1.6
 	k0s.io/pkg/asciitransport v0.1.6
 	k0s.io/pkg/middleware v0.1.6
 	k0s.io/pkg/reverseproxy v0.1.6
 	k0s.io/pkg/uuid v0.1.6
 	k0s.io/pkg/wrap v0.1.6
+	nhooyr.io/websocket v1.8.7
 )
 
 require (
@@ -45,6 +49,7 @@ require (
 	github.com/go-task/slim-sprig v0.0.0-20210107165309-348f09dbbbc0 // indirect
 	github.com/gobwas/glob v0.2.3 // indirect
 	github.com/golang/mock v1.6.0 // indirect
+	github.com/golang/protobuf v1.5.2 // indirect
 	github.com/google/gopacket v1.1.19 // indirect
 	github.com/google/uuid v1.3.0 // indirect
 	github.com/gorilla/handlers v1.5.1 // indirect
@@ -86,8 +91,8 @@ require (
 	golang.org/x/sys v0.0.0-20220928140112-f11e5e49a4ec // indirect
 	golang.org/x/text v0.3.8-0.20211004125949-5bd84dd9b33b // indirect
 	golang.org/x/tools v0.1.12 // indirect
+	google.golang.org/genproto v0.0.0-20200806141610-86f49bd18e98 // indirect
+	google.golang.org/protobuf v1.28.0 // indirect
 	gopkg.in/tomb.v1 v1.0.0-20141024135613-dd632973f1e7 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
-	k0s.io v0.1.6 // indirect
-	nhooyr.io/websocket v1.8.7 // indirect
 )
