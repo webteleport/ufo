@@ -23,6 +23,6 @@ func Arg1(args []string, fallback string) string {
 func Run(args []string) error {
 	addr := Arg0(args, "https://ufo.k0s.io")
 	upstream := Arg1(args, "https://k0s.io")
-	handler := middleware.LoggingMiddleware(reverseproxy.Handler(upstream))
+	handler := middleware.LoggingMiddleware(middleware.AllowAllCorsMiddleware(reverseproxy.Handler(upstream)))
 	return ufo.Serve(addr, handler)
 }
