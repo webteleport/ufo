@@ -1,0 +1,12 @@
+{
+  "name": "@btwiuse/ufo",
+  "version": "0.0.2",
+  "description": "🛸 Serve your app on a random subdomain with automatic HTTPS for free",
+  "main": "index.js",
+  "bin": {
+    "ufo": "bin/ufo"
+  },
+  "repository": "https://github.com/webteleport/ufo",
+  "author": "btwiuse",
+  "license": "MIT"
+}
