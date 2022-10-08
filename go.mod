@@ -10,13 +10,15 @@ require (
 	github.com/btwiuse/sse v0.0.1
 	github.com/ginuerzh/gost v0.0.0-20220903125123-b0bb26fc952b
 	github.com/lucas-clemente/quic-go v0.29.1
-	github.com/webteleport/webteleport v0.1.5
+	github.com/webteleport/webteleport v0.1.6
+	k0s.io v0.1.6
 	k0s.io/pkg/agent v0.1.6
 	k0s.io/pkg/asciitransport v0.1.6
 	k0s.io/pkg/middleware v0.1.6
 	k0s.io/pkg/reverseproxy v0.1.6
 	k0s.io/pkg/uuid v0.1.6
 	k0s.io/pkg/wrap v0.1.6
+	nhooyr.io/websocket v1.8.7
 )
 
 require (
@@ -88,6 +90,4 @@ require (
 	golang.org/x/tools v0.1.12 // indirect
 	gopkg.in/tomb.v1 v1.0.0-20141024135613-dd632973f1e7 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
-	k0s.io v0.1.6 // indirect
-	nhooyr.io/websocket v1.8.7 // indirect
 )

@@ -11,6 +11,7 @@ import (
 	"github.com/webteleport/ufo/apps/hdr"
 	"github.com/webteleport/ufo/apps/hello"
 	"github.com/webteleport/ufo/apps/login"
+	"github.com/webteleport/ufo/apps/multi"
 	"github.com/webteleport/ufo/apps/nc"
 	"github.com/webteleport/ufo/apps/notfound"
 	"github.com/webteleport/ufo/apps/so"
@@ -41,6 +42,7 @@ var cmdRun multicall.RunnerFuncMap = map[string]multicall.RunnerFunc{
 	"sows":         sows.Run,
 	"sse":          sse.Run,
 	"term":         term.Run,
+	"multi":        multi.Run,
 	"fileserver":   gos.Run,      // renamed from "gos" to "fileserver"
 	"gos":          gos.Run,      // TODO delete this
 	"teleport":     teleport.Run, // renamed from "reverseproxy" to "teleport"
