@@ -1,0 +1,6 @@
+:8000 {
+  respond / 200 {
+    body "hello"
+    # close
+  }
+}
