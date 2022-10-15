@@ -38,8 +38,16 @@ func newRoute() error {
 	return err
 }
 
-func Run([]string) error {
-	ln, err := webteleport.Listen(context.Background(), "https://ufo.k0s.io")
+func Arg0(args []string, fallback string) string {
+	if len(args) > 0 {
+		return args[0]
+	}
+	return fallback
+}
+
+func Run(args []string) error {
+	wts := Arg0(args, "https://ufo.k0s.io")
+	ln, err := webteleport.Listen(context.Background(), wts)
 	if err != nil {
 		return err
 	}
