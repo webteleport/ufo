@@ -8,6 +8,7 @@ import (
 	"net/http"
 	"os"
 	"os/exec"
+	"runtime"
 	"strings"
 	"sync"
 
@@ -47,8 +48,27 @@ func Run(args []string) error {
 	// log.Println("🛸 listening on", wsfy(ln.Network())+"://"+ln.String())
 	log.Println("🛸 listening on", ln.ClickableURL())
 
+	shell := os.Getenv("SHELL")
+	if shell == "" {
+		switch runtime.GOOS {
+		case "windows":
+			shell = "powershell.exe"
+			shell, err = exec.LookPath(shell)
+			if err != nil {
+				shell, _ = exec.LookPath("cmd.exe")
+			}
+		default:
+			shell = "bash"
+			_, err = exec.LookPath(shell)
+			if err != nil {
+				shell = "sh"
+			}
+		}
+	}
+	cmd := []string{shell}
+
 	return http.Serve(ln, &auto{
-		fac: factory.New([]string{"bash"}),
+		fac: factory.New(cmd),
 		rp:  reverseproxy.Handler("https://wetty.vercel.app"),
 	})
 }
@@ -106,11 +126,10 @@ func (a *auto) serveConn(conn net.Conn, nth int) {
 	cmd := <-cmdCh
 	env := <-envCh
 
-	if len(cmd) == 0 {
-		cmd = []string{"bash"}
-	}
+	_ = cmd
+	_ = env
 
-	term, err := a.fac.MakeTtyEnv(cmd, env)
+	term, err := a.fac.MakeTty()
 	if err != nil {
 		log.Println(err)
 		return
