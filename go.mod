@@ -2,8 +2,6 @@ module github.com/webteleport/ufo
 
 go 1.19
 
-// replace github.com/webteleport/webteleport => ../webteleport
-
 require (
 	github.com/btwiuse/multicall v0.0.2
 	github.com/btwiuse/pretty v0.2.1
@@ -14,7 +12,7 @@ require (
 	github.com/webteleport/caddy-gos v0.0.0-20221011065635-5937e8dacd73
 	github.com/webteleport/caddy-wasm v0.0.0
 	github.com/webteleport/caddy-webteleport v0.0.0-20221010044752-7b6213cb511d
-	github.com/webteleport/webteleport v0.1.6
+	github.com/webteleport/webteleport v0.1.7
 	k0s.io v0.1.6
 	k0s.io/pkg/agent v0.1.6
 	k0s.io/pkg/asciitransport v0.1.6
