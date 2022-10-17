@@ -8,6 +8,7 @@ require (
 	github.com/btwiuse/sse v0.0.1
 	github.com/caddyserver/caddy/v2 v2.6.1
 	github.com/ginuerzh/gost v0.0.0-20220903125123-b0bb26fc952b
+	github.com/jpillora/go-echo-server v0.5.0
 	github.com/lucas-clemente/quic-go v0.29.1
 	github.com/webteleport/caddy-gos v0.0.0-20221011065635-5937e8dacd73
 	github.com/webteleport/caddy-wasm v0.0.0
@@ -38,6 +39,7 @@ require (
 	github.com/aead/chacha20 v0.0.0-20180709150244-8b13a72661da // indirect
 	github.com/alecthomas/chroma v0.10.0 // indirect
 	github.com/alexpantyukhin/go-pattern-match v0.0.0-20200628201436-c57d5ad3f2c5 // indirect
+	github.com/andrew-d/go-termutil v0.0.0-20150726205930-009166a695a2 // indirect
 	github.com/antlr/antlr4/runtime/Go/antlr v0.0.0-20220418222510-f25a4f6275ed // indirect
 	github.com/aryann/difflib v0.0.0-20210328193216-ff5ff6dc229b // indirect
 	github.com/asaskevich/govalidator v0.0.0-20210307081110-f21760c49a8d // indirect
@@ -97,6 +99,9 @@ require (
 	github.com/jackc/pgservicefile v0.0.0-20200714003250-2b9c44734f2b // indirect
 	github.com/jackc/pgtype v1.9.0 // indirect
 	github.com/jackc/pgx/v4 v4.14.0 // indirect
+	github.com/jpillora/ansi v1.0.2 // indirect
+	github.com/jpillora/requestlog v1.0.0 // indirect
+	github.com/jpillora/sizestr v1.0.0 // indirect
 	github.com/json-iterator/go v1.1.12 // indirect
 	github.com/klauspost/compress v1.15.9 // indirect
 	github.com/klauspost/cpuid/v2 v2.1.0 // indirect
@@ -151,6 +156,7 @@ require (
 	github.com/templexxx/xorsimd v0.4.1 // indirect
 	github.com/tetratelabs/wazero v1.0.0-pre.2.0.20221003082636-0b4dbfd8d6ca // indirect
 	github.com/tjfoc/gmsm v1.4.1 // indirect
+	github.com/tomasen/realip v0.0.0-20180522021738-f0c99a92ddce // indirect
 	github.com/urfave/cli v1.22.5 // indirect
 	github.com/xtaci/kcp-go/v5 v5.6.1 // indirect
 	github.com/xtaci/smux v1.5.16 // indirect
