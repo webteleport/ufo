@@ -12,7 +12,7 @@ require (
 	github.com/lucas-clemente/quic-go v0.29.1
 	github.com/webteleport/caddy-gos v0.0.0-20221011065635-5937e8dacd73
 	github.com/webteleport/caddy-wasm v0.0.0
-	github.com/webteleport/caddy-webteleport v0.0.0-20221010044752-7b6213cb511d
+	github.com/webteleport/caddy-webteleport v0.0.0-20221011064238-7e2f0cd4a773
 	github.com/webteleport/webteleport v0.1.7
 	k0s.io v0.1.6
 	k0s.io/pkg/agent v0.1.6
