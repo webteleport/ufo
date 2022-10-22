@@ -1,13 +1,12 @@
 # $ time curl localhost:8000
-
 {
 	order delay before respond
 }
 
 :8000 {
-  delay {
-    respond / 200 {
-      body "hello"
-    }
-  }
+	delay {
+		respond / 200 {
+			body "hello"
+		}
+	}
 }

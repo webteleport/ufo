@@ -1,6 +1,6 @@
 :8000 {
-  file_server {
-    browse
-    hide .git
-  }
+	file_server {
+		browse
+		hide .git
+	}
 }

@@ -1,67 +1,66 @@
 # $ time curl localhost:8000
-
 {
 	order teleport before basicauth
-# https://github.com/hyperion-hyn/caddy-cron
-# https://github.com/abiosoft/caddy-exec
+	# https://github.com/hyperion-hyn/caddy-cron
+	# https://github.com/abiosoft/caddy-exec
 	order gos before file_server
 }
 
 :12000 {
-  @websockets {
-  	header Connection *Upgrade*
-  	header Upgrade    websocket
-  }
+	@websockets {
+		header Connection *Upgrade*
+		header Upgrade websocket
+	}
 
-  @rpc_http {
-  	path /rpc/http
-  }
+	@rpc_http {
+		path /rpc/http
+	}
 
-# doesn't work
-#
-# # for d.Next() && d.NextArg()
-# teleport https://ufo.k0s.io {
-#   respond / 200 {
-#     body "hello"
-#   }
-# }
+	# doesn't work
+	#
+	# # for d.Next() && d.NextArg()
+	# teleport https://ufo.k0s.io {
+	#   respond / 200 {
+	#     body "hello"
+	#   }
+	# }
 
-# doesn't work
-#
-# teleport https://ufo.k0s.io http://127.0.0.1:12000 {
-#   respond / 200 {
-#     body "hello"
-#   }
-# }
+	# doesn't work
+	#
+	# teleport https://ufo.k0s.io http://127.0.0.1:12000 {
+	#   respond / 200 {
+	#     body "hello"
+	#   }
+	# }
 
-# it works
-#
-# teleport https://ufo.k0s.io {
-#   knock http://127.0.0.1:12000
-# }
-# respond / 200 {
-#   body "hello"
-# }
+	# it works
+	#
+	# teleport https://ufo.k0s.io {
+	#   knock http://127.0.0.1:12000
+	# }
+	# respond / 200 {
+	#   body "hello"
+	# }
 
-  teleport https://ufo.k0s.io {
-    knock http://127.0.0.1:12000
-  }
-  route /health {
-    respond "200 OK"
-  }
-  route {
-  handle @websockets {
-    reverse_proxy http://127.0.0.1:9944
-  }
-  gos
-  }
-# gear-node --dev --rpc-external --ws-external --rpc-cors="*"
-# reverse_proxy http://127.0.0.1:9933
-# doesn't work
-# file_server browse {
-#   root /home/aaron/webteleport/ufo/caddyfiles/teleport
-# }
-  # reverse_proxy http://127.0.0.1:9933
-  # reverse_proxy /rpc/http http://127.0.0.1:9933
-  # reverse_proxy http://127.0.0.0:9933
+	teleport https://ufo.k0s.io {
+		knock http://127.0.0.1:12000
+	}
+	route /health {
+		respond "200 OK"
+	}
+	route {
+		handle @websockets {
+			reverse_proxy http://127.0.0.1:9944
+		}
+		gos
+	}
+	# gear-node --dev --rpc-external --ws-external --rpc-cors="*"
+	# reverse_proxy http://127.0.0.1:9933
+	# doesn't work
+	# file_server browse {
+	#   root /home/aaron/webteleport/ufo/caddyfiles/teleport
+	# }
+	# reverse_proxy http://127.0.0.1:9933
+	# reverse_proxy /rpc/http http://127.0.0.1:9933
+	# reverse_proxy http://127.0.0.0:9933
 }
