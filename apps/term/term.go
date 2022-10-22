@@ -166,6 +166,7 @@ func (a *auto) serveConn(conn net.Conn, nth int) {
 func wrconn(w http.ResponseWriter, r *http.Request) (net.Conn, error) {
 	wsconn, err := websocket.Accept(w, r, &websocket.AcceptOptions{
 		InsecureSkipVerify: true,
+		CompressionMode: websocket.CompressionDisabled,
 		// here without the Subprotocols info, Chrome/Edge won't work
 		// so must add this piece of info here
 		Subprotocols: []string{"wetty"},
