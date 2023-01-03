@@ -23,6 +23,8 @@ import (
 	"github.com/webteleport/ufo/apps/teleport"
 	"github.com/webteleport/ufo/apps/term"
 	"github.com/webteleport/ufo/apps/who"
+
+	_ "github.com/webteleport/utils/hack/quic-go-disable-receive-buffer-warning"
 )
 
 func main() {
