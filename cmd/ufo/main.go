@@ -5,6 +5,7 @@ import (
 	"os"
 
 	"github.com/btwiuse/multicall"
+	"github.com/webteleport/server"
 	"github.com/webteleport/ufo/apps/caddy"
 	"github.com/webteleport/ufo/apps/cookies"
 	"github.com/webteleport/ufo/apps/echo"
@@ -22,7 +23,6 @@ import (
 	"github.com/webteleport/ufo/apps/teleport"
 	"github.com/webteleport/ufo/apps/term"
 	"github.com/webteleport/ufo/apps/who"
-	"github.com/webteleport/webteleport/server"
 )
 
 func main() {
