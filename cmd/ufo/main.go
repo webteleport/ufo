@@ -8,6 +8,7 @@ import (
 	"github.com/webteleport/server"
 	"github.com/webteleport/ufo/apps/caddy"
 	"github.com/webteleport/ufo/apps/cookies"
+	"github.com/webteleport/ufo/apps/dl"
 	"github.com/webteleport/ufo/apps/echo"
 	"github.com/webteleport/ufo/apps/gos"
 	"github.com/webteleport/ufo/apps/hdr"
@@ -41,6 +42,7 @@ var cmdRun multicall.RunnerFuncMap = map[string]multicall.RunnerFunc{
 	"caddy":        caddy.Run,
 	"pkgpath":      pkgpath.Run,
 	"notfound":     notfound.Run,
+	"dl":           dl.Run,
 	"hello":        hello.Run,
 	"echo":         echo.Run,
 	"login":        login.Run,
