@@ -17,7 +17,7 @@ import (
 	"log"
 	"net"
 
-	"github.com/ginuerzh/gost"
+	"github.com/btwiuse/gost"
 	"github.com/webteleport/webteleport"
 )
 

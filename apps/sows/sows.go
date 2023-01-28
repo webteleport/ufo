@@ -10,7 +10,7 @@ import (
 	"net"
 	"net/http"
 
-	"github.com/ginuerzh/gost"
+	"github.com/btwiuse/gost"
 	"github.com/webteleport/webteleport"
 	"k0s.io/pkg/wrap"
 )
