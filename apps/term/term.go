@@ -136,10 +136,12 @@ func (a *auto) serveConn(conn net.Conn, nth int) {
 	}
 
 	go func() {
-		re := <-resizeCh
-		err := term.Resize(re.rows, re.cols)
-		if err != nil {
-			log.Println(err)
+		for {
+			re := <-resizeCh
+			err := term.Resize(re.rows, re.cols)
+			if err != nil {
+				log.Println(err)
+			}
 		}
 	}()
 
