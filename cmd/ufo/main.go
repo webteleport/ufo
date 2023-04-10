@@ -6,6 +6,7 @@ import (
 
 	"github.com/btwiuse/multicall"
 	"github.com/webteleport/server"
+
 	// "github.com/webteleport/ufo/apps/caddy"
 	"github.com/webteleport/ufo/apps/cookies"
 	"github.com/webteleport/ufo/apps/dl"
@@ -38,7 +39,7 @@ func main() {
 }
 
 var cmdRun multicall.RunnerFuncMap = map[string]multicall.RunnerFunc{
-	"cookies":      cookies.Run,
+	"cookies": cookies.Run,
 	// "caddy":        caddy.Run,
 	"pkgpath":      pkgpath.Run,
 	"notfound":     notfound.Run,

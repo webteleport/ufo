@@ -26,5 +26,6 @@ func Run(args []string) error {
 	handler := reverseproxy.Handler(upstream)
 	handler = middleware.AllowAllCorsMiddleware(handler)
 	handler = middleware.LoggingMiddleware(handler)
+	handler = ufo.WellKnownHealthMiddleware(handler)
 	return ufo.Serve(addr, handler)
 }

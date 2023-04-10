@@ -11,6 +11,7 @@ import (
 	"net/http"
 
 	"github.com/btwiuse/gost"
+	"github.com/webteleport/ufo"
 	"github.com/webteleport/webteleport"
 	"k0s.io/pkg/wrap"
 )
@@ -40,7 +41,7 @@ func Run(args []string) error {
 	}
 	log.Println("🛸 listening on", wsfy(ln.Network())+"://"+ln.String())
 
-	return http.Serve(ln, &auto{})
+	return http.Serve(ln, ufo.WellKnownHealthMiddleware(&auto{}))
 }
 
 type auto struct{}

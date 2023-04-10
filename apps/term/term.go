@@ -12,6 +12,7 @@ import (
 	"strings"
 	"sync"
 
+	"github.com/webteleport/ufo"
 	"github.com/webteleport/webteleport"
 	"k0s.io"
 	"k0s.io/pkg/agent"
@@ -67,10 +68,10 @@ func Run(args []string) error {
 	}
 	cmd := []string{shell}
 
-	return http.Serve(ln, &auto{
+	return http.Serve(ln, ufo.WellKnownHealthMiddleware(&auto{
 		fac: factory.New(cmd),
 		rp:  reverseproxy.Handler("https://wetty.vercel.app"),
-	})
+	}))
 }
 
 type auto struct {
