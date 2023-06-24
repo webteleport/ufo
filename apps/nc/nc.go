@@ -6,7 +6,7 @@ import (
 	"net/http"
 	"os"
 
-	"github.com/webteleport/ufo"
+	"github.com/webteleport/webteleport/ufo"
 	"k0s.io/pkg/middleware"
 	"k0s.io/pkg/wrap"
 )

@@ -4,7 +4,7 @@ import (
 	"net/http"
 	"net/url"
 
-	"github.com/webteleport/ufo"
+	"github.com/webteleport/webteleport/ufo"
 	"k0s.io/pkg/middleware"
 )
 

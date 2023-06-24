@@ -1,7 +1,8 @@
 package teleport
 
 import (
-	"github.com/webteleport/ufo"
+	"github.com/webteleport/ufo/x"
+	"github.com/webteleport/webteleport/ufo"
 	"k0s.io/pkg/middleware"
 	"k0s.io/pkg/reverseproxy"
 )
@@ -26,6 +27,6 @@ func Run(args []string) error {
 	handler := reverseproxy.Handler(upstream)
 	handler = middleware.AllowAllCorsMiddleware(handler)
 	handler = middleware.LoggingMiddleware(handler)
-	handler = ufo.WellKnownHealthMiddleware(handler)
+	handler = x.WellKnownHealthMiddleware(handler)
 	return ufo.Serve(addr, handler)
 }

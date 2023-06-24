@@ -3,7 +3,7 @@ package metrics
 import (
 	"net/http"
 
-	"github.com/webteleport/ufo"
+	"github.com/webteleport/webteleport/ufo"
 	"k0s.io/pkg/exporter"
 	"k0s.io/pkg/middleware"
 )

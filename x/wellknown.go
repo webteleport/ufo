@@ -1,10 +1,12 @@
-package ufo
+package x
 
 import "net/http"
 
+const WellKnownHealthPath = "/.well-known/health"
+
 func WellKnownHealthMiddleware(next http.Handler) http.Handler {
 	health := func(w http.ResponseWriter, r *http.Request) {
-		if r.URL.Path != "/.well-known/health" {
+		if r.URL.Path != WellKnownHealthPath {
 			next.ServeHTTP(w, r)
 			return
 		}

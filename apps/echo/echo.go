@@ -2,7 +2,7 @@ package echo
 
 import (
 	echo "github.com/jpillora/go-echo-server/handler"
-	"github.com/webteleport/ufo"
+	"github.com/webteleport/webteleport/ufo"
 	"k0s.io/pkg/middleware"
 )
 
