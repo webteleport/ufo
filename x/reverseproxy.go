@@ -7,15 +7,28 @@ import (
 )
 
 func ReverseProxy(addr string) http.Handler {
-	rpURL, err := url.Parse(addr)
+	upstream, err := url.Parse(addr)
 	if err != nil {
 		panic(err)
 	}
+	rewrite := func(r *httputil.ProxyRequest) {
+		r.SetURL(upstream)
+		r.SetXForwarded()
+
+		// use client credentials if available
+		if r.In.Header.Get("Authorization") != "" {
+			return
+		}
+
+		// otherwise use credentials from upstream
+		if upstream.User != nil {
+			user := upstream.User.Username()
+			pass, _ := upstream.User.Password()
+			r.Out.SetBasicAuth(user, pass)
+		}
+	}
 	rp := &httputil.ReverseProxy{
-		Rewrite: func(r *httputil.ProxyRequest) {
-			r.SetURL(rpURL)
-			r.SetXForwarded()
-		},
+		Rewrite: rewrite,
 	}
 	return rp
 }
