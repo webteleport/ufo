@@ -26,6 +26,7 @@ import (
 	"github.com/webteleport/ufo/apps/teleport"
 	"github.com/webteleport/ufo/apps/term"
 	"github.com/webteleport/ufo/apps/who"
+	"github.com/webteleport/ufo/apps/gitd"
 
 	_ "github.com/webteleport/utils/hack/quic-go-disable-receive-buffer-warning"
 )
@@ -62,6 +63,7 @@ var cmdRun multicall.RunnerFuncMap = map[string]multicall.RunnerFunc{
 	"reverseproxy": teleport.Run, // TODO delete this
 	"station":      server.Run,   // renamed from "server" to "station"
 	"server":       server.Run,   // TODO delete this
+	"gitd":         gitd.Run,
 }
 
 func Run(args []string) error {
