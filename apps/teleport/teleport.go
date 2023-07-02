@@ -4,7 +4,6 @@ import (
 	"github.com/webteleport/ufo/x"
 	"github.com/webteleport/webteleport/ufo"
 	"k0s.io/pkg/middleware"
-	"k0s.io/pkg/reverseproxy"
 )
 
 func Arg0(args []string, fallback string) string {
@@ -24,7 +23,7 @@ func Arg1(args []string, fallback string) string {
 func Run(args []string) error {
 	addr := Arg0(args, "https://ufo.k0s.io")
 	upstream := Arg1(args, "https://k0s.io")
-	handler := reverseproxy.Handler(upstream)
+	handler := x.ReverseProxy(upstream)
 	handler = middleware.AllowAllCorsMiddleware(handler)
 	handler = middleware.LoggingMiddleware(handler)
 	handler = x.WellKnownHealthMiddleware(handler)

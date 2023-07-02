@@ -18,7 +18,6 @@ import (
 	"k0s.io/pkg/agent"
 	"k0s.io/pkg/agent/tty/factory"
 	"k0s.io/pkg/asciitransport"
-	"k0s.io/pkg/reverseproxy"
 	"k0s.io/pkg/wrap"
 	"nhooyr.io/websocket"
 )
@@ -70,7 +69,7 @@ func Run(args []string) error {
 
 	return http.Serve(ln, x.WellKnownHealthMiddleware(&auto{
 		fac: factory.New(cmd),
-		rp:  reverseproxy.Handler("https://wetty.vercel.app"),
+		rp:  x.ReverseProxy("https://wetty.vercel.app"),
 	}))
 }
 

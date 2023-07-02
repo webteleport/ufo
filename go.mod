@@ -19,7 +19,6 @@ require (
 	k0s.io/pkg/asciitransport v0.1.6
 	k0s.io/pkg/exporter v0.1.6
 	k0s.io/pkg/middleware v0.1.6
-	k0s.io/pkg/reverseproxy v0.1.6
 	k0s.io/pkg/uuid v0.1.6
 	k0s.io/pkg/wrap v0.1.6
 	nhooyr.io/websocket v1.8.7
