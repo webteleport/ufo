@@ -9,7 +9,7 @@ require (
 	github.com/btwiuse/sse v0.0.1
 	github.com/jpillora/go-echo-server v0.5.0
 	// github.com/webteleport/caddy-webteleport v0.0.1
-	github.com/webteleport/server v0.0.4
+	github.com/webteleport/server v0.0.5
 	github.com/webteleport/utils v0.0.3
 	github.com/webteleport/webteleport v0.2.6
 	github.com/webtransport/quic-go v0.0.0-webtransport
