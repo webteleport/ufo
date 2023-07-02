@@ -1,6 +1,6 @@
 module github.com/webteleport/ufo
 
-go 1.19
+go 1.20
 
 require (
 	github.com/btwiuse/gost v0.0.3
@@ -9,6 +9,7 @@ require (
 	github.com/btwiuse/sse v0.0.1
 	github.com/jpillora/go-echo-server v0.5.0
 	// github.com/webteleport/caddy-webteleport v0.0.1
+	github.com/webteleport/auth v0.0.2
 	github.com/webteleport/server v0.0.5
 	github.com/webteleport/utils v0.0.3
 	github.com/webteleport/webteleport v0.2.6

@@ -4,6 +4,7 @@ import (
 	"net/http"
 	"net/url"
 
+	"github.com/webteleport/auth"
 	"github.com/webteleport/webteleport/ufo"
 	"k0s.io/pkg/middleware"
 )
@@ -21,7 +22,7 @@ func Run(args []string) error {
 	if err != nil {
 		return nil
 	}
-	lm := &ufo.LoginMiddleware{
+	lm := &auth.LoginMiddleware{
 		Password: u.Fragment,
 	}
 	// support listing files under cwd, but not actual file is served
