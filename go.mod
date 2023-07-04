@@ -24,7 +24,10 @@ require (
 	nhooyr.io/websocket v1.8.7
 )
 
-require k0s.io/pkg/dial v0.1.6
+require (
+	github.com/phayes/freeport v0.0.0-20220201140144-74d24b5ae9f5
+	k0s.io/pkg/dial v0.1.6
+)
 
 require (
 	filippo.io/edwards25519 v1.0.0-rc.1.0.20210721174708-390f27c3be20 // indirect

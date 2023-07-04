@@ -12,6 +12,7 @@ import (
 	"github.com/webteleport/ufo/apps/cookies"
 	"github.com/webteleport/ufo/apps/dl"
 	"github.com/webteleport/ufo/apps/echo"
+	"github.com/webteleport/ufo/apps/freeport"
 	"github.com/webteleport/ufo/apps/gos"
 	"github.com/webteleport/ufo/apps/hdr"
 	"github.com/webteleport/ufo/apps/hello"
@@ -53,6 +54,7 @@ var cmdRun multicall.RunnerFuncMap = map[string]multicall.RunnerFunc{
 	"hdr":          hdr.Run,
 	"nc":           nc.Run,
 	"so":           so.Run,
+	"freeport":     freeport.Run,
 	"sowc":         sowc.Run,
 	"sows":         sows.Run,
 	"sse":          sse.Run,
