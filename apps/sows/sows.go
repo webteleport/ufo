@@ -13,6 +13,8 @@ import (
 	"github.com/btwiuse/gost"
 	"github.com/webteleport/ufo/x"
 	"github.com/webteleport/webteleport"
+
+	"k0s.io/pkg/middleware"
 	"k0s.io/pkg/wrap"
 )
 
@@ -41,7 +43,7 @@ func Run(args []string) error {
 	}
 	log.Println("🛸 listening on", wsfy(ln.Network())+"://"+ln.String())
 
-	return http.Serve(ln, x.WellKnownHealthMiddleware(&auto{}))
+	return http.Serve(ln, middleware.LoggingMiddleware(x.WellKnownHealthMiddleware(&auto{})))
 }
 
 type auto struct{}

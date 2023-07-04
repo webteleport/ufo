@@ -24,6 +24,8 @@ require (
 	nhooyr.io/websocket v1.8.7
 )
 
+require k0s.io/pkg/dial v0.1.6
+
 require (
 	filippo.io/edwards25519 v1.0.0-rc.1.0.20210721174708-390f27c3be20 // indirect
 	git.torproject.org/pluggable-transports/goptlib.git v1.2.0 // indirect
