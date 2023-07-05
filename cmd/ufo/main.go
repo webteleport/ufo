@@ -24,7 +24,9 @@ import (
 	"github.com/webteleport/ufo/apps/pkgpath"
 	"github.com/webteleport/ufo/apps/so"
 	"github.com/webteleport/ufo/apps/sowc"
+	"github.com/webteleport/ufo/apps/sowcmux"
 	"github.com/webteleport/ufo/apps/sows"
+	"github.com/webteleport/ufo/apps/sowsmux"
 	"github.com/webteleport/ufo/apps/sse"
 	"github.com/webteleport/ufo/apps/teleport"
 	"github.com/webteleport/ufo/apps/term"
@@ -57,6 +59,8 @@ var cmdRun multicall.RunnerFuncMap = map[string]multicall.RunnerFunc{
 	"freeport":     freeport.Run,
 	"sowc":         sowc.Run,
 	"sows":         sows.Run,
+	"sowcmux":      sowcmux.Run,
+	"sowsmux":      sowsmux.Run,
 	"sse":          sse.Run,
 	"term":         term.Run,
 	"who":          who.Run,

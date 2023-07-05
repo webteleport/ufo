@@ -25,6 +25,7 @@ require (
 )
 
 require (
+	github.com/hashicorp/yamux v0.1.1
 	github.com/phayes/freeport v0.0.0-20220201140144-74d24b5ae9f5
 	k0s.io/pkg/dial v0.1.6
 )
