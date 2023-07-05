@@ -29,9 +29,15 @@ func Run(args []string) error {
 	remote := Arg1(args, "wss://sows.ufo.k0s.io")
 	log.Println("socks5 listening on", addr)
 	log.Println("remote socks5+wss", remote)
-	log.Println()
-	log.Println(fmt.Sprintf("export HTTP_PROXY=socks5h://127.0.0.1%s HTTPS_PROXY=socks5h://127.0.0.1%s", addr, addr))
+	log.Println("# bash")
 	log.Println(fmt.Sprintf("export HTTP_PROXY=http://127.0.0.1%s HTTPS_PROXY=http://127.0.0.1%s", addr, addr))
+	log.Println(fmt.Sprintf("export HTTP_PROXY=socks5h://127.0.0.1%s HTTPS_PROXY=socks5h://127.0.0.1%s", addr, addr))
+	log.Println("# cmd")
+	log.Println(fmt.Sprintf("set HTTP_PROXY=http://127.0.0.1%s HTTPS_PROXY=http://127.0.0.1%s", addr, addr))
+	log.Println(fmt.Sprintf("set HTTP_PROXY=socks5h://127.0.0.1%s HTTPS_PROXY=socks5h://127.0.0.1%s", addr, addr))
+	log.Println("# powershell")
+	log.Println(fmt.Sprintf("$env:HTTP_PROXY='http://127.0.0.1%s'; $env:HTTPS_PROXY='http://127.0.0.1%s'", addr, addr))
+	log.Println(fmt.Sprintf("$env:HTTP_PROXY='socks5h://127.0.0.1%s'; $env:HTTPS_PROXY='socks5h://127.0.0.1%s'", addr, addr))
 
 	ln, err := net.Listen("tcp", addr)
 	if err != nil {
