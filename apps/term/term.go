@@ -69,7 +69,7 @@ func Run(args []string) error {
 
 	return http.Serve(ln, x.WellKnownHealthMiddleware(&auto{
 		fac: factory.New(cmd),
-		rp:  x.ReverseProxy("https://wetty.vercel.app"),
+		rp:  x.ReverseProxy("https://wetty.deno.dev"),
 	}))
 }
 
