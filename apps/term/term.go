@@ -1,7 +1,6 @@
 package term
 
 import (
-	"context"
 	"fmt"
 	"log"
 	"net"
@@ -13,7 +12,7 @@ import (
 	"sync"
 
 	"github.com/webteleport/ufo/x"
-	"github.com/webteleport/webteleport"
+	"github.com/webteleport/webteleport/ufo"
 	"k0s.io"
 	"k0s.io/pkg/agent"
 	"k0s.io/pkg/agent/tty/factory"
@@ -40,15 +39,10 @@ func wsfy(h string) string {
 	}
 }
 
-func Run(args []string) error {
-	ln, err := webteleport.Listen(context.Background(), Arg0(args, "https://ufo.k0s.io"))
-	if err != nil {
-		return err
-	}
-	// log.Println("🛸 listening on", wsfy(ln.Network())+"://"+ln.String())
-	log.Println("🛸 listening on", ln.ClickableURL())
-
+func wettyHandler() http.Handler {
+	var err error
 	shell := os.Getenv("SHELL")
+
 	if shell == "" {
 		switch runtime.GOOS {
 		case "windows":
@@ -67,10 +61,16 @@ func Run(args []string) error {
 	}
 	cmd := []string{shell}
 
-	return http.Serve(ln, x.WellKnownHealthMiddleware(&auto{
+	return &auto{
 		fac: factory.New(cmd),
 		rp:  x.ReverseProxy("https://wetty.deno.dev"),
-	}))
+	}
+}
+
+func Run(args []string) error {
+	handler := wettyHandler()
+	handler = x.WellKnownHealthMiddleware(handler)
+	return ufo.Serve(Arg0(args, "https://ufo.k0s.io"), handler)
 }
 
 type auto struct {

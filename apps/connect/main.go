@@ -14,8 +14,8 @@ import (
 	"strings"
 
 	"github.com/btwiuse/pretty"
-	"github.com/webteleport/webteleport"
 	"github.com/quic-go/quic-go/http3"
+	"github.com/webteleport/webteleport"
 	"k0s.io/pkg/wrap"
 )
 
