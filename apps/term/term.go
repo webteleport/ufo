@@ -13,6 +13,7 @@ import (
 
 	"github.com/webteleport/ufo/x"
 	"github.com/webteleport/webteleport/ufo"
+	"github.com/webteleport/utils"
 	"k0s.io"
 	"k0s.io/pkg/agent"
 	"k0s.io/pkg/agent/tty/factory"
@@ -70,7 +71,13 @@ func wettyHandler() http.Handler {
 func Run(args []string) error {
 	handler := wettyHandler()
 	handler = x.WellKnownHealthMiddleware(handler)
-	return ufo.Serve(Arg0(args, "https://ufo.k0s.io"), handler)
+	arg0 := Arg0(args, "https://ufo.k0s.io")
+	if arg0 == "local" {
+		port := utils.EnvPort(":8000")
+		log.Println(fmt.Sprintf("listening on http://127.0.0.1%s", port))
+		return http.ListenAndServe(port, handler)
+	}
+	return ufo.Serve(arg0, handler)
 }
 
 type auto struct {
