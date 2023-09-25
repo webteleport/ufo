@@ -1,9 +1,6 @@
 package x
 
-import (
-	"net/http"
-	"strings"
-)
+import "net/http"
 
 // VSCode web edition makes cors request to /hub/api endpoint
 // in order to determine if the backend api is a JupyterHub or JupyterLab/JupyterServer
@@ -16,10 +13,19 @@ import (
 // - vscode.dev
 // - insider.vscode.dev
 //
-// Needs to have Jupyter extension installed
+// # Needs to have Jupyter extension installed
+//
+// - /login is used to check if server has authentication enabled
+// - /hub/api is used to check if server is JupyterHub
+//
+// with authentication disabled, the /login endpoint won't respond with cors header
+// so we need to manually add it to make vscode-web happy
+//
+// jupyter server doesn't have the /hub/api endpoint, so the same hack needs to be applied
 func Jupyter(next http.Handler) http.Handler {
 	jupyter := func(w http.ResponseWriter, r *http.Request) {
-		if strings.HasPrefix(r.URL.Path, "/hub/api") {
+		switch r.URL.Path {
+		case "/hub/api", "/login":
 			w.Header().Set("Access-Control-Allow-Origin", "*")
 		}
 		next.ServeHTTP(w, r)
