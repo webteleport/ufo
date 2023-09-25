@@ -12,8 +12,8 @@ import (
 	"sync"
 
 	"github.com/webteleport/ufo/x"
-	"github.com/webteleport/webteleport/ufo"
 	"github.com/webteleport/utils"
+	"github.com/webteleport/webteleport/ufo"
 	"k0s.io"
 	"k0s.io/pkg/agent"
 	"k0s.io/pkg/agent/tty/factory"
