@@ -16,5 +16,5 @@ func Arg0(args []string, fallback string) string {
 }
 
 func Run(args []string) error {
-	return ufo.Serve(Arg0(args, "https://ufo.k0s.io"), x.WellKnownHealthMiddleware(middleware.LoggingMiddleware(http.FileServer(http.Dir(".")))))
+	return ufo.Serve(Arg0(args, "https://ufo.k0s.io"), x.WellKnownHealthMiddleware(middleware.LoggingMiddleware(middleware.GzipMiddleware(http.FileServer(http.Dir("."))))))
 }
