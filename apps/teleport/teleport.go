@@ -25,6 +25,7 @@ func Run(args []string) error {
 	upstream := Arg1(args, "https://k0s.io")
 	handler := x.ReverseProxy(upstream)
 	handler = x.Jupyter(handler)
+	handler = middleware.GzipMiddleware(handler)
 	handler = middleware.LoggingMiddleware(handler)
 	handler = x.WellKnownHealthMiddleware(handler)
 	return ufo.Serve(addr, handler)
