@@ -20,15 +20,12 @@ func Run(args []string) error {
 	stationURL := Arg0(args, "https://ufo.k0s.io")
 	u, err := url.Parse(stationURL)
 	if err != nil {
-		return nil
-	}
-	lm := &auth.LoginMiddleware{
-		Password: u.Fragment,
+		return err
 	}
 	// support listing files under cwd, but not actual file is served
 	// making this perfect for demonstration purpose without compromising security
 	cwd := http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		http.StripPrefix(r.URL.Path, http.FileServer(http.Dir("."))).ServeHTTP(w, r)
 	})
-	return ufo.Serve(stationURL, middleware.LoggingMiddleware(lm.Wrap(cwd)))
+	return ufo.Serve(stationURL, middleware.LoggingMiddleware(auth.WithPassword(cwd, u.Fragment)))
 }
