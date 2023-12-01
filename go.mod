@@ -12,10 +12,10 @@ require (
 	github.com/phayes/freeport v0.0.0-20220201140144-74d24b5ae9f5
 	github.com/quic-go/quic-go v0.37.5
 	// github.com/webteleport/caddy-webteleport v0.0.1
-	github.com/webteleport/auth v0.0.3
+	github.com/webteleport/auth v0.0.4
 	github.com/webteleport/server v0.1.1
 	github.com/webteleport/utils v0.0.5
-	github.com/webteleport/webteleport v0.2.10
+	github.com/webteleport/webteleport v0.2.11
 	k0s.io v0.1.6
 	k0s.io/pkg/agent v0.1.6
 	k0s.io/pkg/asciitransport v0.1.6
