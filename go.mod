@@ -13,9 +13,9 @@ require (
 	github.com/quic-go/quic-go v0.37.5
 	// github.com/webteleport/caddy-webteleport v0.0.1
 	github.com/webteleport/auth v0.0.5
-	github.com/webteleport/server v0.1.1
+	github.com/webteleport/server v0.1.3
 	github.com/webteleport/utils v0.0.5
-	github.com/webteleport/webteleport v0.2.12
+	github.com/webteleport/webteleport v0.2.14
 	k0s.io v0.1.6
 	k0s.io/pkg/agent v0.1.6
 	k0s.io/pkg/asciitransport v0.1.6
