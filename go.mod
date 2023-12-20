@@ -2,6 +2,8 @@ module github.com/webteleport/ufo
 
 go 1.21
 
+replace github.com/webteleport/webteleport => ../webteleport
+
 require (
 	github.com/btwiuse/gost v0.0.4
 	github.com/btwiuse/multicall v0.0.2
