@@ -19,3 +19,8 @@
 *.log
 /bin
 ufo
+
+# npm & yarn
+node_modules
+package-lock.json
+*.lock
