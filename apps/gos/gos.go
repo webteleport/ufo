@@ -1,6 +1,7 @@
 package gos
 
 import (
+	"fmt"
 	"net/http"
 
 	"github.com/webteleport/ufo/x"
@@ -16,5 +17,9 @@ func Arg0(args []string, fallback string) string {
 }
 
 func Run(args []string) error {
-	return ufo.Serve(Arg0(args, "https://ufo.k0s.io"), middleware.LoggingMiddleware(x.WellKnownHealthMiddleware(middleware.GzipMiddleware(http.FileServer(http.Dir("."))))))
+	err := ufo.Serve(Arg0(args, "https://ufo.k0s.io"), middleware.LoggingMiddleware(x.WellKnownHealthMiddleware(middleware.GzipMiddleware(http.FileServer(http.Dir("."))))))
+	if err != nil {
+		return fmt.Errorf("ufo: %w", err)
+	}
+	return nil
 }

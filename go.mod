@@ -6,7 +6,7 @@ replace github.com/webteleport/webteleport => ../webteleport
 
 require (
 	github.com/btwiuse/gost v0.0.4
-	github.com/btwiuse/multicall v0.0.2
+	github.com/btwiuse/multicall v0.0.4
 	github.com/btwiuse/pretty v0.2.1
 	github.com/btwiuse/sse v0.0.1
 	github.com/hashicorp/yamux v0.1.1
@@ -38,7 +38,7 @@ require (
 	github.com/aead/chacha20 v0.0.0-20180709150244-8b13a72661da // indirect
 	github.com/alecthomas/template v0.0.0-20190718012654-fb15b899a751 // indirect
 	github.com/alecthomas/units v0.0.0-20210208195552-ff826a37aa15 // indirect
-	github.com/alexpantyukhin/go-pattern-match v0.0.0-20200628201436-c57d5ad3f2c5 // indirect
+	github.com/alexpantyukhin/go-pattern-match v0.0.0-20230301210247-d84479c117d7 // indirect
 	github.com/andrew-d/go-termutil v0.0.0-20150726205930-009166a695a2 // indirect
 	github.com/asaskevich/govalidator v0.0.0-20210307081110-f21760c49a8d // indirect
 	github.com/beevik/ntp v0.3.0 // indirect

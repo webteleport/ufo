@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"log"
 	"os"
 
@@ -76,5 +77,9 @@ var cmdRun multicall.RunnerFuncMap = map[string]multicall.RunnerFunc{
 }
 
 func Run(args []string) error {
-	return cmdRun.Run(os.Args[1:])
+	err := cmdRun.Run(os.Args[1:])
+	if err != nil {
+		return fmt.Errorf("%w", err)
+	}
+	return nil
 }
