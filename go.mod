@@ -2,7 +2,7 @@ module github.com/webteleport/ufo
 
 go 1.21
 
-replace github.com/webteleport/webteleport => ../webteleport
+// replace github.com/webteleport/webteleport => ../webteleport
 
 require (
 	github.com/btwiuse/gost v0.0.4
@@ -17,7 +17,7 @@ require (
 	github.com/webteleport/auth v0.0.5
 	github.com/webteleport/server v0.1.3
 	github.com/webteleport/utils v0.0.5
-	github.com/webteleport/webteleport v0.2.14
+	github.com/webteleport/webteleport v0.2.15
 	k0s.io v0.1.6
 	k0s.io/pkg/agent v0.1.6
 	k0s.io/pkg/asciitransport v0.1.6
