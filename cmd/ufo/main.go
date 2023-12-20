@@ -67,6 +67,7 @@ var cmdRun multicall.RunnerFuncMap = map[string]multicall.RunnerFunc{
 	"metrics":      metrics.Run,
 	"multi":        multi.Run,
 	"fileserver":   gos.Run,      // renamed from "gos" to "fileserver"
+	"ser":          gos.Run,      // renamed from "gos"to "ser"
 	"gos":          gos.Run,      // TODO delete this
 	"teleport":     teleport.Run, // renamed from "reverseproxy" to "teleport"
 	"reverseproxy": teleport.Run, // TODO delete this
