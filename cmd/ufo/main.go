@@ -6,7 +6,6 @@ import (
 	"os"
 
 	"github.com/btwiuse/multicall"
-	"github.com/webteleport/server"
 
 	// "github.com/webteleport/ufo/apps/caddy"
 	"github.com/webteleport/ufo/apps/basicauth"
@@ -23,6 +22,7 @@ import (
 	"github.com/webteleport/ufo/apps/nc"
 	"github.com/webteleport/ufo/apps/notfound"
 	"github.com/webteleport/ufo/apps/pkgpath"
+	"github.com/webteleport/ufo/apps/server"
 	"github.com/webteleport/ufo/apps/so"
 	"github.com/webteleport/ufo/apps/sowc"
 	"github.com/webteleport/ufo/apps/sowcmux"
