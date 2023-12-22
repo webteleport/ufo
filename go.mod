@@ -3,6 +3,7 @@ module github.com/webteleport/ufo
 go 1.21
 
 // replace github.com/webteleport/webteleport => ../webteleport
+// replace github.com/webteleport/server => ../server
 
 require (
 	github.com/btwiuse/gost v0.0.4
@@ -28,6 +29,8 @@ require (
 	k0s.io/pkg/wrap v0.1.6
 	nhooyr.io/websocket v1.8.7
 )
+
+require github.com/gorilla/handlers v1.5.1
 
 require (
 	filippo.io/edwards25519 v1.0.0-rc.1.0.20210721174708-390f27c3be20 // indirect
@@ -69,7 +72,6 @@ require (
 	github.com/google/gopacket v1.1.19 // indirect
 	github.com/google/pprof v0.0.0-20210407192527-94a9f03dee38 // indirect
 	github.com/google/uuid v1.3.0 // indirect
-	github.com/gorilla/handlers v1.5.1 // indirect
 	github.com/gorilla/websocket v1.5.0 // indirect
 	github.com/hashicorp/go-envparse v0.0.0-20200406174449-d9cfd743a15e // indirect
 	github.com/hodgesds/perf-utils v0.4.0 // indirect
