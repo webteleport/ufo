@@ -27,7 +27,7 @@ const TEMPLATE = `<!DOCTYPE html>
 	<p>{{.Message}}</p>
 	<code>{{.Code}}</code>
 	<p>
-	  <a href="{.Link}">webteleport/ufo</a>
+	  <a href="{{.Link}}">webteleport/ufo</a>
 	</p>
 </body>
 </html>
