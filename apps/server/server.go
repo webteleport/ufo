@@ -12,8 +12,8 @@ import (
 )
 
 func listenTCP(handler http.Handler, errc chan error) {
-	log.Println("listening on TCP http://" + envs.HOST + envs.PORT)
-	ln, err := net.Listen("tcp4", envs.PORT)
+	log.Println("listening on TCP http://" + envs.HOST + envs.TCP_PORT)
+	ln, err := net.Listen("tcp4", envs.TCP_PORT)
 	if err != nil {
 		errc <- err
 		return
@@ -22,7 +22,7 @@ func listenTCP(handler http.Handler, errc chan error) {
 }
 
 func listenUDP(handler http.Handler, errc chan error) {
-	log.Println("listening on UDP https://" + envs.HOST + envs.PORT)
+	log.Println("listening on UDP https://" + envs.HOST + envs.UDP_PORT)
 	wts := webteleport.NewServer(handler)
 	errc <- wts.ListenAndServeTLS(envs.CERT, envs.KEY)
 }
