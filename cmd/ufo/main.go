@@ -16,13 +16,13 @@ import (
 	"github.com/webteleport/ufo/apps/gos"
 	"github.com/webteleport/ufo/apps/hdr"
 	"github.com/webteleport/ufo/apps/hello"
-	"github.com/webteleport/ufo/apps/hub"
 	"github.com/webteleport/ufo/apps/login"
 	"github.com/webteleport/ufo/apps/metrics"
 	"github.com/webteleport/ufo/apps/multi"
 	"github.com/webteleport/ufo/apps/nc"
 	"github.com/webteleport/ufo/apps/notfound"
 	"github.com/webteleport/ufo/apps/pkgpath"
+	"github.com/webteleport/ufo/apps/relay"
 	"github.com/webteleport/ufo/apps/server"
 	"github.com/webteleport/ufo/apps/so"
 	"github.com/webteleport/ufo/apps/sowc"
@@ -56,7 +56,8 @@ var cmdRun multicall.RunnerFuncMap = map[string]multicall.RunnerFunc{
 	"echo":         echo.Run,
 	"login":        login.Run,
 	"hdr":          hdr.Run,
-	"hub":          hub.Run,
+	"hub":          relay.Run,
+	"relay":        relay.Run,
 	"nc":           nc.Run,
 	"so":           so.Run,
 	"freeport":     freeport.Run,

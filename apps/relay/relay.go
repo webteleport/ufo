@@ -1,4 +1,4 @@
-package hub
+package relay
 
 import (
 	"crypto/tls"
