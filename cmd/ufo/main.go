@@ -22,8 +22,8 @@ import (
 	"github.com/webteleport/ufo/apps/nc"
 	"github.com/webteleport/ufo/apps/notfound"
 	"github.com/webteleport/ufo/apps/pkgpath"
+	"github.com/webteleport/ufo/apps/proxy"
 	"github.com/webteleport/ufo/apps/relay"
-	"github.com/webteleport/ufo/apps/server"
 	"github.com/webteleport/ufo/apps/so"
 	"github.com/webteleport/ufo/apps/sowc"
 	"github.com/webteleport/ufo/apps/sowcmux"
@@ -51,6 +51,7 @@ var cmdRun multicall.RunnerFuncMap = map[string]multicall.RunnerFunc{
 	"pkgpath":      pkgpath.Run,
 	"notfound":     notfound.Run,
 	"dl":           dl.Run,
+	"proxy":        proxy.Run,
 	"hello":        hello.Run,
 	"basicauth":    basicauth.Run,
 	"echo":         echo.Run,
@@ -75,8 +76,6 @@ var cmdRun multicall.RunnerFuncMap = map[string]multicall.RunnerFunc{
 	"gos":          gos.Run,      // TODO delete this
 	"teleport":     teleport.Run, // renamed from "reverseproxy" to "teleport"
 	"reverseproxy": teleport.Run, // TODO delete this
-	"station":      server.Run,   // renamed from "server" to "station"
-	"server":       server.Run,   // TODO delete this
 }
 
 func Run(args []string) error {
