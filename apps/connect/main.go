@@ -3,7 +3,7 @@
 // currently websocket works fine
 // while webtransport is broken because reverseproxy doesn't support it yet
 
-package echo
+package connect
 
 import (
 	"context"
