@@ -16,7 +16,7 @@ require (
 	github.com/quic-go/quic-go v0.40.1
 	// github.com/webteleport/caddy-webteleport v0.0.1
 	github.com/webteleport/auth v0.0.5
-	github.com/webteleport/server v0.1.12
+	github.com/webteleport/server v0.1.13
 	github.com/webteleport/utils v0.0.6
 	github.com/webteleport/webteleport v0.2.19
 	k0s.io v0.1.6
@@ -32,7 +32,12 @@ require (
 
 require (
 	github.com/caddyserver/certmagic v0.20.0
+	github.com/gin-gonic/gin v1.6.3
+	github.com/google/uuid v1.3.0
 	github.com/gorilla/handlers v1.5.1
+	github.com/joho/godotenv v1.5.1
+	github.com/patrickmn/go-cache v2.1.0+incompatible
+	github.com/tidwall/gjson v1.17.0
 )
 
 require (
@@ -57,9 +62,11 @@ require (
 	github.com/denisbrodbeck/machineid v1.0.1 // indirect
 	github.com/digitalocean/godo v1.41.0 // indirect
 	github.com/ebi-yade/altsvc-go v0.1.1 // indirect
+	github.com/elazarl/goproxy v0.0.0-20231117061959-7cc037d33fb5 // indirect
 	github.com/ema/qdisc v0.0.0-20200603082823-62d0308e3e00 // indirect
 	github.com/felixge/httpsnoop v1.0.2 // indirect
 	github.com/ghodss/yaml v1.0.1-0.20190212211648-25d852aebe32 // indirect
+	github.com/gin-contrib/sse v0.1.0 // indirect
 	github.com/go-gost/gosocks4 v0.0.1 // indirect
 	github.com/go-gost/gosocks5 v0.3.0 // indirect
 	github.com/go-gost/relay v0.1.1-0.20211123134818-8ef7fd81ffd7 // indirect
@@ -67,6 +74,9 @@ require (
 	github.com/go-kit/log v0.2.0 // indirect
 	github.com/go-log/log v0.2.0 // indirect
 	github.com/go-logfmt/logfmt v0.5.1 // indirect
+	github.com/go-playground/locales v0.13.0 // indirect
+	github.com/go-playground/universal-translator v0.17.0 // indirect
+	github.com/go-playground/validator/v10 v10.2.0 // indirect
 	github.com/go-task/slim-sprig v0.0.0-20230315185526-52ccab3ef572 // indirect
 	github.com/gobwas/glob v0.2.3 // indirect
 	github.com/godbus/dbus v0.0.0-20190422162347-ade71ed3457e // indirect
@@ -75,7 +85,6 @@ require (
 	github.com/google/go-querystring v1.0.0 // indirect
 	github.com/google/gopacket v1.1.19 // indirect
 	github.com/google/pprof v0.0.0-20230821062121-407c9e7a662f // indirect
-	github.com/google/uuid v1.3.0 // indirect
 	github.com/gorilla/websocket v1.5.0 // indirect
 	github.com/hashicorp/go-envparse v0.0.0-20200406174449-d9cfd743a15e // indirect
 	github.com/hodgesds/perf-utils v0.4.0 // indirect
@@ -89,6 +98,7 @@ require (
 	github.com/klauspost/compress v1.15.0 // indirect
 	github.com/klauspost/cpuid/v2 v2.2.5 // indirect
 	github.com/klauspost/reedsolomon v1.9.15 // indirect
+	github.com/leodido/go-urn v1.2.0 // indirect
 	github.com/libdns/digitalocean v0.0.0-20230728223659-4f9064657aea // indirect
 	github.com/libdns/libdns v0.2.1 // indirect
 	github.com/lufia/iostat v1.2.0 // indirect
@@ -123,8 +133,11 @@ require (
 	github.com/soundcloud/go-runit v0.0.0-20150630195641-06ad41a06c4a // indirect
 	github.com/templexxx/cpu v0.0.7 // indirect
 	github.com/templexxx/xorsimd v0.4.1 // indirect
+	github.com/tidwall/match v1.1.1 // indirect
+	github.com/tidwall/pretty v1.2.0 // indirect
 	github.com/tjfoc/gmsm v1.4.1 // indirect
 	github.com/tomasen/realip v0.0.0-20180522021738-f0c99a92ddce // indirect
+	github.com/ugorji/go/codec v1.1.7 // indirect
 	github.com/xtaci/kcp-go/v5 v5.6.1 // indirect
 	github.com/xtaci/smux v1.5.16 // indirect
 	github.com/xtaci/tcpraw v1.2.25 // indirect
