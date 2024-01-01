@@ -11,7 +11,6 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/webteleport/ufo/x"
 	"github.com/webteleport/utils"
 	"github.com/webteleport/webteleport/ufo"
 	"k0s.io"
@@ -64,7 +63,7 @@ func wettyHandler() http.Handler {
 
 	return &auto{
 		fac: factory.New(cmd),
-		rp:  x.ReverseProxy("https://wetty.deno.dev"),
+		rp:  utils.ReverseProxy("https://wetty.deno.dev"),
 	}
 }
 

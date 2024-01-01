@@ -10,7 +10,7 @@ import (
 	"github.com/webteleport/server/envs"
 	"github.com/webteleport/server/session"
 	"github.com/webteleport/server/webteleport"
-	"github.com/webteleport/ufo/x"
+	"github.com/webteleport/utils"
 )
 
 func OnDemandTLSConfig() (*tls.Config, error) {
@@ -120,7 +120,7 @@ func listenAll(handler http.Handler) error {
 func Run([]string) error {
 	var dsm http.Handler = session.DefaultSessionManager
 
-	dsm = x.LoggingMiddleware(dsm)
+	dsm = utils.LoggingMiddleware(dsm)
 
 	return listenAll(dsm)
 }

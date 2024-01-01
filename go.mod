@@ -34,7 +34,6 @@ require (
 	github.com/caddyserver/certmagic v0.20.0
 	github.com/gin-gonic/gin v1.6.3
 	github.com/google/uuid v1.3.0
-	github.com/gorilla/handlers v1.5.1
 	github.com/joho/godotenv v1.5.1
 	github.com/patrickmn/go-cache v2.1.0+incompatible
 	github.com/tidwall/gjson v1.17.0
@@ -64,7 +63,7 @@ require (
 	github.com/ebi-yade/altsvc-go v0.1.1 // indirect
 	github.com/elazarl/goproxy v0.0.0-20231117061959-7cc037d33fb5 // indirect
 	github.com/ema/qdisc v0.0.0-20200603082823-62d0308e3e00 // indirect
-	github.com/felixge/httpsnoop v1.0.2 // indirect
+	github.com/felixge/httpsnoop v1.0.3 // indirect
 	github.com/ghodss/yaml v1.0.1-0.20190212211648-25d852aebe32 // indirect
 	github.com/gin-contrib/sse v0.1.0 // indirect
 	github.com/go-gost/gosocks4 v0.0.1 // indirect
@@ -85,6 +84,7 @@ require (
 	github.com/google/go-querystring v1.0.0 // indirect
 	github.com/google/gopacket v1.1.19 // indirect
 	github.com/google/pprof v0.0.0-20230821062121-407c9e7a662f // indirect
+	github.com/gorilla/handlers v1.5.2 // indirect
 	github.com/gorilla/websocket v1.5.0 // indirect
 	github.com/hashicorp/go-envparse v0.0.0-20200406174449-d9cfd743a15e // indirect
 	github.com/hodgesds/perf-utils v0.4.0 // indirect

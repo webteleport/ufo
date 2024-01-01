@@ -6,10 +6,10 @@ import (
 	"net/http"
 	"reflect"
 
-	"github.com/webteleport/ufo/x"
+	"github.com/webteleport/utils"
 )
 
-var _ x.AugmentedHandler = (*ServeMux)(nil)
+var _ utils.AugmentedHandler = (*ServeMux)(nil)
 
 type ServeMux struct {
 	*http.ServeMux
