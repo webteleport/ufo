@@ -5,7 +5,6 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/webteleport/ufo/x"
 	"github.com/webteleport/utils"
 	"github.com/webteleport/webteleport/ufo"
 	"k0s.io/pkg/middleware"
@@ -19,7 +18,7 @@ func Arg0(args []string, fallback string) string {
 }
 
 func Run(args []string) error {
-	handler := middleware.LoggingMiddleware(x.WellKnownHealthMiddleware(middleware.GzipMiddleware(http.FileServer(http.Dir(".")))))
+	handler := middleware.LoggingMiddleware(utils.WellKnownHealthMiddleware(middleware.GzipMiddleware(http.FileServer(http.Dir(".")))))
 	arg0 := Arg0(args, "https://ufo.k0s.io")
 	if arg0 == "local" {
 		port := utils.EnvPort(":8000")

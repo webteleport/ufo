@@ -20,7 +20,6 @@ import (
 	"github.com/joho/godotenv"
 	"github.com/patrickmn/go-cache"
 	"github.com/tidwall/gjson"
-	"github.com/webteleport/ufo/x"
 	"github.com/webteleport/utils"
 	"github.com/webteleport/webteleport/ufo"
 	"k0s.io/pkg/middleware"
@@ -54,7 +53,7 @@ func Arg0(args []string, fallback string) string {
 
 func Run(args []string) error {
 	handler := copilotHandler()
-	handler = x.WellKnownHealthMiddleware(middleware.GzipMiddleware(handler))
+	handler = utils.WellKnownHealthMiddleware(middleware.GzipMiddleware(handler))
 	arg0 := Arg0(args, "https://ufo.k0s.io")
 	if arg0 == "local" {
 		port := utils.EnvPort(":8000")

@@ -41,7 +41,7 @@ func listenHTTPS(handler http.Handler, errc chan error) {
 	if envs.HTTPS_PORT == nil {
 		return
 	}
-	slog.Info("listening on https://" + envs.HOST + *envs.HTTPS_PORT)
+	slog.Info("listening on HTTPS https://" + envs.HOST + *envs.HTTPS_PORT)
 	tlsConfig := LazyTLSConfig(envs.CERT, envs.KEY)
 	ln, err := tls.Listen("tcp4", *envs.HTTPS_PORT, tlsConfig)
 	if err != nil {
@@ -55,7 +55,7 @@ func listenHTTP(handler http.Handler, errc chan error) {
 	if envs.HTTP_PORT == nil {
 		return
 	}
-	slog.Info("listening on http://" + envs.HOST + *envs.HTTP_PORT)
+	slog.Info("listening on HTTP http://" + envs.HOST + *envs.HTTP_PORT)
 	ln, err := net.Listen("tcp4", *envs.HTTP_PORT)
 	if err != nil {
 		errc <- err
@@ -120,7 +120,6 @@ func listenAll(handler http.Handler) error {
 func Run([]string) error {
 	var dsm http.Handler = session.DefaultSessionManager
 
-	dsm = x.WellKnownHealthMiddleware(dsm)
 	dsm = x.LoggingMiddleware(dsm)
 
 	return listenAll(dsm)

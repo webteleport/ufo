@@ -9,6 +9,7 @@ import (
 	"github.com/webteleport/server/session"
 	"github.com/webteleport/server/webteleport"
 	"github.com/webteleport/ufo/x"
+	"github.com/webteleport/utils"
 )
 
 func listenTCP(handler http.Handler, errc chan error) {
@@ -39,7 +40,7 @@ func listenAll(handler http.Handler) error {
 func Run([]string) error {
 	var dsm http.Handler = session.DefaultSessionManager
 
-	dsm = x.WellKnownHealthMiddleware(dsm)
+	dsm = utils.WellKnownHealthMiddleware(dsm)
 	dsm = x.LoggingMiddleware(dsm)
 
 	return listenAll(dsm)

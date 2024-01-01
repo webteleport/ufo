@@ -2,6 +2,7 @@ package teleport
 
 import (
 	"github.com/webteleport/ufo/x"
+	"github.com/webteleport/utils"
 	"github.com/webteleport/webteleport/ufo"
 	"k0s.io/pkg/middleware"
 )
@@ -27,6 +28,6 @@ func Run(args []string) error {
 	handler = x.Jupyter(handler)
 	handler = middleware.GzipMiddleware(handler)
 	handler = middleware.LoggingMiddleware(handler)
-	handler = x.WellKnownHealthMiddleware(handler)
+	handler = utils.WellKnownHealthMiddleware(handler)
 	return ufo.Serve(addr, handler)
 }
