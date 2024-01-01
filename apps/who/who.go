@@ -32,6 +32,6 @@ func who(w http.ResponseWriter, r *http.Request) {
 func Run(args []string) error {
 	var h http.Handler
 	h = http.HandlerFunc(who)
-	h = utils.LoggingMiddleware(h)
+	h = utils.GinLoggerMiddleware(h)
 	return ufo.Serve(Arg0(args, "https://ufo.k0s.io"), h)
 }

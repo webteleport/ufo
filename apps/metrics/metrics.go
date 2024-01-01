@@ -15,7 +15,7 @@ func Arg0(args []string, fallback string) string {
 	return fallback
 }
 
-var Handler http.Handler = utils.LoggingMiddleware(utils.GzipMiddleware(exporter.NewHandler()))
+var Handler http.Handler = utils.GinLoggerMiddleware(utils.GzipMiddleware(exporter.NewHandler()))
 
 func Run(args []string) error {
 	return ufo.Serve(Arg0(args, "https://metrics.k0s.io"), Handler)

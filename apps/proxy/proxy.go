@@ -34,7 +34,7 @@ func Run(args []string) error {
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "OK", 200)
 	})
-	handler = info(utils.LoggingMiddleware(handler))
+	handler = info(utils.GinLoggerMiddleware(handler))
 	arg0 := Arg0(args, "https://ufo.k0s.io")
 	if arg0 == "local" {
 		port := utils.EnvPort(":8000")

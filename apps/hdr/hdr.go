@@ -20,5 +20,5 @@ func Run(args []string) error {
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		io.WriteString(w, pretty.JSONStringLine(r.Header))
 	})
-	return ufo.Serve(Arg0(args, "https://ufo.k0s.io"), utils.LoggingMiddleware(http.DefaultServeMux))
+	return ufo.Serve(Arg0(args, "https://ufo.k0s.io"), utils.GinLoggerMiddleware(http.DefaultServeMux))
 }

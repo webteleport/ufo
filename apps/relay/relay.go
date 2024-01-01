@@ -122,7 +122,7 @@ func Run([]string) error {
 
 	// Set the Alt-Svc header for UDP port discovery && http3 bootstrapping
 	dsm = AltSvcMiddleware(dsm)
-	dsm = utils.LoggingMiddleware(dsm)
+	dsm = utils.GinLoggerMiddleware(dsm)
 
 	return listenAll(dsm)
 }

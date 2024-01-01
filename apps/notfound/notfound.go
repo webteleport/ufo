@@ -57,5 +57,5 @@ func NotFoundHandler() http.Handler {
 }
 
 func Run(args []string) error {
-	return ufo.Serve(Arg0(args, "https://ufo.k0s.io"), utils.LoggingMiddleware(utils.HostNotFoundHandler()))
+	return ufo.Serve(Arg0(args, "https://ufo.k0s.io"), utils.GinLoggerMiddleware(utils.HostNotFoundHandler()))
 }

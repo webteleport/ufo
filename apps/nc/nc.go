@@ -30,5 +30,5 @@ func Run(args []string) error {
 			log.Println(err)
 		}
 	})
-	return ufo.Serve(Arg0(args, "https://ufo.k0s.io"), utils.LoggingMiddleware(http.DefaultServeMux))
+	return ufo.Serve(Arg0(args, "https://ufo.k0s.io"), utils.GinLoggerMiddleware(http.DefaultServeMux))
 }

@@ -49,6 +49,6 @@ func Arg0(args []string, fallback string) string {
 func Run(args []string) error {
 	var h http.Handler
 	h = http.HandlerFunc(whoisHandler)
-	h = utils.LoggingMiddleware(h)
+	h = utils.GinLoggerMiddleware(h)
 	return ufo.Serve(Arg0(args, "https://ufo.k0s.io"), h)
 }

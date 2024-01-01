@@ -45,5 +45,5 @@ func Run(args []string) error {
 	})
 	log.Println("listening on", ln.ClickableURL())
 	log.Println("access link", ln.ClickableURL()+secretPath)
-	return http.Serve(ln, utils.LoggingMiddleware(http.DefaultServeMux))
+	return http.Serve(ln, utils.GinLoggerMiddleware(http.DefaultServeMux))
 }

@@ -43,7 +43,7 @@ func Run(args []string) error {
 	}
 	log.Println("🛸 listening on", wsfy(ln.Network())+"://"+ln.String())
 
-	return http.Serve(ln, utils.LoggingMiddleware(&auto{}))
+	return http.Serve(ln, utils.GinLoggerMiddleware(&auto{}))
 }
 
 type auto struct{}

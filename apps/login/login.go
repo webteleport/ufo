@@ -27,5 +27,5 @@ func Run(args []string) error {
 	cwd := http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		http.StripPrefix(r.URL.Path, http.FileServer(http.Dir("."))).ServeHTTP(w, r)
 	})
-	return ufo.Serve(stationURL, utils.LoggingMiddleware(auth.WithPassword(cwd, u.Fragment)))
+	return ufo.Serve(stationURL, utils.GinLoggerMiddleware(auth.WithPassword(cwd, u.Fragment)))
 }

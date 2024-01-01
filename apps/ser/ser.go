@@ -17,7 +17,7 @@ func Arg0(args []string, fallback string) string {
 }
 
 func Run(args []string) error {
-	handler := utils.LoggingMiddleware(utils.GzipMiddleware(http.FileServer(http.Dir("."))))
+	handler := utils.GinLoggerMiddleware(utils.GzipMiddleware(http.FileServer(http.Dir("."))))
 	arg0 := Arg0(args, "https://ufo.k0s.io")
 	if arg0 == "local" {
 		port := utils.EnvPort(":8000")

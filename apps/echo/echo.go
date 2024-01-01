@@ -15,6 +15,6 @@ func Arg0(args []string, fallback string) string {
 
 func Run(args []string) error {
 	e := echo.New(echo.Config{})
-	e = utils.LoggingMiddleware(e)
+	e = utils.GinLoggerMiddleware(e)
 	return ufo.Serve(Arg0(args, "https://ufo.k0s.io"), e)
 }
