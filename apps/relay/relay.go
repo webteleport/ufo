@@ -7,8 +7,8 @@ import (
 	"net/http"
 
 	"github.com/caddyserver/certmagic"
+	"github.com/webteleport/relay"
 	"github.com/webteleport/relay/session"
-	"github.com/webteleport/relay/webteleport"
 	"github.com/webteleport/ufo/apps/relay/envs"
 	"github.com/webteleport/utils"
 )
@@ -92,8 +92,8 @@ func listenTCPOnDemandTLS(handler http.Handler, errc chan error) {
 func listenUDP(handler http.Handler, errc chan error) {
 	slog.Info("listening on UDP https://" + envs.HOST + envs.UDP_PORT)
 	tlsConfig := LazyTLSConfig(envs.CERT, envs.KEY)
-	wts := webteleport.NewServerTLS(envs.HOST, envs.UDP_PORT, handler, tlsConfig)
-	errc <- wts.ListenAndServe()
+	r := relay.New(envs.HOST, envs.UDP_PORT, handler, tlsConfig)
+	errc <- r.ListenAndServe()
 }
 
 func listenUDPOnDemandTLS(handler http.Handler, errc chan error) {
@@ -103,8 +103,8 @@ func listenUDPOnDemandTLS(handler http.Handler, errc chan error) {
 		errc <- err
 		return
 	}
-	wts := webteleport.NewServerTLS(envs.HOST, envs.UDP_PORT, handler, tlsConfig)
-	errc <- wts.ListenAndServe()
+	r := relay.New(envs.HOST, envs.UDP_PORT, handler, tlsConfig)
+	errc <- r.ListenAndServe()
 }
 
 func listenAll(handler http.Handler) error {
