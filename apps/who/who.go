@@ -6,8 +6,8 @@ import (
 	"io"
 	"net/http"
 
+	"github.com/webteleport/utils"
 	"github.com/webteleport/webteleport/ufo"
-	"k0s.io/pkg/middleware"
 )
 
 func Arg0(args []string, fallback string) string {
@@ -32,6 +32,6 @@ func who(w http.ResponseWriter, r *http.Request) {
 func Run(args []string) error {
 	var h http.Handler
 	h = http.HandlerFunc(who)
-	h = middleware.LoggingMiddleware(h)
+	h = utils.LoggingMiddleware(h)
 	return ufo.Serve(Arg0(args, "https://ufo.k0s.io"), h)
 }

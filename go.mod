@@ -18,14 +18,13 @@ require (
 	// github.com/webteleport/caddy-webteleport v0.0.1
 	github.com/webteleport/auth v0.0.5
 	github.com/webteleport/relay v0.2.0
-	github.com/webteleport/utils v0.0.8
+	github.com/webteleport/utils v0.0.9
 	github.com/webteleport/webteleport v0.2.19
 	k0s.io v0.1.6
 	k0s.io/pkg/agent v0.1.6
 	k0s.io/pkg/asciitransport v0.1.6
 	k0s.io/pkg/dial v0.1.6
 	k0s.io/pkg/exporter v0.1.6
-	k0s.io/pkg/middleware v0.1.6
 	k0s.io/pkg/uuid v0.1.6
 	k0s.io/pkg/wrap v0.1.6
 	nhooyr.io/websocket v1.8.7
@@ -125,7 +124,6 @@ require (
 	github.com/quic-go/qtls-go1-20 v0.4.1 // indirect
 	github.com/quic-go/webtransport-go v0.6.0 // indirect
 	github.com/riobard/go-bloom v0.0.0-20200614022211-cdc8013cb5b3 // indirect
-	github.com/rs/cors v1.8.2 // indirect
 	github.com/ryanuber/go-glob v1.0.0 // indirect
 	github.com/safchain/ethtool v0.1.0 // indirect
 	github.com/shadowsocks/go-shadowsocks2 v0.1.5 // indirect

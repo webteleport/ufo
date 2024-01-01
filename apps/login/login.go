@@ -5,8 +5,8 @@ import (
 	"net/url"
 
 	"github.com/webteleport/auth"
+	"github.com/webteleport/utils"
 	"github.com/webteleport/webteleport/ufo"
-	"k0s.io/pkg/middleware"
 )
 
 func Arg0(args []string, fallback string) string {
@@ -27,5 +27,5 @@ func Run(args []string) error {
 	cwd := http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		http.StripPrefix(r.URL.Path, http.FileServer(http.Dir("."))).ServeHTTP(w, r)
 	})
-	return ufo.Serve(stationURL, middleware.LoggingMiddleware(auth.WithPassword(cwd, u.Fragment)))
+	return ufo.Serve(stationURL, utils.LoggingMiddleware(auth.WithPassword(cwd, u.Fragment)))
 }

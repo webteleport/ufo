@@ -3,7 +3,6 @@ package teleport
 import (
 	"github.com/webteleport/utils"
 	"github.com/webteleport/webteleport/ufo"
-	"k0s.io/pkg/middleware"
 )
 
 func Arg0(args []string, fallback string) string {
@@ -25,8 +24,8 @@ func Run(args []string) error {
 	upstream := Arg1(args, "https://k0s.io")
 	handler := utils.ReverseProxy(upstream)
 	handler = utils.Jupyter(handler)
-	handler = middleware.GzipMiddleware(handler)
-	handler = middleware.LoggingMiddleware(handler)
+	handler = utils.GzipMiddleware(handler)
+	handler = utils.LoggingMiddleware(handler)
 	handler = utils.WellKnownHealthMiddleware(handler)
 	return ufo.Serve(addr, handler)
 }

@@ -7,7 +7,6 @@ import (
 
 	"github.com/webteleport/utils"
 	"github.com/webteleport/webteleport/ufo"
-	"k0s.io/pkg/middleware"
 )
 
 func Arg0(args []string, fallback string) string {
@@ -58,5 +57,5 @@ func NotFoundHandler() http.Handler {
 }
 
 func Run(args []string) error {
-	return ufo.Serve(Arg0(args, "https://ufo.k0s.io"), middleware.LoggingMiddleware(utils.HostNotFoundHandler()))
+	return ufo.Serve(Arg0(args, "https://ufo.k0s.io"), utils.LoggingMiddleware(utils.HostNotFoundHandler()))
 }

@@ -7,7 +7,6 @@ import (
 
 	"github.com/webteleport/utils"
 	"github.com/webteleport/webteleport/ufo"
-	"k0s.io/pkg/middleware"
 )
 
 func Arg0(args []string, fallback string) string {
@@ -35,7 +34,7 @@ func Run(args []string) error {
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "OK", 200)
 	})
-	handler = info(middleware.LoggingMiddleware(utils.WellKnownHealthMiddleware(handler)))
+	handler = info(utils.LoggingMiddleware(utils.WellKnownHealthMiddleware(handler)))
 	arg0 := Arg0(args, "https://ufo.k0s.io")
 	if arg0 == "local" {
 		port := utils.EnvPort(":8000")

@@ -18,7 +18,6 @@ import (
 	"github.com/webteleport/utils"
 	"github.com/webteleport/webteleport"
 
-	"k0s.io/pkg/middleware"
 	"k0s.io/pkg/wrap"
 )
 
@@ -47,7 +46,7 @@ func Run(args []string) error {
 	}
 	log.Println("🛸 listening on", wsfy(ln.Network())+"://"+ln.String())
 
-	return http.Serve(ln, middleware.LoggingMiddleware(utils.WellKnownHealthMiddleware(&auto{})))
+	return http.Serve(ln, utils.LoggingMiddleware(utils.WellKnownHealthMiddleware(&auto{})))
 }
 
 type auto struct{}

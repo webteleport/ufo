@@ -4,8 +4,8 @@ import (
 	"net/http"
 	"os"
 
+	"github.com/webteleport/utils"
 	"github.com/webteleport/webteleport/ufo"
-	"k0s.io/pkg/middleware"
 )
 
 func Arg0(args []string, fallback string) string {
@@ -26,5 +26,5 @@ func binHandler() http.Handler {
 }
 
 func Run(args []string) error {
-	return ufo.Serve(Arg0(args, "https://ufo.k0s.io"), middleware.LoggingMiddleware(middleware.GzipMiddleware(binHandler())))
+	return ufo.Serve(Arg0(args, "https://ufo.k0s.io"), utils.LoggingMiddleware(utils.GzipMiddleware(binHandler())))
 }

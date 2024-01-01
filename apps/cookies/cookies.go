@@ -7,8 +7,8 @@ import (
 	"log"
 	"net/http"
 
+	"github.com/webteleport/utils"
 	"github.com/webteleport/webteleport"
-	"k0s.io/pkg/middleware"
 	"k0s.io/pkg/uuid"
 )
 
@@ -45,5 +45,5 @@ func Run(args []string) error {
 	})
 	log.Println("listening on", ln.ClickableURL())
 	log.Println("access link", ln.ClickableURL()+secretPath)
-	return http.Serve(ln, middleware.LoggingMiddleware(http.DefaultServeMux))
+	return http.Serve(ln, utils.LoggingMiddleware(http.DefaultServeMux))
 }

@@ -22,7 +22,6 @@ import (
 	"github.com/tidwall/gjson"
 	"github.com/webteleport/utils"
 	"github.com/webteleport/webteleport/ufo"
-	"k0s.io/pkg/middleware"
 )
 
 const tokenUrl = "https://api.github.com/copilot_internal/v2/token"
@@ -53,7 +52,7 @@ func Arg0(args []string, fallback string) string {
 
 func Run(args []string) error {
 	handler := copilotHandler()
-	handler = utils.WellKnownHealthMiddleware(middleware.GzipMiddleware(handler))
+	handler = utils.WellKnownHealthMiddleware(utils.GzipMiddleware(handler))
 	arg0 := Arg0(args, "https://ufo.k0s.io")
 	if arg0 == "local" {
 		port := utils.EnvPort(":8000")

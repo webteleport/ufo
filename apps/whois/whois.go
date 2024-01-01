@@ -6,8 +6,8 @@ import (
 	"os/exec"
 	"path"
 
+	"github.com/webteleport/utils"
 	"github.com/webteleport/webteleport/ufo"
-	"k0s.io/pkg/middleware"
 )
 
 func extractLastSegment(s string) string {
@@ -49,6 +49,6 @@ func Arg0(args []string, fallback string) string {
 func Run(args []string) error {
 	var h http.Handler
 	h = http.HandlerFunc(whoisHandler)
-	h = middleware.LoggingMiddleware(h)
+	h = utils.LoggingMiddleware(h)
 	return ufo.Serve(Arg0(args, "https://ufo.k0s.io"), h)
 }

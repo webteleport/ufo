@@ -2,8 +2,8 @@ package echo
 
 import (
 	echo "github.com/jpillora/go-echo-server/handler"
+	"github.com/webteleport/utils"
 	"github.com/webteleport/webteleport/ufo"
-	"k0s.io/pkg/middleware"
 )
 
 func Arg0(args []string, fallback string) string {
@@ -15,6 +15,6 @@ func Arg0(args []string, fallback string) string {
 
 func Run(args []string) error {
 	e := echo.New(echo.Config{})
-	e = middleware.LoggingMiddleware(e)
+	e = utils.LoggingMiddleware(e)
 	return ufo.Serve(Arg0(args, "https://ufo.k0s.io"), e)
 }
