@@ -34,6 +34,7 @@ import (
 	"github.com/webteleport/ufo/apps/teleport"
 	"github.com/webteleport/ufo/apps/term"
 	"github.com/webteleport/ufo/apps/who"
+	"github.com/webteleport/ufo/apps/whois"
 
 	_ "github.com/webteleport/utils/hack/quic-go-disable-receive-buffer-warning"
 )
@@ -71,6 +72,7 @@ var cmdRun multicall.RunnerFuncMap = map[string]multicall.RunnerFunc{
 	"sse":          sse.Run,
 	"term":         term.Run,
 	"who":          who.Run,
+	"whois":        whois.Run,
 	"metrics":      metrics.Run,
 	"multi":        multi.Run,
 	"fileserver":   gos.Run,      // renamed from "gos" to "fileserver"
