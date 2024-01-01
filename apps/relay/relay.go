@@ -7,9 +7,9 @@ import (
 	"net/http"
 
 	"github.com/caddyserver/certmagic"
-	"github.com/webteleport/server/envs"
-	"github.com/webteleport/server/session"
-	"github.com/webteleport/server/webteleport"
+	"github.com/webteleport/relay/session"
+	"github.com/webteleport/relay/webteleport"
+	"github.com/webteleport/ufo/apps/relay/envs"
 	"github.com/webteleport/utils"
 )
 
@@ -92,7 +92,7 @@ func listenTCPOnDemandTLS(handler http.Handler, errc chan error) {
 func listenUDP(handler http.Handler, errc chan error) {
 	slog.Info("listening on UDP https://" + envs.HOST + envs.UDP_PORT)
 	tlsConfig := LazyTLSConfig(envs.CERT, envs.KEY)
-	wts := webteleport.NewServerTLS(handler, tlsConfig)
+	wts := webteleport.NewServerTLS(envs.HOST, envs.UDP_PORT, handler, tlsConfig)
 	errc <- wts.ListenAndServe()
 }
 
@@ -103,7 +103,7 @@ func listenUDPOnDemandTLS(handler http.Handler, errc chan error) {
 		errc <- err
 		return
 	}
-	wts := webteleport.NewServerTLS(handler, tlsConfig)
+	wts := webteleport.NewServerTLS(envs.HOST, envs.UDP_PORT, handler, tlsConfig)
 	errc <- wts.ListenAndServe()
 }
 
@@ -120,7 +120,16 @@ func listenAll(handler http.Handler) error {
 func Run([]string) error {
 	var dsm http.Handler = session.DefaultSessionManager
 
+	// Set the Alt-Svc header for UDP port discovery && http3 bootstrapping
+	dsm = AltSvcMiddleware(dsm)
 	dsm = utils.LoggingMiddleware(dsm)
 
 	return listenAll(dsm)
+}
+
+func AltSvcMiddleware(next http.Handler) http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("Alt-Svc", envs.ALT_SVC)
+		next.ServeHTTP(w, r)
+	})
 }
