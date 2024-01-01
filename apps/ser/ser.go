@@ -1,4 +1,4 @@
-package gos
+package ser
 
 import (
 	"fmt"
