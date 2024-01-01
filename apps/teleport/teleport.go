@@ -26,6 +26,5 @@ func Run(args []string) error {
 	handler = utils.Jupyter(handler)
 	handler = utils.GzipMiddleware(handler)
 	handler = utils.LoggingMiddleware(handler)
-	handler = utils.WellKnownHealthMiddleware(handler)
 	return ufo.Serve(addr, handler)
 }

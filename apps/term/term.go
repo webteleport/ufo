@@ -69,7 +69,6 @@ func wettyHandler() http.Handler {
 
 func Run(args []string) error {
 	handler := wettyHandler()
-	handler = utils.WellKnownHealthMiddleware(handler)
 	arg0 := Arg0(args, "https://ufo.k0s.io")
 	if arg0 == "local" {
 		port := utils.EnvPort(":8000")

@@ -52,7 +52,7 @@ func Arg0(args []string, fallback string) string {
 
 func Run(args []string) error {
 	handler := copilotHandler()
-	handler = utils.WellKnownHealthMiddleware(utils.GzipMiddleware(handler))
+	handler = utils.GzipMiddleware(handler)
 	arg0 := Arg0(args, "https://ufo.k0s.io")
 	if arg0 == "local" {
 		port := utils.EnvPort(":8000")
