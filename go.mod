@@ -1,6 +1,6 @@
 module github.com/webteleport/ufo
 
-go 1.21
+go 1.21.5
 
 // replace github.com/webteleport/webteleport => ../webteleport
 // replace github.com/webteleport/relay => ../relay
@@ -37,6 +37,7 @@ require (
 	github.com/joho/godotenv v1.5.1
 	github.com/patrickmn/go-cache v2.1.0+incompatible
 	github.com/tidwall/gjson v1.17.0
+	github.com/webteleport/wtf v0.0.1
 )
 
 require (

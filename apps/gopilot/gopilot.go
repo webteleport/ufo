@@ -21,7 +21,7 @@ import (
 	"github.com/patrickmn/go-cache"
 	"github.com/tidwall/gjson"
 	"github.com/webteleport/utils"
-	"github.com/webteleport/webteleport/ufo"
+	"github.com/webteleport/wtf"
 )
 
 const tokenUrl = "https://api.github.com/copilot_internal/v2/token"
@@ -59,7 +59,7 @@ func Run(args []string) error {
 		log.Println(fmt.Sprintf("listening on http://127.0.0.1%s", port))
 		return http.ListenAndServe(port, handler)
 	}
-	return ufo.Serve(arg0, handler)
+	return wtf.Serve(arg0, handler)
 }
 
 func copilotHandler() http.Handler {

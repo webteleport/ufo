@@ -7,7 +7,7 @@ import (
 	"path"
 
 	"github.com/webteleport/utils"
-	"github.com/webteleport/webteleport/ufo"
+	"github.com/webteleport/wtf"
 )
 
 func extractLastSegment(s string) string {
@@ -50,5 +50,5 @@ func Run(args []string) error {
 	var h http.Handler
 	h = http.HandlerFunc(whoisHandler)
 	h = utils.GinLoggerMiddleware(h)
-	return ufo.Serve(Arg0(args, "https://ufo.k0s.io"), h)
+	return wtf.Serve(Arg0(args, "https://ufo.k0s.io"), h)
 }

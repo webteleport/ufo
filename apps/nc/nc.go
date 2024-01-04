@@ -7,7 +7,7 @@ import (
 	"os"
 
 	"github.com/webteleport/utils"
-	"github.com/webteleport/webteleport/ufo"
+	"github.com/webteleport/wtf"
 	"k0s.io/pkg/wrap"
 )
 
@@ -30,5 +30,5 @@ func Run(args []string) error {
 			log.Println(err)
 		}
 	})
-	return ufo.Serve(Arg0(args, "https://ufo.k0s.io"), utils.GinLoggerMiddleware(http.DefaultServeMux))
+	return wtf.Serve(Arg0(args, "https://ufo.k0s.io"), utils.GinLoggerMiddleware(http.DefaultServeMux))
 }

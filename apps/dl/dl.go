@@ -5,7 +5,7 @@ import (
 	"os"
 
 	"github.com/webteleport/utils"
-	"github.com/webteleport/webteleport/ufo"
+	"github.com/webteleport/wtf"
 )
 
 func Arg0(args []string, fallback string) string {
@@ -26,5 +26,5 @@ func binHandler() http.Handler {
 }
 
 func Run(args []string) error {
-	return ufo.Serve(Arg0(args, "https://ufo.k0s.io"), utils.GinLoggerMiddleware(utils.GzipMiddleware(binHandler())))
+	return wtf.Serve(Arg0(args, "https://ufo.k0s.io"), utils.GinLoggerMiddleware(utils.GzipMiddleware(binHandler())))
 }

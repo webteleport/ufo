@@ -8,7 +8,7 @@ import (
 	"time"
 
 	"github.com/btwiuse/sse"
-	"github.com/webteleport/webteleport/ufo"
+	"github.com/webteleport/wtf"
 )
 
 func Arg0(args []string, fallback string) string {
@@ -19,7 +19,7 @@ func Arg0(args []string, fallback string) string {
 }
 
 func Run(args []string) error {
-	return ufo.Serve(Arg0(args, "https://ufo.k0s.io"), indexWith(DateSSE()))
+	return wtf.Serve(Arg0(args, "https://ufo.k0s.io"), indexWith(DateSSE()))
 }
 
 func indexWith(s *sse.SSE) http.Handler {

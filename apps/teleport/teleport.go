@@ -2,7 +2,7 @@ package teleport
 
 import (
 	"github.com/webteleport/utils"
-	"github.com/webteleport/webteleport/ufo"
+	"github.com/webteleport/wtf"
 )
 
 func Arg0(args []string, fallback string) string {
@@ -26,5 +26,5 @@ func Run(args []string) error {
 	handler = utils.Jupyter(handler)
 	handler = utils.GzipMiddleware(handler)
 	handler = utils.GinLoggerMiddleware(handler)
-	return ufo.Serve(addr, handler)
+	return wtf.Serve(addr, handler)
 }

@@ -6,7 +6,7 @@ import (
 
 	"github.com/webteleport/auth"
 	"github.com/webteleport/utils"
-	"github.com/webteleport/webteleport/ufo"
+	"github.com/webteleport/wtf"
 )
 
 func Arg0(args []string, fallback string) string {
@@ -27,5 +27,5 @@ func Run(args []string) error {
 	cwd := http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		http.StripPrefix(r.URL.Path, http.FileServer(http.Dir("."))).ServeHTTP(w, r)
 	})
-	return ufo.Serve(stationURL, utils.GinLoggerMiddleware(auth.WithPassword(cwd, u.Fragment)))
+	return wtf.Serve(stationURL, utils.GinLoggerMiddleware(auth.WithPassword(cwd, u.Fragment)))
 }

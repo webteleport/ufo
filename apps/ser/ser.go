@@ -7,7 +7,7 @@ import (
 	"net/http"
 
 	"github.com/webteleport/utils"
-	"github.com/webteleport/webteleport/ufo"
+	"github.com/webteleport/wtf"
 )
 
 func Arg0(args []string, fallback string) string {
@@ -31,5 +31,5 @@ func Run(args []string) error {
 		log.Println(fmt.Sprintf("listening on http://127.0.0.1%s", port))
 		return http.ListenAndServe(port, mux)
 	}
-	return ufo.Serve(arg0, mux)
+	return wtf.Serve(arg0, mux)
 }

@@ -4,7 +4,7 @@ import (
 	"net/http"
 
 	"github.com/webteleport/utils"
-	"github.com/webteleport/webteleport/ufo"
+	"github.com/webteleport/wtf"
 	"k0s.io/pkg/exporter"
 )
 
@@ -18,5 +18,5 @@ func Arg0(args []string, fallback string) string {
 var Handler http.Handler = utils.GinLoggerMiddleware(utils.GzipMiddleware(exporter.NewHandler()))
 
 func Run(args []string) error {
-	return ufo.Serve(Arg0(args, "https://metrics.k0s.io"), Handler)
+	return wtf.Serve(Arg0(args, "https://metrics.k0s.io"), Handler)
 }
