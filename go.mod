@@ -11,15 +11,22 @@ require (
 	github.com/btwiuse/multicall v0.0.4
 	github.com/btwiuse/pretty v0.2.1
 	github.com/btwiuse/sse v0.0.1
+	github.com/caddyserver/certmagic v0.20.0
+	github.com/gin-gonic/gin v1.6.3
+	github.com/google/uuid v1.3.0
 	github.com/hashicorp/yamux v0.1.1
+	github.com/joho/godotenv v1.5.1
 	github.com/jpillora/go-echo-server v0.5.0
+	github.com/patrickmn/go-cache v2.1.0+incompatible
 	github.com/phayes/freeport v0.0.0-20220201140144-74d24b5ae9f5
 	github.com/quic-go/quic-go v0.40.1
+	github.com/tidwall/gjson v1.17.0
 	// github.com/webteleport/caddy-webteleport v0.0.1
-	github.com/webteleport/auth v0.0.5
+	github.com/webteleport/auth v0.0.6
 	github.com/webteleport/relay v0.2.7
 	github.com/webteleport/utils v0.1.2
 	github.com/webteleport/webteleport v0.2.23
+	github.com/webteleport/wtf v0.0.2
 	k0s.io v0.1.6
 	k0s.io/pkg/agent v0.1.6
 	k0s.io/pkg/asciitransport v0.1.6
@@ -28,16 +35,6 @@ require (
 	k0s.io/pkg/uuid v0.1.6
 	k0s.io/pkg/wrap v0.1.6
 	nhooyr.io/websocket v1.8.7
-)
-
-require (
-	github.com/caddyserver/certmagic v0.20.0
-	github.com/gin-gonic/gin v1.6.3
-	github.com/google/uuid v1.3.0
-	github.com/joho/godotenv v1.5.1
-	github.com/patrickmn/go-cache v2.1.0+incompatible
-	github.com/tidwall/gjson v1.17.0
-	github.com/webteleport/wtf v0.0.1
 )
 
 require (
@@ -96,6 +93,7 @@ require (
 	github.com/jpillora/sizestr v0.0.0-20160130011556-e2ea2fa42fb9 // indirect
 	github.com/jsimonetti/rtnetlink v0.0.0-20211022192332-93da33804786 // indirect
 	github.com/json-iterator/go v1.1.12 // indirect
+	github.com/kataras/basicauth v0.0.3 // indirect
 	github.com/klauspost/compress v1.15.0 // indirect
 	github.com/klauspost/cpuid/v2 v2.2.5 // indirect
 	github.com/klauspost/reedsolomon v1.9.15 // indirect
@@ -148,17 +146,18 @@ require (
 	go.uber.org/mock v0.3.0 // indirect
 	go.uber.org/multierr v1.11.0 // indirect
 	go.uber.org/zap v1.24.0 // indirect
-	golang.org/x/crypto v0.14.0 // indirect
-	golang.org/x/exp v0.0.0-20230817173708-d852ddb80c63 // indirect
-	golang.org/x/mod v0.12.0 // indirect
-	golang.org/x/net v0.17.0 // indirect
+	golang.org/x/crypto v0.17.0 // indirect
+	golang.org/x/exp v0.0.0-20240103183307-be819d1f06fc // indirect
+	golang.org/x/mod v0.14.0 // indirect
+	golang.org/x/net v0.19.0 // indirect
 	golang.org/x/oauth2 v0.0.0-20220223155221-ee480838109b // indirect
-	golang.org/x/sync v0.3.0 // indirect
-	golang.org/x/sys v0.13.0 // indirect
-	golang.org/x/text v0.13.0 // indirect
-	golang.org/x/tools v0.12.1-0.20230815132531-74c255bcf846 // indirect
+	golang.org/x/sync v0.5.0 // indirect
+	golang.org/x/sys v0.15.0 // indirect
+	golang.org/x/text v0.14.0 // indirect
+	golang.org/x/tools v0.16.0 // indirect
 	google.golang.org/appengine v1.6.7 // indirect
 	google.golang.org/protobuf v1.28.0 // indirect
 	gopkg.in/alecthomas/kingpin.v2 v2.2.6 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
+	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
