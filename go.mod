@@ -23,8 +23,8 @@ require (
 	github.com/tidwall/gjson v1.17.0
 	// github.com/webteleport/caddy-webteleport v0.0.1
 	github.com/webteleport/auth v0.0.6
-	github.com/webteleport/relay v0.2.7
-	github.com/webteleport/utils v0.1.5
+	github.com/webteleport/relay v0.2.8
+	github.com/webteleport/utils v0.1.6
 	github.com/webteleport/webteleport v0.2.23
 	github.com/webteleport/wtf v0.0.2
 	k0s.io v0.1.6
@@ -60,6 +60,7 @@ require (
 	github.com/digitalocean/godo v1.41.0 // indirect
 	github.com/ebi-yade/altsvc-go v0.1.1 // indirect
 	github.com/elazarl/goproxy v0.0.0-20231117061959-7cc037d33fb5 // indirect
+	github.com/elazarl/goproxy/ext v0.0.0-20190711103511-473e67f1d7d2 // indirect
 	github.com/ema/qdisc v0.0.0-20200603082823-62d0308e3e00 // indirect
 	github.com/felixge/httpsnoop v1.0.3 // indirect
 	github.com/ghodss/yaml v1.0.1-0.20190212211648-25d852aebe32 // indirect
