@@ -13,6 +13,7 @@ import (
 	"github.com/webteleport/ufo/apps/dl"
 	"github.com/webteleport/ufo/apps/echo"
 	"github.com/webteleport/ufo/apps/freeport"
+	"github.com/webteleport/ufo/apps/gitd"
 	"github.com/webteleport/ufo/apps/gopilot"
 	"github.com/webteleport/ufo/apps/hdr"
 	"github.com/webteleport/ufo/apps/hello"
@@ -80,6 +81,7 @@ var cmdRun multicall.RunnerFuncMap = map[string]multicall.RunnerFunc{
 	"teleport":     teleport.Run, // renamed from "reverseproxy" to "teleport"
 	"reverseproxy": teleport.Run, // TODO delete this
 	"intercept":    intercept.Run,
+	"gitd":         gitd.Run,
 }
 
 func Run(args []string) error {

@@ -24,7 +24,7 @@ require (
 	// github.com/webteleport/caddy-webteleport v0.0.1
 	github.com/webteleport/auth v0.0.6
 	github.com/webteleport/relay v0.2.8
-	github.com/webteleport/utils v0.1.6
+	github.com/webteleport/utils v0.1.7
 	github.com/webteleport/webteleport v0.2.23
 	github.com/webteleport/wtf v0.0.2
 	k0s.io v0.1.6
