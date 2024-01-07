@@ -1,11 +1,11 @@
 package ser
 
 import (
-	"expvar"
 	"fmt"
 	"log"
 	"net/http"
 
+	"github.com/webteleport/ufo/apps/ser/handler"
 	"github.com/webteleport/utils"
 	"github.com/webteleport/wtf"
 )
@@ -18,18 +18,12 @@ func Arg0(args []string, fallback string) string {
 }
 
 func Run(args []string) error {
-	handler := http.FileServer(http.Dir("."))
-	handler = utils.GzipMiddleware(handler)
-	handler = utils.GinLoggerMiddleware(handler)
-	mux := http.NewServeMux()
-	mux.Handle("/", handler)
-	go collectMemstats()
-	mux.HandleFunc("/debug/vars", expvar.Handler().ServeHTTP)
 	arg0 := Arg0(args, "https://ufo.k0s.io")
+	h := handler.Handler()
 	if arg0 == "local" {
 		port := utils.EnvPort(":8000")
 		log.Println(fmt.Sprintf("listening on http://127.0.0.1%s", port))
-		return http.ListenAndServe(port, mux)
+		return http.ListenAndServe(port, h)
 	}
-	return wtf.Serve(arg0, mux)
+	return wtf.Serve(arg0, h)
 }

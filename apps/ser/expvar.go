@@ -1,3 +1,5 @@
+//go:build expvar
+
 package ser
 
 import (
@@ -15,4 +17,8 @@ func collectMemstats() {
 		memStats.Set(int64(m.Alloc))
 		time.Sleep(time.Second) // Adjust the sleep duration as needed
 	}
+}
+
+func init() {
+	go collectMemstats()
 }

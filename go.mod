@@ -37,6 +37,8 @@ require (
 	nhooyr.io/websocket v1.8.7
 )
 
+require github.com/fermyon/spin/sdk/go/v2 v2.1.0
+
 require (
 	filippo.io/edwards25519 v1.0.0-rc.1.0.20210721174708-390f27c3be20 // indirect
 	git.torproject.org/pluggable-transports/goptlib.git v1.2.0 // indirect
@@ -94,6 +96,7 @@ require (
 	github.com/jpillora/sizestr v0.0.0-20160130011556-e2ea2fa42fb9 // indirect
 	github.com/jsimonetti/rtnetlink v0.0.0-20211022192332-93da33804786 // indirect
 	github.com/json-iterator/go v1.1.12 // indirect
+	github.com/julienschmidt/httprouter v1.3.0 // indirect
 	github.com/kataras/basicauth v0.0.3 // indirect
 	github.com/klauspost/compress v1.15.0 // indirect
 	github.com/klauspost/cpuid/v2 v2.2.5 // indirect
