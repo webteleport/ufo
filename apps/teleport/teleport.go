@@ -1,7 +1,7 @@
 package teleport
 
 import (
-	"github.com/webteleport/utils"
+	"github.com/webteleport/ufo/apps/teleport/handler"
 	"github.com/webteleport/wtf"
 )
 
@@ -22,9 +22,5 @@ func Arg1(args []string, fallback string) string {
 func Run(args []string) error {
 	addr := Arg0(args, "https://ufo.k0s.io")
 	upstream := Arg1(args, "https://k0s.io")
-	handler := utils.ReverseProxy(upstream)
-	handler = utils.Jupyter(handler)
-	handler = utils.GzipMiddleware(handler)
-	handler = utils.GinLoggerMiddleware(handler)
-	return wtf.Serve(addr, handler)
+	return wtf.Serve(addr, handler.Handler(upstream))
 }
