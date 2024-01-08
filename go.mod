@@ -3,6 +3,7 @@ module github.com/webteleport/ufo
 go 1.21.5
 
 // replace github.com/webteleport/webteleport => ../webteleport
+// replace github.com/webteleport/wtf => ../wtf
 // replace github.com/webteleport/relay => ../relay
 // replace github.com/webteleport/utils => ../utils
 
@@ -23,10 +24,10 @@ require (
 	github.com/tidwall/gjson v1.17.0
 	// github.com/webteleport/caddy-webteleport v0.0.1
 	github.com/webteleport/auth v0.0.6
-	github.com/webteleport/relay v0.2.9
+	github.com/webteleport/relay v0.2.11
 	github.com/webteleport/utils v0.1.8
-	github.com/webteleport/webteleport v0.3.0
-	github.com/webteleport/wtf v0.0.3
+	github.com/webteleport/webteleport v0.3.1
+	github.com/webteleport/wtf v0.0.4
 	k0s.io v0.1.6
 	k0s.io/pkg/agent v0.1.6
 	k0s.io/pkg/asciitransport v0.1.6
