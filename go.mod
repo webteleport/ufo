@@ -23,10 +23,10 @@ require (
 	github.com/tidwall/gjson v1.17.0
 	// github.com/webteleport/caddy-webteleport v0.0.1
 	github.com/webteleport/auth v0.0.6
-	github.com/webteleport/relay v0.2.8
-	github.com/webteleport/utils v0.1.7
-	github.com/webteleport/webteleport v0.2.23
-	github.com/webteleport/wtf v0.0.2
+	github.com/webteleport/relay v0.2.9
+	github.com/webteleport/utils v0.1.8
+	github.com/webteleport/webteleport v0.3.0
+	github.com/webteleport/wtf v0.0.3
 	k0s.io v0.1.6
 	k0s.io/pkg/agent v0.1.6
 	k0s.io/pkg/asciitransport v0.1.6
@@ -113,7 +113,7 @@ require (
 	github.com/mdlayher/socket v0.0.0-20210307095302-262dc9984e00 // indirect
 	github.com/mdlayher/wifi v0.0.0-20200527114002-84f0b9457fdd // indirect
 	github.com/mholt/acmez v1.2.0 // indirect
-	github.com/miekg/dns v1.1.55 // indirect
+	github.com/miekg/dns v1.1.57 // indirect
 	github.com/modern-go/concurrent v0.0.0-20180306012644-bacd9c7ef1dd // indirect
 	github.com/modern-go/reflect2 v1.0.2 // indirect
 	github.com/onsi/ginkgo/v2 v2.12.0 // indirect
