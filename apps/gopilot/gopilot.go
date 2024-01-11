@@ -17,7 +17,6 @@ import (
 
 	"github.com/gin-gonic/gin"
 	"github.com/google/uuid"
-	"github.com/joho/godotenv"
 	"github.com/patrickmn/go-cache"
 	"github.com/tidwall/gjson"
 	"github.com/webteleport/utils"
@@ -41,7 +40,7 @@ type ModelList struct {
 	Data   []Model `json:"data"`
 }
 
-var ghuToken = ""
+var ghuToken = os.Getenv("GHU_TOKEN")
 
 func Arg0(args []string, fallback string) string {
 	if len(args) > 0 {
@@ -63,11 +62,6 @@ func Run(args []string) error {
 }
 
 func copilotHandler() http.Handler {
-	err := godotenv.Load()
-	if err == nil {
-		ghuToken = os.Getenv("GHU_TOKEN")
-	}
-
 	log.Printf("Server is running with GHU_TOKEN=%s", ghuToken)
 
 	gin.SetMode(gin.ReleaseMode)

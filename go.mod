@@ -16,7 +16,6 @@ require (
 	github.com/gin-gonic/gin v1.6.3
 	github.com/google/uuid v1.3.0
 	github.com/hashicorp/yamux v0.1.1
-	github.com/joho/godotenv v1.5.1
 	github.com/jpillora/go-echo-server v0.5.0
 	github.com/patrickmn/go-cache v2.1.0+incompatible
 	github.com/phayes/freeport v0.0.0-20220201140144-74d24b5ae9f5
@@ -25,7 +24,7 @@ require (
 	// github.com/webteleport/caddy-webteleport v0.0.1
 	github.com/webteleport/auth v0.0.6
 	github.com/webteleport/relay v0.2.11
-	github.com/webteleport/utils v0.1.8
+	github.com/webteleport/utils v0.1.9
 	github.com/webteleport/webteleport v0.3.1
 	github.com/webteleport/wtf v0.0.4
 	k0s.io v0.1.6
@@ -106,7 +105,7 @@ require (
 	github.com/libdns/digitalocean v0.0.0-20230728223659-4f9064657aea // indirect
 	github.com/libdns/libdns v0.2.1 // indirect
 	github.com/lufia/iostat v1.2.0 // indirect
-	github.com/mattn/go-isatty v0.0.19 // indirect
+	github.com/mattn/go-isatty v0.0.20 // indirect
 	github.com/mattn/go-xmlrpc v0.0.3 // indirect
 	github.com/matttproud/golang_protobuf_extensions v1.0.2-0.20181231171920-c182affec369 // indirect
 	github.com/mdlayher/genetlink v1.0.0 // indirect
