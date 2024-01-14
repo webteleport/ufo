@@ -1,6 +1,6 @@
 module github.com/webteleport/ufo
 
-go 1.21.5
+go 1.21.6
 
 // replace github.com/webteleport/webteleport => ../webteleport
 // replace github.com/webteleport/wtf => ../wtf
@@ -10,9 +10,11 @@ go 1.21.5
 require (
 	github.com/btwiuse/gost v0.0.4
 	github.com/btwiuse/multicall v0.0.4
+	github.com/btwiuse/portmux v0.1.0
 	github.com/btwiuse/pretty v0.2.1
 	github.com/btwiuse/sse v0.0.1
 	github.com/caddyserver/certmagic v0.20.0
+	github.com/fermyon/spin/sdk/go/v2 v2.1.0
 	github.com/gin-gonic/gin v1.6.3
 	github.com/google/uuid v1.3.0
 	github.com/hashicorp/yamux v0.1.1
@@ -36,8 +38,6 @@ require (
 	k0s.io/pkg/wrap v0.1.6
 	nhooyr.io/websocket v1.8.7
 )
-
-require github.com/fermyon/spin/sdk/go/v2 v2.1.0
 
 require (
 	filippo.io/edwards25519 v1.0.0-rc.1.0.20210721174708-390f27c3be20 // indirect
@@ -86,7 +86,7 @@ require (
 	github.com/google/gopacket v1.1.19 // indirect
 	github.com/google/pprof v0.0.0-20230821062121-407c9e7a662f // indirect
 	github.com/gorilla/handlers v1.5.2 // indirect
-	github.com/gorilla/websocket v1.5.0 // indirect
+	github.com/gorilla/websocket v1.5.1 // indirect
 	github.com/hashicorp/go-envparse v0.0.0-20200406174449-d9cfd743a15e // indirect
 	github.com/hodgesds/perf-utils v0.4.0 // indirect
 	github.com/illumos/go-kstat v0.0.0-20210513183136-173c9b0a9973 // indirect
@@ -101,6 +101,7 @@ require (
 	github.com/klauspost/compress v1.15.0 // indirect
 	github.com/klauspost/cpuid/v2 v2.2.5 // indirect
 	github.com/klauspost/reedsolomon v1.9.15 // indirect
+	github.com/koding/websocketproxy v0.0.0-20181220232114-7ed82d81a28c // indirect
 	github.com/leodido/go-urn v1.2.0 // indirect
 	github.com/libdns/digitalocean v0.0.0-20230728223659-4f9064657aea // indirect
 	github.com/libdns/libdns v0.2.1 // indirect

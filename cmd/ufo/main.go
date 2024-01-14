@@ -6,6 +6,7 @@ import (
 	"os"
 
 	"github.com/btwiuse/multicall"
+	"github.com/btwiuse/portmux"
 
 	// "github.com/webteleport/ufo/apps/caddy"
 	"github.com/webteleport/ufo/apps/basicauth"
@@ -56,6 +57,7 @@ var cmdRun multicall.RunnerFuncMap = map[string]multicall.RunnerFunc{
 	"notfound":     notfound.Run,
 	"dl":           dl.Run,
 	"proxy":        proxy.Run,
+	"portmux":      portmux.Run,
 	"hello":        hello.Run,
 	"gopilot":      gopilot.Run,
 	"basicauth":    basicauth.Run,

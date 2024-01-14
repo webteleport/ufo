@@ -351,6 +351,7 @@ func getAccToken(ghuToken string) (string, error) {
 			return accToken, fmt.Errorf("获取 acc_token 请求失败： %d", resp.StatusCode)
 		}
 	}
+	// log.Println("accToken:", accToken)
 	return accToken, nil
 }
 
