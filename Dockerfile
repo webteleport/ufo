@@ -1,9 +1,15 @@
-FROM btwiuse/arch:golang
+FROM btwiuse/arch:golang AS builder-golang
 
-RUN git clone https://github.com/webteleport/ufo /webteleport/ufo
+COPY . /webteleport/ufo
 
 WORKDIR /webteleport/ufo
 
 RUN go mod tidy
 
-RUN CGO_ENABLED=0 GOBIN=/usr/local/bin go install ./cmd/ufo
+RUN CGO_ENABLED=0 GOBIN=/usr/local/bin go install -v ./cmd/ufo
+
+FROM btwiuse/arch
+
+COPY --from=builder-golang /usr/local/bin/ufo /usr/bin/ufo
+
+ENTRYPOINT ["/usr/bin/ufo"]
