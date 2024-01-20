@@ -27,7 +27,7 @@ require (
 	github.com/webteleport/auth v0.0.6
 	github.com/webteleport/relay v0.2.12
 	github.com/webteleport/utils v0.2.2
-	github.com/webteleport/webteleport v0.3.3
+	github.com/webteleport/webteleport v0.3.4
 	github.com/webteleport/wtf v0.0.6
 	k0s.io v0.1.6
 	k0s.io/pkg/agent v0.1.6
@@ -36,7 +36,7 @@ require (
 	k0s.io/pkg/exporter v0.1.6
 	k0s.io/pkg/uuid v0.1.6
 	k0s.io/pkg/wrap v0.1.6
-	nhooyr.io/websocket v1.8.7
+	nhooyr.io/websocket v1.8.10
 )
 
 require (

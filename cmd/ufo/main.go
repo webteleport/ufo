@@ -27,6 +27,7 @@ import (
 	"github.com/webteleport/ufo/apps/pkgpath"
 	"github.com/webteleport/ufo/apps/proxy"
 	"github.com/webteleport/ufo/apps/relay"
+	"github.com/webteleport/ufo/apps/resolve"
 	"github.com/webteleport/ufo/apps/ser"
 	"github.com/webteleport/ufo/apps/so"
 	"github.com/webteleport/ufo/apps/sowc"
@@ -66,6 +67,7 @@ var cmdRun multicall.RunnerFuncMap = map[string]multicall.RunnerFunc{
 	"hdr":          hdr.Run,
 	"hub":          relay.Run,
 	"relay":        relay.Run,
+	"resolve":      resolve.Run,
 	"nc":           nc.Run,
 	"so":           so.Run,
 	"freeport":     freeport.Run,
