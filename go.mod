@@ -21,14 +21,14 @@ require (
 	github.com/jpillora/go-echo-server v0.5.0
 	github.com/patrickmn/go-cache v2.1.0+incompatible
 	github.com/phayes/freeport v0.0.0-20220201140144-74d24b5ae9f5
-	github.com/quic-go/quic-go v0.40.1
+	github.com/quic-go/quic-go v0.41.0
 	github.com/tidwall/gjson v1.17.0
 	// github.com/webteleport/caddy-webteleport v0.0.1
 	github.com/webteleport/auth v0.0.6
-	github.com/webteleport/relay v0.2.11
-	github.com/webteleport/utils v0.2.1
-	github.com/webteleport/webteleport v0.3.2
-	github.com/webteleport/wtf v0.0.5
+	github.com/webteleport/relay v0.2.12
+	github.com/webteleport/utils v0.2.2
+	github.com/webteleport/webteleport v0.3.3
+	github.com/webteleport/wtf v0.0.6
 	k0s.io v0.1.6
 	k0s.io/pkg/agent v0.1.6
 	k0s.io/pkg/asciitransport v0.1.6
@@ -69,7 +69,7 @@ require (
 	github.com/digitalocean/godo v1.41.0 // indirect
 	github.com/ebi-yade/altsvc-go v0.1.1 // indirect
 	github.com/elazarl/goproxy v0.0.0-20231117061959-7cc037d33fb5 // indirect
-	github.com/elazarl/goproxy/ext v0.0.0-20190711103511-473e67f1d7d2 // indirect
+	github.com/elazarl/goproxy/ext v0.0.0-20231117061959-7cc037d33fb5 // indirect
 	github.com/ema/qdisc v0.0.0-20200603082823-62d0308e3e00 // indirect
 	github.com/felixge/httpsnoop v1.0.3 // indirect
 	github.com/ghodss/yaml v1.0.1-0.20190212211648-25d852aebe32 // indirect
@@ -121,7 +121,7 @@ require (
 	github.com/mdlayher/socket v0.0.0-20210307095302-262dc9984e00 // indirect
 	github.com/mdlayher/wifi v0.0.0-20200527114002-84f0b9457fdd // indirect
 	github.com/mholt/acmez v1.2.0 // indirect
-	github.com/miekg/dns v1.1.57 // indirect
+	github.com/miekg/dns v1.1.58 // indirect
 	github.com/modern-go/concurrent v0.0.0-20180306012644-bacd9c7ef1dd // indirect
 	github.com/modern-go/reflect2 v1.0.2 // indirect
 	github.com/onsi/ginkgo/v2 v2.12.0 // indirect
@@ -132,7 +132,6 @@ require (
 	github.com/prometheus/node_exporter v1.3.1 // indirect
 	github.com/prometheus/procfs v0.7.4-0.20211011103944-1a7a2bd3279f // indirect
 	github.com/quic-go/qpack v0.4.0 // indirect
-	github.com/quic-go/qtls-go1-20 v0.4.1 // indirect
 	github.com/quic-go/webtransport-go v0.6.0 // indirect
 	github.com/riobard/go-bloom v0.0.0-20200614022211-cdc8013cb5b3 // indirect
 	github.com/rs/cors v1.10.1 // indirect
@@ -160,13 +159,13 @@ require (
 	go.uber.org/multierr v1.11.0 // indirect
 	go.uber.org/zap v1.24.0 // indirect
 	golang.org/x/crypto v0.18.0 // indirect
-	golang.org/x/exp v0.0.0-20240103183307-be819d1f06fc // indirect
+	golang.org/x/exp v0.0.0-20240119083558-1b970713d09a // indirect
 	golang.org/x/mod v0.14.0 // indirect
 	golang.org/x/oauth2 v0.13.0 // indirect
-	golang.org/x/sync v0.5.0 // indirect
+	golang.org/x/sync v0.6.0 // indirect
 	golang.org/x/sys v0.16.0 // indirect
 	golang.org/x/text v0.14.0 // indirect
-	golang.org/x/tools v0.16.0 // indirect
+	golang.org/x/tools v0.17.0 // indirect
 	google.golang.org/appengine v1.6.8 // indirect
 	google.golang.org/genproto/googleapis/rpc v0.0.0-20240116215550-a9fa1716bcac // indirect
 	gopkg.in/alecthomas/kingpin.v2 v2.2.6 // indirect
