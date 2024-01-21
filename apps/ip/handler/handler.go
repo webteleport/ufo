@@ -5,7 +5,8 @@ import (
 	"net/http"
 )
 
-const IFRAME = `<iframe src="https://ip.skk.moe/simple-dark" style="width: 100%; border: 0"></iframe>`
+// https://twitter.com/luogl/status/1748580566205927919
+const IFRAME = `<iframe src="https://ip.skk.moe" style="width: 100%; height: 100%; border: 0"></iframe>`
 
 func Handler() http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
