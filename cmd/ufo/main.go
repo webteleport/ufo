@@ -27,6 +27,7 @@ import (
 	"github.com/webteleport/ufo/apps/notfound"
 	"github.com/webteleport/ufo/apps/pkgpath"
 	"github.com/webteleport/ufo/apps/proxy"
+	"github.com/webteleport/ufo/apps/pub"
 	"github.com/webteleport/ufo/apps/relay"
 	"github.com/webteleport/ufo/apps/resolve"
 	"github.com/webteleport/ufo/apps/ser"
@@ -59,6 +60,7 @@ var cmdRun multicall.RunnerFuncMap = map[string]multicall.RunnerFunc{
 	"notfound":     notfound.Run,
 	"dl":           dl.Run,
 	"proxy":        proxy.Run,
+	"pub":          pub.Run,
 	"portmux":      portmux.Run,
 	"hello":        hello.Run,
 	"gopilot":      gopilot.Run,
