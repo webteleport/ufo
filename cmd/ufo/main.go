@@ -19,6 +19,7 @@ import (
 	"github.com/webteleport/ufo/apps/hdr"
 	"github.com/webteleport/ufo/apps/hello"
 	"github.com/webteleport/ufo/apps/intercept"
+	"github.com/webteleport/ufo/apps/ip"
 	"github.com/webteleport/ufo/apps/login"
 	"github.com/webteleport/ufo/apps/metrics"
 	"github.com/webteleport/ufo/apps/multi"
@@ -85,6 +86,7 @@ var cmdRun multicall.RunnerFuncMap = map[string]multicall.RunnerFunc{
 	"teleport":     teleport.Run, // renamed from "reverseproxy" to "teleport"
 	"reverseproxy": teleport.Run, // TODO delete this
 	"intercept":    intercept.Run,
+	"ip":           ip.Run,
 	"gitd":         gitd.Run,
 }
 
