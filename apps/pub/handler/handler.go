@@ -3,7 +3,6 @@ package handler
 import (
 	"expvar"
 	"fmt"
-	"log"
 	"log/slog"
 	"net/http"
 	"net/url"
@@ -55,7 +54,8 @@ func Handler(s string) (handler http.Handler) {
 		slog.Info(fmt.Sprintf("publishing url: %s", s))
 		handler = utils.ReverseProxy(s)
 	default:
-		log.Fatalln("unrecognized pattern:", s)
+		slog.Info(fmt.Sprintf("publishing host: %s", s))
+		handler = utils.ReverseProxy(s)
 	}
 	handler = utils.GzipMiddleware(handler)
 	handler = utils.GinLoggerMiddleware(handler)
