@@ -4,10 +4,12 @@ import (
 	"log"
 	"net/url"
 
+	"github.com/webteleport/utils"
 	"github.com/webteleport/webteleport"
 )
 
 func resolve(s string) {
+	s = utils.AsURL(s)
 	log.Println(s)
 	u, err := url.Parse(s)
 	if err != nil {
