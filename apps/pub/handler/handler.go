@@ -10,6 +10,15 @@ import (
 	"github.com/webteleport/utils"
 )
 
+// passing symlink also returns true
+func isFile(path string) bool {
+	fileInfo, err := os.Stat(path)
+	if err != nil {
+		return false
+	}
+	return !fileInfo.IsDir()
+}
+
 func pathExists(path string) bool {
 	_, err := os.Stat(path)
 	if err == nil {
@@ -37,8 +46,16 @@ func isValidURL(toTest string) bool {
 	return err == nil
 }
 
+func serveFile(s string) http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		http.ServeFile(w, r, s)
+	})
+}
+
 func Handler(s string) (handler http.Handler) {
 	switch {
+	case isFile(s):
+		handler = serveFile(s)
 	case pathExists(s):
 		handler = http.FileServer(http.Dir(s))
 	case isPort(s):
