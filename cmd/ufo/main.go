@@ -7,6 +7,7 @@ import (
 
 	"github.com/btwiuse/multicall"
 	"github.com/btwiuse/portmux"
+	"github.com/btwiuse/pub"
 
 	// "github.com/webteleport/ufo/apps/caddy"
 	"github.com/webteleport/ufo/apps/basicauth"
@@ -27,7 +28,6 @@ import (
 	"github.com/webteleport/ufo/apps/notfound"
 	"github.com/webteleport/ufo/apps/pkgpath"
 	"github.com/webteleport/ufo/apps/proxy"
-	"github.com/webteleport/ufo/apps/pub"
 	"github.com/webteleport/ufo/apps/relay"
 	"github.com/webteleport/ufo/apps/resolve"
 	"github.com/webteleport/ufo/apps/ser"
@@ -41,8 +41,6 @@ import (
 	"github.com/webteleport/ufo/apps/term"
 	"github.com/webteleport/ufo/apps/who"
 	"github.com/webteleport/ufo/apps/whois"
-
-	_ "github.com/webteleport/utils/hack/quic-go-disable-receive-buffer-warning"
 )
 
 func main() {
