@@ -35,7 +35,7 @@ func registerRules(mux *http.ServeMux, args []string) {
 	if len(args)%2 != 0 {
 		slog.Warn("uneven number of args passed as rules, dropping the last")
 	}
-	pairs := partitionIntoPairs(args[1:])
+	pairs := partitionIntoPairs(args)
 	for _, pair := range pairs {
 		slog.Info(fmt.Sprintf("publishing: %s -> %s", pair[0], pair[1]))
 		mux.Handle(pair[0], http.StripPrefix(strings.TrimSuffix(pair[0], "/"), handler.Handler(pair[1])))
