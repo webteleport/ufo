@@ -2,8 +2,6 @@ package handler
 
 import (
 	"expvar"
-	"fmt"
-	"log/slog"
 	"net/http"
 	"net/url"
 	"os"
@@ -42,19 +40,14 @@ func isValidURL(toTest string) bool {
 func Handler(s string) (handler http.Handler) {
 	switch {
 	case pathExists(s):
-		slog.Info(fmt.Sprintf("publishing path: %s", s))
 		handler = http.FileServer(http.Dir(s))
 	case isPort(s):
-		slog.Info(fmt.Sprintf("publishing port: %s", s))
 		handler = utils.ReverseProxy(s)
 	case isHostPort(s):
-		slog.Info(fmt.Sprintf("publishing http: %s", s))
 		handler = utils.ReverseProxy(s)
 	case isValidURL(s):
-		slog.Info(fmt.Sprintf("publishing url: %s", s))
 		handler = utils.ReverseProxy(s)
 	default:
-		slog.Info(fmt.Sprintf("publishing host: %s", s))
 		handler = utils.ReverseProxy(s)
 	}
 	handler = utils.GzipMiddleware(handler)
