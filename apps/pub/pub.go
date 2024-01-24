@@ -31,18 +31,29 @@ func partitionIntoPairs(s []string) [][2]string {
 	return pairs
 }
 
+func registerRules(mux *http.ServeMux, args []string) {
+	if len(args)%2 != 0 {
+		slog.Warn("uneven number of args passed as rules, dropping the last")
+	}
+	pairs := partitionIntoPairs(args[1:])
+	for _, pair := range pairs {
+		slog.Info(fmt.Sprintf("publishing: %s -> %s", pair[0], pair[1]))
+		mux.Handle(pair[0], http.StripPrefix(strings.TrimSuffix(pair[0], "/"), handler.Handler(pair[1])))
+	}
+}
+
 func Run(args []string) error {
 	mux := http.NewServeMux()
 
 	arg0 := Arg0(args, ".")
 
-	if arg0 == "--" {
-		pairs := partitionIntoPairs(args[1:])
-		for _, pair := range pairs {
-			slog.Info(fmt.Sprintf("publishing: %s -> %s", pair[0], pair[1]))
-			mux.Handle(pair[0], http.StripPrefix(strings.TrimSuffix(pair[0], "/"), handler.Handler(pair[1])))
-		}
-	} else {
+	switch {
+	case arg0 == "--":
+		registerRules(mux, args[1:])
+	case len(args) >= 2:
+		slog.Warn(fmt.Sprintf("add -- before rules to remove ambiguity: pub -- %s", strings.Join(args, " ")))
+		registerRules(mux, args)
+	default:
 		slog.Info(fmt.Sprintf("publishing: %s", arg0))
 		mux.Handle("/", handler.Handler(arg0))
 	}
