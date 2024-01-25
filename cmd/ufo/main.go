@@ -17,6 +17,7 @@ import (
 	"github.com/webteleport/ufo/apps/freeport"
 	"github.com/webteleport/ufo/apps/gitd"
 	"github.com/webteleport/ufo/apps/gopilot"
+	"github.com/webteleport/ufo/apps/gotip"
 	"github.com/webteleport/ufo/apps/hdr"
 	"github.com/webteleport/ufo/apps/hello"
 	"github.com/webteleport/ufo/apps/intercept"
@@ -52,8 +53,9 @@ func main() {
 }
 
 var cmdRun multicall.RunnerFuncMap = map[string]multicall.RunnerFunc{
-	"cookies": cookies.Run,
 	// "caddy":        caddy.Run,
+	"gotip":        gotip.Run,
+	"cookies":      cookies.Run,
 	"pkgpath":      pkgpath.Run,
 	"notfound":     notfound.Run,
 	"dl":           dl.Run,

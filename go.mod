@@ -44,7 +44,10 @@ require (
 	nhooyr.io/websocket v1.8.10
 )
 
-require github.com/btwiuse/pub v0.1.9
+require (
+	github.com/btwiuse/dl v0.0.0-20240125061410-99198cada35f
+	github.com/btwiuse/pub v0.1.9
+)
 
 require (
 	filippo.io/edwards25519 v1.0.0-rc.1.0.20210721174708-390f27c3be20 // indirect
