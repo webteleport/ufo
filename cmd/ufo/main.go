@@ -42,6 +42,7 @@ import (
 	"github.com/webteleport/ufo/apps/term"
 	"github.com/webteleport/ufo/apps/who"
 	"github.com/webteleport/ufo/apps/whois"
+	"github.com/webteleport/ufo/apps/mmdb"
 )
 
 func main() {
@@ -82,6 +83,7 @@ var cmdRun multicall.RunnerFuncMap = map[string]multicall.RunnerFunc{
 	"term":         term.Run,
 	"who":          who.Run,
 	"whois":        whois.Run,
+	"mmdb":         mmdb.Run,
 	"metrics":      metrics.Run,
 	"multi":        multi.Run,
 	"ser":          ser.Run,
