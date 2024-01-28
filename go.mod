@@ -32,7 +32,7 @@ require (
 	github.com/webteleport/relay v0.2.12
 	github.com/webteleport/utils v0.2.5
 	github.com/webteleport/webteleport v0.3.8
-	github.com/webteleport/wtf v0.0.8
+	github.com/webteleport/wtf v0.0.9
 	golang.org/x/net v0.20.0
 	google.golang.org/grpc v1.59.0
 	google.golang.org/protobuf v1.32.0
