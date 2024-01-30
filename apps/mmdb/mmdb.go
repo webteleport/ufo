@@ -2,8 +2,8 @@ package mmdb
 
 import (
 	"fmt"
-	"os"
 	"net/http"
+	"os"
 	"os/exec"
 	"path"
 

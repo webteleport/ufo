@@ -9,6 +9,7 @@ go 1.21.6
 
 require (
 	connectrpc.com/connect v1.14.0
+	github.com/btwiuse/bingo v0.0.2
 	github.com/btwiuse/dl v0.0.0-20240125061410-99198cada35f
 	github.com/btwiuse/gost v0.0.4
 	github.com/btwiuse/multicall v0.0.4
@@ -46,7 +47,7 @@ require (
 	nhooyr.io/websocket v1.8.10
 )
 
-require github.com/btwiuse/bingo v0.0.1
+require github.com/btwiuse/version v0.0.0
 
 require (
 	filippo.io/edwards25519 v1.0.0-rc.1.0.20210721174708-390f27c3be20 // indirect
@@ -104,9 +105,9 @@ require (
 	github.com/hodgesds/perf-utils v0.7.0 // indirect
 	github.com/illumos/go-kstat v0.0.0-20210513183136-173c9b0a9973 // indirect
 	github.com/josharian/native v1.1.0 // indirect
-	github.com/jpillora/ansi v0.0.0-20170202005112-f496b27cd669 // indirect
-	github.com/jpillora/requestlog v0.0.0-20181015073026-df8817be5f82 // indirect
-	github.com/jpillora/sizestr v0.0.0-20160130011556-e2ea2fa42fb9 // indirect
+	github.com/jpillora/ansi v1.0.2 // indirect
+	github.com/jpillora/requestlog v1.0.0 // indirect
+	github.com/jpillora/sizestr v1.0.0 // indirect
 	github.com/jsimonetti/rtnetlink v1.3.5 // indirect
 	github.com/json-iterator/go v1.1.12 // indirect
 	github.com/julienschmidt/httprouter v1.3.0 // indirect
@@ -131,7 +132,7 @@ require (
 	github.com/miekg/dns v1.1.58 // indirect
 	github.com/modern-go/concurrent v0.0.0-20180306012644-bacd9c7ef1dd // indirect
 	github.com/modern-go/reflect2 v1.0.2 // indirect
-	github.com/onsi/ginkgo/v2 v2.12.0 // indirect
+	github.com/onsi/ginkgo/v2 v2.13.0 // indirect
 	github.com/opencontainers/selinux v1.11.0 // indirect
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/prometheus-community/go-runit v0.1.0 // indirect
@@ -183,4 +184,5 @@ require (
 	howett.net/plist v1.0.0 // indirect
 	k0s.io/pkg/console v0.1.10 // indirect
 	k0s.io/pkg/rng v0.1.10 // indirect
+	k8s.io/apimachinery v0.29.1 // indirect
 )

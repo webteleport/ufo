@@ -24,6 +24,7 @@ import (
 	"github.com/webteleport/ufo/apps/ip"
 	"github.com/webteleport/ufo/apps/login"
 	"github.com/webteleport/ufo/apps/metrics"
+	"github.com/webteleport/ufo/apps/mmdb"
 	"github.com/webteleport/ufo/apps/multi"
 	"github.com/webteleport/ufo/apps/nc"
 	"github.com/webteleport/ufo/apps/notfound"
@@ -40,9 +41,9 @@ import (
 	"github.com/webteleport/ufo/apps/sse"
 	"github.com/webteleport/ufo/apps/teleport"
 	"github.com/webteleport/ufo/apps/term"
+	"github.com/webteleport/ufo/apps/version"
 	"github.com/webteleport/ufo/apps/who"
 	"github.com/webteleport/ufo/apps/whois"
-	"github.com/webteleport/ufo/apps/mmdb"
 )
 
 func main() {
@@ -92,6 +93,7 @@ var cmdRun multicall.RunnerFuncMap = map[string]multicall.RunnerFunc{
 	"intercept":    intercept.Run,
 	"ip":           ip.Run,
 	"gitd":         gitd.Run,
+	"version":      version.Run,
 }
 
 func Run(args []string) error {
