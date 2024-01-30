@@ -46,6 +46,8 @@ require (
 	nhooyr.io/websocket v1.8.10
 )
 
+require github.com/btwiuse/bingo v0.0.1
+
 require (
 	filippo.io/edwards25519 v1.0.0-rc.1.0.20210721174708-390f27c3be20 // indirect
 	git.torproject.org/pluggable-transports/goptlib.git v1.2.0 // indirect
@@ -117,6 +119,7 @@ require (
 	github.com/libdns/digitalocean v0.0.0-20230728223659-4f9064657aea // indirect
 	github.com/libdns/libdns v0.2.1 // indirect
 	github.com/lufia/iostat v1.2.1 // indirect
+	github.com/lukesampson/figlet v0.0.0-20190211215653-8a3ef4a6ac42 // indirect
 	github.com/mattn/go-isatty v0.0.20 // indirect
 	github.com/mattn/go-xmlrpc v0.0.3 // indirect
 	github.com/mdlayher/ethtool v0.1.0 // indirect
@@ -178,5 +181,6 @@ require (
 	gopkg.in/yaml.v2 v2.4.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 	howett.net/plist v1.0.0 // indirect
+	k0s.io/pkg/console v0.1.10 // indirect
 	k0s.io/pkg/rng v0.1.10 // indirect
 )
