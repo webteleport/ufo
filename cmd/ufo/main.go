@@ -41,10 +41,10 @@ import (
 	"github.com/webteleport/ufo/apps/sse"
 	"github.com/webteleport/ufo/apps/teleport"
 	"github.com/webteleport/ufo/apps/term"
+	"github.com/webteleport/ufo/apps/upgrade"
 	"github.com/webteleport/ufo/apps/version"
 	"github.com/webteleport/ufo/apps/who"
 	"github.com/webteleport/ufo/apps/whois"
-	"github.com/webteleport/ufo/apps/upgrade"
 )
 
 func main() {

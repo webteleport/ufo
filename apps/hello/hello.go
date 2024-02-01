@@ -14,7 +14,7 @@ func Run([]string) error {
 	if err != nil {
 		return err
 	}
-	log.Println("🛸 listening on", ln.ClickableURL())
+	log.Println("🛸 listening on", webteleport.ClickableURL(ln))
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		io.WriteString(w, "Hello, UFO!\n")
 	})

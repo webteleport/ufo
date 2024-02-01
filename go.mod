@@ -15,7 +15,7 @@ require (
 	github.com/btwiuse/multicall v0.0.4
 	github.com/btwiuse/portmux v0.1.0
 	github.com/btwiuse/pretty v0.2.1
-	github.com/btwiuse/pub v0.1.19
+	github.com/btwiuse/pub v0.2.0
 	github.com/btwiuse/sse v0.0.1
 	github.com/caddyserver/certmagic v0.20.0
 	github.com/fermyon/spin/sdk/go/v2 v2.1.0
@@ -30,20 +30,20 @@ require (
 	github.com/vmware-labs/wasm-workers-server v1.7.0
 	// github.com/webteleport/caddy-webteleport v0.0.1
 	github.com/webteleport/auth v0.0.6
-	github.com/webteleport/relay v0.2.14
+	github.com/webteleport/relay v0.2.15
 	github.com/webteleport/utils v0.2.5
-	github.com/webteleport/webteleport v0.3.8
-	github.com/webteleport/wtf v0.1.2
+	github.com/webteleport/webteleport v0.4.1
+	github.com/webteleport/wtf v0.1.3
 	golang.org/x/net v0.20.0
 	google.golang.org/grpc v1.59.0
 	google.golang.org/protobuf v1.32.0
-	k0s.io v0.1.10
-	k0s.io/pkg/agent v0.1.10
-	k0s.io/pkg/asciitransport v0.1.10
-	k0s.io/pkg/dial v0.1.10
-	k0s.io/pkg/exporter v0.1.10
-	k0s.io/pkg/uuid v0.1.10
-	k0s.io/pkg/wrap v0.1.10
+	k0s.io v0.1.12
+	k0s.io/pkg/agent v0.1.12
+	k0s.io/pkg/asciitransport v0.1.12
+	k0s.io/pkg/dial v0.1.12
+	k0s.io/pkg/exporter v0.1.12
+	k0s.io/pkg/uuid v0.1.12
+	k0s.io/pkg/wrap v0.1.12
 	nhooyr.io/websocket v1.8.10
 )
 
@@ -198,6 +198,6 @@ require (
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 	howett.net/plist v1.0.0 // indirect
 	k0s.io/pkg/console v0.1.10 // indirect
-	k0s.io/pkg/rng v0.1.10 // indirect
+	k0s.io/pkg/rng v0.1.12 // indirect
 	k8s.io/apimachinery v0.29.1 // indirect
 )

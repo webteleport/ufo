@@ -41,7 +41,7 @@ func Run(args []string) error {
 	if err != nil {
 		return err
 	}
-	log.Println("🛸 listening on", wsfy(ln.Network())+"://"+ln.String())
+	log.Println("🛸 listening on", wsfy(ln.Addr().Network())+"://"+ln.Addr().String())
 
 	return http.Serve(ln, utils.GinLoggerMiddleware(&auto{}))
 }

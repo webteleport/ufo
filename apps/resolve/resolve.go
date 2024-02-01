@@ -5,7 +5,7 @@ import (
 	"net/url"
 
 	"github.com/webteleport/utils"
-	"github.com/webteleport/webteleport"
+	"github.com/webteleport/webteleport/endpoint"
 )
 
 func resolve(s string) {
@@ -15,10 +15,12 @@ func resolve(s string) {
 	if err != nil {
 		panic(err)
 	}
-	log.Println("ENV:", webteleport.ENV("ALT_SVC"))
-	log.Println("TXT:", webteleport.TXT(u.Host))
-	log.Println("HEAD:", webteleport.HEAD(u.String()))
-	es := webteleport.Resolve(u)
+	log.Println("ENV:", endpoint.ENV("ALT_SVC"))
+	log.Println("TXT:", endpoint.TXT(u.Host))
+	log.Println("HEAD:", endpoint.HEAD(u.String()))
+
+	log.Println("endpoint.Resolve", u)
+	es := endpoint.Resolve(u)
 	log.Println("endpoints:", es)
 	log.Println()
 }

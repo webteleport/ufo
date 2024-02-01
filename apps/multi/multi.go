@@ -4,13 +4,14 @@ import (
 	"context"
 	"io"
 	"log"
+	"net"
 	"net/http"
 	"strings"
 
 	"github.com/webteleport/webteleport"
 )
 
-var Map map[string]*webteleport.Listener = map[string]*webteleport.Listener{}
+var Map map[string]net.Listener = map[string]net.Listener{}
 
 func index(w http.ResponseWriter, r *http.Request) {
 	domain := strings.TrimPrefix(r.URL.Path, "/")
@@ -31,10 +32,10 @@ func newRoute() error {
 	if err != nil {
 		return err
 	}
-	log.Println("🛸 listening on", ln.ClickableURL())
-	Map[ln.HumanURL()] = ln
+	log.Println("🛸 listening on", webteleport.ClickableURL(ln))
+	Map[webteleport.HumanURL(ln)] = ln
 	err = http.Serve(ln, nil)
-	log.Println(ln.HumanURL(), err)
+	log.Println(webteleport.HumanURL(ln), err)
 	return err
 }
 
@@ -51,8 +52,8 @@ func Run(args []string) error {
 	if err != nil {
 		return err
 	}
-	log.Println("🛸 listening on", ln.ClickableURL())
-	Map[ln.HumanURL()] = ln
+	log.Println("🛸 listening on", webteleport.ClickableURL(ln))
+	Map[webteleport.HumanURL(ln)] = ln
 	http.HandleFunc("/", index)
 	return http.Serve(ln, nil)
 }

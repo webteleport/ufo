@@ -14,6 +14,6 @@ func Run([]string) error {
 	if err != nil {
 		return err
 	}
-	log.Println("🛸 listening on", ln.ClickableURL())
+	log.Println("🛸 listening on", webteleport.ClickableURL(ln))
 	return http.Serve(ln, handler.Handler())
 }
