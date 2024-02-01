@@ -8,7 +8,7 @@ import (
 
 	"github.com/caddyserver/certmagic"
 	"github.com/webteleport/relay"
-	"github.com/webteleport/relay/session"
+	"github.com/webteleport/relay/manager"
 	"github.com/webteleport/ufo/apps/relay/envs"
 	"github.com/webteleport/utils"
 )
@@ -118,7 +118,7 @@ func listenAll(handler http.Handler) error {
 }
 
 func Run([]string) error {
-	var dsm http.Handler = session.DefaultSessionManager
+	var dsm http.Handler = manager.DefaultSessionManager
 
 	// Set the Alt-Svc header for UDP port discovery && http3 bootstrapping
 	dsm = AltSvcMiddleware(dsm)
