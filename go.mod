@@ -15,7 +15,7 @@ require (
 	github.com/btwiuse/multicall v0.0.4
 	github.com/btwiuse/portmux v0.1.0
 	github.com/btwiuse/pretty v0.2.1
-	github.com/btwiuse/pub v0.1.18
+	github.com/btwiuse/pub v0.1.19
 	github.com/btwiuse/sse v0.0.1
 	github.com/caddyserver/certmagic v0.20.0
 	github.com/fermyon/spin/sdk/go/v2 v2.1.0
