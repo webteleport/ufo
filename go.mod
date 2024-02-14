@@ -1,6 +1,6 @@
 module github.com/webteleport/ufo
 
-go 1.21.6
+go 1.22.0
 
 // replace github.com/webteleport/webteleport => ../webteleport
 // replace github.com/webteleport/wtf => ../wtf
@@ -9,8 +9,7 @@ go 1.21.6
 
 require (
 	connectrpc.com/connect v1.14.0
-	github.com/btwiuse/bingo v0.0.2
-	github.com/btwiuse/dl v0.0.0-20240125061410-99198cada35f
+	github.com/btwiuse/bingo v0.0.3
 	github.com/btwiuse/gost v0.0.4
 	github.com/btwiuse/multicall v0.0.4
 	github.com/btwiuse/portmux v0.1.0
@@ -37,17 +36,18 @@ require (
 	golang.org/x/net v0.20.0
 	google.golang.org/grpc v1.59.0
 	google.golang.org/protobuf v1.32.0
-	k0s.io v0.1.12
-	k0s.io/pkg/agent v0.1.12
-	k0s.io/pkg/asciitransport v0.1.12
-	k0s.io/pkg/dial v0.1.12
-	k0s.io/pkg/exporter v0.1.12
-	k0s.io/pkg/uuid v0.1.12
-	k0s.io/pkg/wrap v0.1.12
+	k0s.io v0.1.14
+	k0s.io/pkg/agent v0.1.14
+	k0s.io/pkg/asciitransport v0.1.14
+	k0s.io/pkg/dial v0.1.14
+	k0s.io/pkg/exporter v0.1.14
+	k0s.io/pkg/uuid v0.1.14
+	k0s.io/pkg/wrap v0.1.14
 	nhooyr.io/websocket v1.8.10
 )
 
 require (
+	github.com/btwiuse/dl v0.0.0-20240214180850-acd4fdda14de
 	github.com/btwiuse/version v0.0.0
 	github.com/creativeprojects/go-selfupdate v1.1.3
 )
@@ -71,6 +71,7 @@ require (
 	github.com/btwiuse/better v0.0.0 // indirect
 	github.com/btwiuse/tags v0.0.0 // indirect
 	github.com/cespare/xxhash/v2 v2.2.0 // indirect
+	github.com/containerd/console v1.0.4 // indirect
 	github.com/coreos/go-iptables v0.6.0 // indirect
 	github.com/coreos/go-systemd/v22 v22.5.0 // indirect
 	github.com/creack/pty v1.1.21 // indirect
@@ -188,7 +189,7 @@ require (
 	golang.org/x/mod v0.14.0 // indirect
 	golang.org/x/oauth2 v0.16.0 // indirect
 	golang.org/x/sync v0.6.0 // indirect
-	golang.org/x/sys v0.16.0 // indirect
+	golang.org/x/sys v0.17.0 // indirect
 	golang.org/x/text v0.14.0 // indirect
 	golang.org/x/time v0.3.0 // indirect
 	golang.org/x/tools v0.17.0 // indirect
@@ -197,7 +198,6 @@ require (
 	gopkg.in/yaml.v2 v2.4.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 	howett.net/plist v1.0.0 // indirect
-	k0s.io/pkg/console v0.1.10 // indirect
-	k0s.io/pkg/rng v0.1.12 // indirect
+	k0s.io/pkg/rng v0.1.14 // indirect
 	k8s.io/apimachinery v0.29.1 // indirect
 )
