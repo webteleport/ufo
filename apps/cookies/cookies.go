@@ -7,9 +7,9 @@ import (
 	"log"
 	"net/http"
 
+	"github.com/btwiuse/rng"
 	"github.com/webteleport/utils"
 	"github.com/webteleport/webteleport"
-	"k0s.io/pkg/uuid"
 )
 
 func Arg0(args []string, fallback string) string {
@@ -24,7 +24,7 @@ func Run(args []string) error {
 	if err != nil {
 		return err
 	}
-	tkn := uuid.New()
+	tkn := rng.NewUUID()
 	secretPath := "/.secret-path/" + tkn
 	http.HandleFunc(secretPath, func(w http.ResponseWriter, r *http.Request) {
 		cookies := fmt.Sprintf(`WebTeleportAccessToken="%s"; Path=/; Max-Age=2592000; HttpOnly; Domain=%s`, tkn, r.Host)

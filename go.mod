@@ -41,13 +41,13 @@ require (
 	k0s.io/pkg/asciitransport v0.1.14
 	k0s.io/pkg/dial v0.1.14
 	k0s.io/pkg/exporter v0.1.14
-	k0s.io/pkg/uuid v0.1.14
 	k0s.io/pkg/wrap v0.1.14
 	nhooyr.io/websocket v1.8.10
 )
 
 require (
 	github.com/btwiuse/dl v0.0.0-20240214180850-acd4fdda14de
+	github.com/btwiuse/rng v0.0.0
 	github.com/btwiuse/version v0.0.0
 	github.com/creativeprojects/go-selfupdate v1.1.3
 )
@@ -77,7 +77,6 @@ require (
 	github.com/creack/pty v1.1.21 // indirect
 	github.com/davidmz/go-pageant v1.0.2 // indirect
 	github.com/dchest/siphash v1.2.2 // indirect
-	github.com/denisbrodbeck/machineid v1.0.1 // indirect
 	github.com/dennwc/btrfs v0.0.0-20230312211831-a1f570bd01a1 // indirect
 	github.com/dennwc/ioctl v1.0.0 // indirect
 	github.com/digitalocean/godo v1.41.0 // indirect
