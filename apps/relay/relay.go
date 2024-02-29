@@ -25,7 +25,7 @@ func OnDemandTLSConfig() (*tls.Config, error) {
 
 func useLocalTLS() bool {
 	_, err := tls.LoadX509KeyPair(envs.CERT, envs.KEY)
-	return err != nil
+	return err == nil
 }
 
 func LocalTLSConfig(certFile, keyFile string) *tls.Config {
