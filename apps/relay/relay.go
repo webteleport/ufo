@@ -1,7 +1,9 @@
 package relay
 
 import (
+	"context"
 	"crypto/tls"
+	"fmt"
 	"log/slog"
 	"net"
 	"net/http"
@@ -14,8 +16,26 @@ import (
 )
 
 func OnDemandTLSConfig() (*tls.Config, error) {
+	// if the decision function returns an error, a certificate
+	// may not be obtained for that name at that time
+	certmagic.Default.OnDemand = &certmagic.OnDemandConfig{
+		DecisionFunc: func(_ctx context.Context, name string) error {
+			if name != envs.HOST && name != fmt.Sprintf("*.%s", envs.HOST) {
+				return fmt.Errorf("on-demand cert request denied for %s", name)
+			}
+			return nil
+		},
+	}
+	// Because this convenience function returns only a TLS-enabled
+	// listener and does not presume HTTP is also being served,
+	// the HTTP challenge will be disabled. The package variable
+	// Default is modified so that the HTTP challenge is disabled.
 	certmagic.DefaultACME.DisableHTTPChallenge = true
-	tlsConfig, err := certmagic.TLS([]string{envs.HOST})
+	// tlsConfig := certmagic.Default.TLSConfig()
+	tlsConfig, err := certmagic.TLS([]string{
+		envs.HOST,
+		fmt.Sprintf("*.%s", envs.HOST),
+	})
 	if err != nil {
 		return nil, err
 	}
@@ -71,18 +91,11 @@ func listenHTTPSOnDemandTLS(handler http.Handler, errc chan error) {
 		return
 	}
 	slog.Info("listening on HTTPS https://" + envs.HOST + *envs.HTTPS_PORT + " w/ on demand tls")
-	// Because this convenience function returns only a TLS-enabled
-	// listener and does not presume HTTP is also being served,
-	// the HTTP challenge will be disabled. The package variable
-	// Default is modified so that the HTTP challenge is disabled.
-	certmagic.DefaultACME.DisableHTTPChallenge = true
-	// tlsConfig := certmagic.Default.TLSConfig()
-	tlsConfig, err := certmagic.TLS([]string{envs.HOST})
+	tlsConfig, err := OnDemandTLSConfig()
 	if err != nil {
 		errc <- err
 		return
 	}
-	tlsConfig.NextProtos = append([]string{"h2", "http/1.1"}, tlsConfig.NextProtos...)
 	ln, err := tls.Listen("tcp4", *envs.HTTPS_PORT, tlsConfig)
 	if err != nil {
 		errc <- err
