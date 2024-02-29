@@ -23,7 +23,12 @@ func OnDemandTLSConfig() (*tls.Config, error) {
 	return tlsConfig, nil
 }
 
-func LazyTLSConfig(certFile, keyFile string) *tls.Config {
+func useLocalTLS() bool {
+	_, err := tls.LoadX509KeyPair(envs.CERT, envs.KEY)
+	return err != nil
+}
+
+func LocalTLSConfig(certFile, keyFile string) *tls.Config {
 	GetCertificate := func(*tls.ClientHelloInfo) (*tls.Certificate, error) {
 		// Always get latest localhost.crt and localhost.key
 		cert, err := tls.LoadX509KeyPair(certFile, keyFile)
@@ -35,20 +40,6 @@ func LazyTLSConfig(certFile, keyFile string) *tls.Config {
 	return &tls.Config{
 		GetCertificate: GetCertificate,
 	}
-}
-
-func listenHTTPS(handler http.Handler, errc chan error) {
-	if envs.HTTPS_PORT == nil {
-		return
-	}
-	slog.Info("listening on HTTPS https://" + envs.HOST + *envs.HTTPS_PORT)
-	tlsConfig := LazyTLSConfig(envs.CERT, envs.KEY)
-	ln, err := tls.Listen("tcp4", *envs.HTTPS_PORT, tlsConfig)
-	if err != nil {
-		errc <- err
-		return
-	}
-	errc <- http.Serve(ln, handler)
 }
 
 func listenHTTP(handler http.Handler, errc chan error) {
@@ -64,7 +55,21 @@ func listenHTTP(handler http.Handler, errc chan error) {
 	errc <- http.Serve(ln, handler)
 }
 
-func listenTCPOnDemandTLS(handler http.Handler, errc chan error) {
+func listenHTTPSLocalTLS(handler http.Handler, errc chan error) {
+	if envs.HTTPS_PORT == nil {
+		return
+	}
+	slog.Info("listening on HTTPS https://" + envs.HOST + *envs.HTTPS_PORT)
+	tlsConfig := LocalTLSConfig(envs.CERT, envs.KEY)
+	ln, err := tls.Listen("tcp4", *envs.HTTPS_PORT, tlsConfig)
+	if err != nil {
+		errc <- err
+		return
+	}
+	errc <- http.Serve(ln, handler)
+}
+
+func listenHTTPSOnDemandTLS(handler http.Handler, errc chan error) {
 	if envs.HTTPS_PORT == nil {
 		return
 	}
@@ -89,9 +94,9 @@ func listenTCPOnDemandTLS(handler http.Handler, errc chan error) {
 	errc <- http.Serve(ln, handler)
 }
 
-func listenUDP(handler http.Handler, errc chan error) {
+func listenUDPLocalTLS(handler http.Handler, errc chan error) {
 	slog.Info("listening on UDP https://" + envs.HOST + envs.UDP_PORT)
-	tlsConfig := LazyTLSConfig(envs.CERT, envs.KEY)
+	tlsConfig := LocalTLSConfig(envs.CERT, envs.KEY)
 	r := relay.New(envs.HOST, envs.UDP_PORT, handler, tlsConfig)
 	errc <- r.ListenAndServe()
 }
@@ -110,9 +115,14 @@ func listenUDPOnDemandTLS(handler http.Handler, errc chan error) {
 func listenAll(handler http.Handler) error {
 	var errc chan error = make(chan error, 3)
 
-	go listenUDP(handler, errc)
 	go listenHTTP(handler, errc)
-	go listenHTTPS(handler, errc)
+	if useLocalTLS() {
+		go listenUDPLocalTLS(handler, errc)
+		go listenHTTPSLocalTLS(handler, errc)
+	} else {
+		go listenUDPOnDemandTLS(handler, errc)
+		go listenHTTPSOnDemandTLS(handler, errc)
+	}
 
 	return <-errc
 }
