@@ -43,11 +43,8 @@ func LocalTLSConfig(certFile, keyFile string) *tls.Config {
 }
 
 func listenHTTP(handler http.Handler, errc chan error) {
-	if envs.HTTP_PORT == nil {
-		return
-	}
-	slog.Info("listening on HTTP http://" + envs.HOST + *envs.HTTP_PORT)
-	ln, err := net.Listen("tcp4", *envs.HTTP_PORT)
+	slog.Info("listening on HTTP http://" + envs.HOST + envs.HTTP_PORT)
+	ln, err := net.Listen("tcp4", envs.HTTP_PORT)
 	if err != nil {
 		errc <- err
 		return
