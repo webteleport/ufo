@@ -18,7 +18,7 @@
 *.pem
 *.log
 /bin
-ufo
+/ufo
 
 # npm & yarn
 node_modules
