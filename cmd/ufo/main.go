@@ -42,6 +42,7 @@ import (
 	"github.com/webteleport/ufo/apps/teleport"
 	"github.com/webteleport/ufo/apps/term"
 	"github.com/webteleport/ufo/apps/upgrade"
+	"github.com/webteleport/ufo/apps/upload"
 	"github.com/webteleport/ufo/apps/version"
 	"github.com/webteleport/ufo/apps/who"
 	"github.com/webteleport/ufo/apps/whois"
@@ -57,6 +58,7 @@ func main() {
 
 var cmdRun multicall.RunnerFuncMap = map[string]multicall.RunnerFunc{
 	// "caddy":        caddy.Run,
+	"upload":       upload.Run,
 	"gotip":        gotip.Run,
 	"cookies":      cookies.Run,
 	"pkgpath":      pkgpath.Run,

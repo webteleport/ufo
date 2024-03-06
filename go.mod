@@ -1,6 +1,6 @@
 module github.com/webteleport/ufo
 
-go 1.22.0
+go 1.22.1
 
 // replace github.com/webteleport/webteleport => ../webteleport
 // replace github.com/webteleport/wtf => ../wtf
@@ -48,7 +48,7 @@ require (
 require (
 	github.com/btwiuse/dl v0.0.0-20240214180850-acd4fdda14de
 	github.com/btwiuse/rng v0.0.0
-	github.com/btwiuse/version v0.0.0
+	github.com/btwiuse/version v0.0.1
 	github.com/creativeprojects/go-selfupdate v1.1.3
 )
 
@@ -198,5 +198,5 @@ require (
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 	howett.net/plist v1.0.0 // indirect
 	k0s.io/pkg/rng v0.1.14 // indirect
-	k8s.io/apimachinery v0.29.1 // indirect
+	k8s.io/apimachinery v0.29.2 // indirect
 )
