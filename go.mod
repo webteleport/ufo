@@ -46,7 +46,7 @@ require (
 )
 
 require (
-	github.com/btwiuse/dl v0.0.0-20240214180850-acd4fdda14de
+	github.com/btwiuse/dl v0.0.0-20240308134010-226f1d1d872f
 	github.com/btwiuse/rng v0.0.0
 	github.com/btwiuse/version v0.0.1
 	github.com/creativeprojects/go-selfupdate v1.1.3
