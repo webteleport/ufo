@@ -27,9 +27,9 @@ func upload(w http.ResponseWriter, r *http.Request) {
 	}
 
 	for _, v := range r.MultipartForm.File["files"] {
-		fmt.Println("Saving", dst.Name(), v.Size)
 		uploadedFile, _ := v.Open()
 		dst, _ := os.Create(v.Filename)
+		fmt.Println("Saving", dst.Name(), v.Size)
 		io.Copy(dst, uploadedFile)
 		uploadedFile.Close()
 		dst.Close()
