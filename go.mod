@@ -5,7 +5,6 @@ go 1.22.1
 // replace github.com/webteleport/webteleport => ../webteleport
 // replace github.com/webteleport/wtf => ../wtf
 // replace github.com/webteleport/relay => ../relay
-
 // replace github.com/webteleport/utils => ../utils
 
 require (
@@ -30,11 +29,11 @@ require (
 	github.com/vmware-labs/wasm-workers-server v1.7.0
 	// github.com/webteleport/caddy-webteleport v0.0.1
 	github.com/webteleport/auth v0.0.8
-	github.com/webteleport/relay v0.2.20
-	github.com/webteleport/utils v0.2.8
+	github.com/webteleport/relay v0.2.21
+	github.com/webteleport/utils v0.2.9
 	github.com/webteleport/webteleport v0.4.2
 	github.com/webteleport/wtf v0.1.6
-	golang.org/x/net v0.21.0
+	golang.org/x/net v0.22.0
 	google.golang.org/grpc v1.62.1
 	google.golang.org/protobuf v1.32.0
 	k0s.io v0.1.15
@@ -149,11 +148,11 @@ require (
 	go.uber.org/mock v0.3.0 // indirect
 	go.uber.org/multierr v1.11.0 // indirect
 	go.uber.org/zap v1.24.0 // indirect
-	golang.org/x/crypto v0.19.0 // indirect
+	golang.org/x/crypto v0.21.0 // indirect
 	golang.org/x/exp v0.0.0-20240222234643-814bf88cf225 // indirect
 	golang.org/x/mod v0.15.0 // indirect
 	golang.org/x/oauth2 v0.16.0 // indirect
-	golang.org/x/sys v0.17.0 // indirect
+	golang.org/x/sys v0.18.0 // indirect
 	golang.org/x/text v0.14.0 // indirect
 	golang.org/x/time v0.3.0 // indirect
 	golang.org/x/tools v0.18.0 // indirect
