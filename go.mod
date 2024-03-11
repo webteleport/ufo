@@ -14,7 +14,7 @@ require (
 	github.com/btwiuse/multicall v0.0.4
 	github.com/btwiuse/portmux v0.1.0
 	github.com/btwiuse/pretty v0.2.1
-	github.com/btwiuse/pub v0.2.3
+	github.com/btwiuse/pub v0.2.4
 	github.com/btwiuse/sse v0.0.1
 	github.com/caddyserver/certmagic v0.20.0
 	github.com/fermyon/spin/sdk/go/v2 v2.1.0
@@ -32,7 +32,7 @@ require (
 	github.com/webteleport/relay v0.2.21
 	github.com/webteleport/utils v0.2.9
 	github.com/webteleport/webteleport v0.4.2
-	github.com/webteleport/wtf v0.1.6
+	github.com/webteleport/wtf v0.1.7
 	golang.org/x/net v0.22.0
 	google.golang.org/grpc v1.62.1
 	google.golang.org/protobuf v1.32.0
