@@ -25,6 +25,7 @@ import (
 	"github.com/webteleport/ufo/apps/login"
 	"github.com/webteleport/ufo/apps/mmdb"
 	"github.com/webteleport/ufo/apps/multi"
+	"github.com/webteleport/ufo/apps/naive"
 	"github.com/webteleport/ufo/apps/nc"
 	"github.com/webteleport/ufo/apps/notfound"
 	"github.com/webteleport/ufo/apps/pkgpath"
@@ -88,6 +89,7 @@ var cmdRun multicall.RunnerFuncMap = map[string]multicall.RunnerFunc{
 	"whois":        whois.Run,
 	"mmdb":         mmdb.Run,
 	"multi":        multi.Run,
+	"naive":        naive.Run,
 	"ser":          ser.Run,
 	"teleport":     teleport.Run, // renamed from "reverseproxy" to "teleport"
 	"reverseproxy": teleport.Run, // TODO delete this

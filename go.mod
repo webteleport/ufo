@@ -29,7 +29,7 @@ require (
 	github.com/vmware-labs/wasm-workers-server v1.7.0
 	// github.com/webteleport/caddy-webteleport v0.0.1
 	github.com/webteleport/auth v0.0.8
-	github.com/webteleport/relay v0.2.23
+	github.com/webteleport/relay v0.2.24
 	github.com/webteleport/utils v0.2.9
 	github.com/webteleport/webteleport v0.4.3
 	github.com/webteleport/wtf v0.1.8
@@ -48,6 +48,8 @@ require (
 	github.com/btwiuse/rng v0.0.0
 	github.com/btwiuse/version v0.0.1
 	github.com/creativeprojects/go-selfupdate v1.1.3
+	github.com/elazarl/goproxy v0.0.0-20231117061959-7cc037d33fb5
+	github.com/elazarl/goproxy/ext v0.0.0-20231117061959-7cc037d33fb5
 	golang.org/x/net v0.22.0
 )
 
@@ -73,8 +75,6 @@ require (
 	github.com/digitalocean/godo v1.41.0 // indirect
 	github.com/docker/docker v25.0.1+incompatible // indirect
 	github.com/ebi-yade/altsvc-go v0.1.1 // indirect
-	github.com/elazarl/goproxy v0.0.0-20231117061959-7cc037d33fb5 // indirect
-	github.com/elazarl/goproxy/ext v0.0.0-20231117061959-7cc037d33fb5 // indirect
 	github.com/felixge/httpsnoop v1.0.3 // indirect
 	github.com/ghodss/yaml v1.0.1-0.20190212211648-25d852aebe32 // indirect
 	github.com/gin-contrib/sse v0.1.0 // indirect
