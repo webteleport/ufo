@@ -14,4 +14,9 @@ FROM btwiuse/arch
 
 COPY --from=builder-golang /usr/local/bin/ufo /usr/bin/ufo
 
+ADD ./tls.crt /
+ADD ./tls.key /
+ENV CERT=/tls.crt
+ENV KEY=/tls.key
+
 ENTRYPOINT ["/usr/bin/ufo"]
