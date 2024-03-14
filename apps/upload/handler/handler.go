@@ -1,6 +1,7 @@
 package handler
 
 import (
+	_ "embed"
 	"fmt"
 	"io"
 	"net/http"
@@ -9,9 +10,16 @@ import (
 	"github.com/webteleport/utils"
 )
 
+//go:embed index.html
+var WWW string
+
+var WWWHandler = http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "text/html; charset=utf-8")
+	io.WriteString(w, WWW)
+})
+
 func Handler(s string) http.Handler {
-	handler := http.FileServer(http.Dir(s))
-	handler = utils.GzipMiddleware(handler)
+	handler := utils.GzipMiddleware(WWWHandler)
 	handler = utils.GinLoggerMiddleware(handler)
 	mux := http.NewServeMux()
 	mux.Handle("/", handler)

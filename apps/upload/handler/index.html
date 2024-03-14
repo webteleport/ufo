@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>File Upload Form</title>
+    <link rel="icon" href="data:image/x-icon;,">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+
+        .header {
+            background: #50b3a2;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+
+        form {
+            margin: 20px 0;
+            padding: 20px;
+            background: #fff;
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        form input[type="file"] {
+            margin: 10px 0;
+        }
+
+        form input[type="submit"] {
+            background: #50b3a2;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        form input[type="submit"]:hover {
+            background: #399782;
+        }
+
+        /* Responsive design for mobile screens */
+        @media only screen and (max-width: 600px) {
+            .container {
+                width: 95%;
+            }
+
+            .header {
+                padding: 5px;
+            }
+
+            form {
+                padding: 10px;
+            }
+
+            form input[type="submit"] {
+                padding: 8px 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>File Upload Form</h1>
+        </div>
+        <form action="" method="POST" enctype="multipart/form-data">
+            <label for="files">Select files to upload:</label>
+            <input type="file" id="files" name="files" multiple/>
+            <input type="submit" name="submit" value="Upload" />
+        </form>
+    </div>
+</body>
+</html>
