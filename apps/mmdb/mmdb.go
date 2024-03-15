@@ -19,19 +19,19 @@ func extractLastSegment(s string) string {
 }
 
 func GetClientIP(r *http.Request) (clientIP string) {
-        // Retrieve the client IP address from the request headers
-        for _, x := range []string{
-                r.Header.Get("X-Envoy-External-Address"),
-                r.Header.Get("X-Real-IP"),
-                r.Header.Get("X-Forwarded-For"),
-                r.RemoteAddr,
-        } {
-                if x != "" {
-                        clientIP = x
-                        break
-                }
-        }
-        return
+	// Retrieve the client IP address from the request headers
+	for _, x := range []string{
+		r.Header.Get("X-Envoy-External-Address"),
+		r.Header.Get("X-Real-IP"),
+		r.Header.Get("X-Forwarded-For"),
+		r.RemoteAddr,
+	} {
+		if x != "" {
+			clientIP = x
+			break
+		}
+	}
+	return
 }
 
 func mmdbHandler(w http.ResponseWriter, r *http.Request) {

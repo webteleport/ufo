@@ -54,11 +54,6 @@ func Run(args []string) error {
 	handler = utils.GzipMiddleware(handler)
 	handler = utils.AllowAllCorsMiddleware(handler)
 	arg0 := Arg0(args, "https://ufo.k0s.io")
-	if arg0 == "local" {
-		port := utils.EnvPort(":8000")
-		log.Println(fmt.Sprintf("listening on http://127.0.0.1%s", port))
-		return http.ListenAndServe(port, handler)
-	}
 	return wtf.Serve(arg0, handler)
 }
 
