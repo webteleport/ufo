@@ -18,6 +18,22 @@ func extractLastSegment(s string) string {
 	return lastSegment
 }
 
+func GetClientIP(r *http.Request) (clientIP string) {
+        // Retrieve the client IP address from the request headers
+        for _, x := range []string{
+                r.Header.Get("X-Envoy-External-Address"),
+                r.Header.Get("X-Real-IP"),
+                r.Header.Get("X-Forwarded-For"),
+                r.RemoteAddr,
+        } {
+                if x != "" {
+                        clientIP = x
+                        break
+                }
+        }
+        return
+}
+
 func mmdbHandler(w http.ResponseWriter, r *http.Request) {
 	// Get the path from the request URL
 	path := r.URL.Path
@@ -25,7 +41,7 @@ func mmdbHandler(w http.ResponseWriter, r *http.Request) {
 	domain := extractLastSegment(path)
 
 	if domain == "/" {
-		domain = r.Header.Get("X-Real-Ip")
+		domain = GetClientIP(r)
 	}
 
 	fmt.Println(domain)
