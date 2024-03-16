@@ -44,6 +44,7 @@ import (
 	"github.com/webteleport/ufo/apps/upgrade"
 	"github.com/webteleport/ufo/apps/upload"
 	"github.com/webteleport/ufo/apps/version"
+	"github.com/webteleport/ufo/apps/vsc"
 	"github.com/webteleport/ufo/apps/who"
 	"github.com/webteleport/ufo/apps/whois"
 )
@@ -98,6 +99,7 @@ var cmdRun multicall.RunnerFuncMap = map[string]multicall.RunnerFunc{
 	"gitd":         gitd.Run,
 	"version":      version.Run,
 	"upgrade":      upgrade.Run,
+	"vsc":          vsc.Run,
 }
 
 func Run(args []string) error {
