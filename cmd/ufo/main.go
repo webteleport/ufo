@@ -59,47 +59,83 @@ func main() {
 
 var cmdRun multicall.RunnerFuncMap = map[string]multicall.RunnerFunc{
 	// "caddy":        caddy.Run,
-	"upload":       upload.Run,
-	"gotip":        gotip.Run,
-	"cookies":      cookies.Run,
-	"pkgpath":      pkgpath.Run,
-	"notfound":     notfound.Run,
-	"dl":           dl.Run,
-	"proxy":        proxy.Run,
-	"pub":          pub.Run,
-	"portmux":      portmux.Run,
-	"hello":        hello.Run,
-	"gopilot":      gopilot.Run,
-	"basicauth":    basicauth.Run,
-	"echo":         echo.Run,
-	"login":        login.Run,
-	"hdr":          hdr.Run,
-	"hub":          relay.Run,
-	"relay":        relay.Run,
-	"resolve":      resolve.Run,
-	"nc":           nc.Run,
-	"so":           so.Run,
-	"freeport":     freeport.Run,
-	"sowc":         sowc.Run,
-	"sows":         sows.Run,
-	"sowcmux":      sowcmux.Run,
-	"sowsmux":      sowsmux.Run,
-	"sse":          sse.Run,
-	"term":         term.Run,
-	"who":          who.Run,
-	"whois":        whois.Run,
-	"mmdb":         mmdb.Run,
-	"multi":        multi.Run,
-	"naive":        naive.Run,
-	"ser":          ser.Run,
-	"teleport":     teleport.Run, // renamed from "reverseproxy" to "teleport"
-	"reverseproxy": teleport.Run, // TODO delete this
-	"intercept":    intercept.Run,
-	"ip":           ip.Run,
-	"gitd":         gitd.Run,
-	"version":      version.Run,
-	"upgrade":      upgrade.Run,
-	"vsc":          vsc.Run,
+	// auth
+	"dev/cookies":   cookies.Run,
+	"dev/basicauth": basicauth.Run,
+	"dev/login":     login.Run,
+	"dev/who":       who.Run,
+	// multilistener
+	"dev/multi":    multi.Run,
+	"dev/pkgpath":  pkgpath.Run,
+	"dev/notfound": notfound.Run,
+	"dev/sse":      sse.Run,
+	"dev/hdr":      hdr.Run,
+	"dev/proxy":    proxy.Run,
+	"dev/nc":       nc.Run,
+	// TODO: add proxy/vless
+	// Proxy
+	"so":      so.Run,
+	"sowc":    sowc.Run,
+	"sows":    sows.Run,
+	"sowcmux": sowcmux.Run,
+	"sowsmux": sowsmux.Run,
+	"naive":   naive.Run,
+
+	// Cli
+	// find freeport
+	"freeport": freeport.Run,
+	// go toolchain
+	"gotip": gotip.Run,
+	// resolve endpoint
+	"resolve": resolve.Run,
+
+	// Services
+
+	// get client ip
+	"ip": ip.Run,
+	// upload file
+	"upload": upload.Run,
+	// share binary
+	"dl": dl.Run,
+	// pub assets
+	"pub": pub.Run,
+	// serve directory
+	"ser": ser.Run,
+	// teleport
+	"teleport": teleport.Run,
+	// intercept
+	"intercept": intercept.Run,
+	// ws + http mux
+	"portmux": portmux.Run,
+	// hello world
+	"hello": hello.Run,
+	// echo request
+	"echo": echo.Run,
+
+	// Core
+
+	// relay
+	"hub":   relay.Run,
+	"relay": relay.Run,
+	// version info
+	"version": version.Run,
+	// binary upgrade
+	"upgrade": upgrade.Run,
+
+	// Apps
+
+	// gopilot api
+	"gopilot": gopilot.Run,
+	// web terminal
+	"term": term.Run,
+	// vscode server
+	"vsc": vsc.Run,
+	// whois lookup
+	"whois": whois.Run,
+	// mmdb lookup
+	"mmdb": mmdb.Run,
+	// git daemon
+	"gitd": gitd.Run,
 }
 
 func Run(args []string) error {
