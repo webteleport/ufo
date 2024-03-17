@@ -23,7 +23,9 @@ func Arg0(args []string, fallback string) string {
 
 type ServeWebArgs struct {
 	Relay                    *string `json:"relay"`
+	Log                      *string `json:"log"`
 	Verbose                  *bool   `json:"verbose"`
+	Version                  *bool   `json:"version"`
 	Quality                  *string `json:"quality"`
 	Host                     *string `json:"host"`
 	SocketPath               *string `json:"socketPath"`
@@ -43,8 +45,10 @@ func Parse(args []string) (*ServeWebArgs, error) {
 
 	serveWebArgs := &ServeWebArgs{
 		Relay:                  flagSet.String("relay", "https://ufo.k0s.io", "Relay URL."),
+		Log:                    flagSet.String("log", "off", "Log level: {off,critical,error,warn,info,debug,trace}, defaults to 'off'."),
 		Verbose:                flagSet.Bool("verbose", false, "Verbose logging."),
-		Quality:                flagSet.String("quality", "insider", "Quality: {stable,insider,exploration}, defaults to 'insider'"),
+		Version:                flagSet.Bool("v", false, "Show version."),
+		Quality:                flagSet.String("quality", "insider", "Quality: {insider,stable,exploration}, defaults to 'insider'"),
 		Host:                   flagSet.String("host", "127.0.0.1", "Host to listen on, defaults to '127.0.0.1'"),
 		SocketPath:             flagSet.String("socket-path", "", "The path to a socket file for the server to listen to."),
 		Port:                   flagSet.Int("port", 0, "Port to listen on, defaults to 0. If 0 is passed a random free port is picked."),
@@ -109,10 +113,12 @@ func Run(args []string) error {
 		}
 	}
 
-	err = serveWebArgs.startVersion(targetDir)
-	if err != nil {
-		return err
+	if *serveWebArgs.Version {
+		serveWebArgs.showVersion(targetDir)
+		os.Exit(0)
 	}
+
+	go serveWebArgs.startVersion(targetDir)
 
 	addr := fmt.Sprintf("http://%s:%d", *serveWebArgs.Host, *serveWebArgs.Port)
 	return wtf.Serve(*serveWebArgs.Relay, utils.GinLoggerMiddleware(handler.Handler(addr)))
@@ -146,8 +152,13 @@ func (args *ServeWebArgs) startVersion(path string) error {
 	cmd := exec.Command(executable,
 		"--host", *args.Host,
 		"--port", fmt.Sprint(*args.Port),
+		"--log", fmt.Sprint(*args.Log),
 		"--accept-server-license-terms",
 	)
+
+	if *args.Version {
+		cmd.Args = append(cmd.Args, "-v")
+	}
 
 	// Set the input/output options of the command
 	cmd.Stdin = nil
@@ -185,4 +196,18 @@ func (args *ServeWebArgs) startVersion(path string) error {
 
 	// Start the command
 	return cmd.Start()
+}
+
+func (args *ServeWebArgs) showVersion(path string) error {
+	executable := filepath.Join(path, "bin", executableName(*args.Quality))
+
+	cmd := exec.Command(executable, "-v")
+
+	// Set the input/output options of the command
+	cmd.Stdin = nil
+	cmd.Stderr = os.Stderr
+	cmd.Stdout = os.Stdout
+
+	// Start the command
+	return cmd.Run()
 }
