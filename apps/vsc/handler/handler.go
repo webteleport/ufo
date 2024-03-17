@@ -1,10 +1,9 @@
 package handler
 
 import (
-	"io"
 	"net/http"
 
-	"github.com/btwiuse/pretty"
+	"github.com/webteleport/utils"
 )
 
 const QUALITYLESS_PRODUCT_NAME = "Code"
@@ -17,10 +16,9 @@ func waitForDownload(w http.ResponseWriter, r *http.Request) {
 	w.Write([]byte(html))
 }
 
-func Handler() http.Handler {
+func Handler(addr string) http.Handler {
+	handler := utils.ReverseProxy(addr)
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		waitForDownload(w, r)
-		return
-		io.WriteString(w, pretty.JSONStringLine(r.Header))
+		handler.ServeHTTP(w, r)
 	})
 }
