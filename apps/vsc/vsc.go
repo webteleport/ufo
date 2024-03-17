@@ -23,6 +23,7 @@ func Arg0(args []string, fallback string) string {
 }
 
 type ServeWebArgs struct {
+	Relay                    *string `json:"relay"`
 	Quality                  *string `json:"quality"`
 	Host                     *string `json:"host"`
 	SocketPath               *string `json:"socketPath"`
@@ -41,6 +42,7 @@ func Parse(args []string) (*ServeWebArgs, error) {
 	flagSet := flag.NewFlagSet("serveWebArgs", flag.ContinueOnError)
 
 	serveWebArgs := &ServeWebArgs{
+		Relay:                    flagSet.String("relay", "https://ufo.k0s.io", "Relay URL"),
 		Quality:                  flagSet.String("quality", "insider", "Quality (stable | insider | exploration), defaults to 'insider'"),
 		Host:                     flagSet.String("host", "127.0.0.1", "Host to listen on, defaults to '127.0.0.1'"),
 		SocketPath:               flagSet.String("socket-path", "", "The path to a socket file for the server to listen to."),
@@ -105,7 +107,7 @@ func Run(args []string) error {
 	}
 
 	addr := fmt.Sprintf("http://%s:%d", *serveWebArgs.Host, *serveWebArgs.Port)
-	return wtf.Serve("https://ufo.k0s.io", utils.GinLoggerMiddleware(handler.Handler(addr)))
+	return wtf.Serve(*serveWebArgs.Relay, utils.GinLoggerMiddleware(handler.Handler(addr)))
 }
 
 func downloadAndExtract(quality string, commit string, targetDir string) error {
