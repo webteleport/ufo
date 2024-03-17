@@ -3,7 +3,6 @@ package vsc
 import (
 	"flag"
 	"fmt"
-	"log"
 	"os"
 	"os/exec"
 	"path/filepath"
@@ -24,6 +23,7 @@ func Arg0(args []string, fallback string) string {
 
 type ServeWebArgs struct {
 	Relay                    *string `json:"relay"`
+	Verbose                  *bool   `json:"verbose"`
 	Quality                  *string `json:"quality"`
 	Host                     *string `json:"host"`
 	SocketPath               *string `json:"socketPath"`
@@ -31,7 +31,7 @@ type ServeWebArgs struct {
 	ConnectionToken          *string `json:"connectionToken"`
 	ConnectionTokenFile      *string `json:"connectionTokenFile"`
 	WithoutConnectionToken   *bool   `json:"withoutConnectionToken"`
-	AcceptServerLicenseTerms *bool   `json:"acceptServerLicenseTerms"`
+	AcceptServerLicenseTerms *bool   `json:"acceptServerLicenseTerms"` // ignored
 	ServerBasePath           *string `json:"serverBasePath"`
 	ServerDataDir            *string `json:"serverDataDir"`
 	UserDataDir              *string `json:"userDataDir"`
@@ -42,19 +42,19 @@ func Parse(args []string) (*ServeWebArgs, error) {
 	flagSet := flag.NewFlagSet("serveWebArgs", flag.ContinueOnError)
 
 	serveWebArgs := &ServeWebArgs{
-		Relay:                    flagSet.String("relay", "https://ufo.k0s.io", "Relay URL"),
-		Quality:                  flagSet.String("quality", "insider", "Quality (stable | insider | exploration), defaults to 'insider'"),
-		Host:                     flagSet.String("host", "127.0.0.1", "Host to listen on, defaults to '127.0.0.1'"),
-		SocketPath:               flagSet.String("socket-path", "", "The path to a socket file for the server to listen to."),
-		Port:                     flagSet.Int("port", 0, "Port to listen on, defaults to 0. If 0 is passed a random free port is picked."),
-		ConnectionToken:          flagSet.String("connection-token", "", "A secret that must be included with all requests."),
-		ConnectionTokenFile:      flagSet.String("connection-token-file", "", "A file containing a secret that must be included with all requests."),
-		WithoutConnectionToken:   flagSet.Bool("without-connection-token", true, "Run without a connection token. Only use this if the connection is secured by other means."),
-		AcceptServerLicenseTerms: flagSet.Bool("accept-server-license-terms", true, "If set, the user accepts the server license terms and the server will be started without a user prompt."),
-		ServerBasePath:           flagSet.String("server-base-path", "", "Specifies the path under which the web UI and the code server is provided."),
-		ServerDataDir:            flagSet.String("server-data-dir", "", "Specifies the directory that server data is kept in."),
-		UserDataDir:              flagSet.String("user-data-dir", "", "Specifies the directory that user data is kept in. Can be used to open multiple distinct instances of Code."),
-		ExtensionsDir:            flagSet.String("extensions-dir", "", "Set the root path for extensions."),
+		Relay:                  flagSet.String("relay", "https://ufo.k0s.io", "Relay URL."),
+		Verbose:                flagSet.Bool("verbose", false, "Verbose logging."),
+		Quality:                flagSet.String("quality", "insider", "Quality: {stable,insider,exploration}, defaults to 'insider'"),
+		Host:                   flagSet.String("host", "127.0.0.1", "Host to listen on, defaults to '127.0.0.1'"),
+		SocketPath:             flagSet.String("socket-path", "", "The path to a socket file for the server to listen to."),
+		Port:                   flagSet.Int("port", 0, "Port to listen on, defaults to 0. If 0 is passed a random free port is picked."),
+		ConnectionToken:        flagSet.String("connection-token", "", "A secret that must be included with all requests."),
+		ConnectionTokenFile:    flagSet.String("connection-token-file", "", "A file containing a secret that must be included with all requests."),
+		WithoutConnectionToken: flagSet.Bool("without-connection-token", false, "Run without a connection token. Only use this if the connection is secured by other means."),
+		ServerBasePath:         flagSet.String("server-base-path", "", "Specifies the path under which the web UI and the code server is provided."),
+		ServerDataDir:          flagSet.String("server-data-dir", "", "Specifies the directory that server data is kept in."),
+		UserDataDir:            flagSet.String("user-data-dir", "", "Specifies the directory that user data is kept in. Can be used to open multiple distinct instances of Code."),
+		ExtensionsDir:          flagSet.String("extensions-dir", "", "Set the root path for extensions."),
 	}
 
 	err := flagSet.Parse(args)
@@ -79,13 +79,17 @@ func Run(args []string) error {
 		return err
 	}
 
-	fmt.Println(pretty.JSONStringLine(serveWebArgs))
+	if *serveWebArgs.Verbose {
+		fmt.Println(pretty.JSONStringLine(serveWebArgs))
+	}
 
-	info, err := getLatestVersionInfo(*serveWebArgs.Quality)
+	info, err := serveWebArgs.getLatestVersionInfo()
 	if err != nil {
 		return err
 	}
-	fmt.Println(pretty.JSONStringLine(info))
+	if *serveWebArgs.Verbose {
+		fmt.Println(pretty.JSONStringLine(info))
+	}
 
 	home, err := os.UserHomeDir()
 	if err != nil {
@@ -94,32 +98,24 @@ func Run(args []string) error {
 	targetDir := fmt.Sprintf("%s/.vsc/cli/serve-web/%s", home, info.Version)
 	_ = os.MkdirAll(targetDir, 0755)
 
-	if !isInstalled(*serveWebArgs.Quality, targetDir) {
-		err = downloadAndExtract(*serveWebArgs.Quality, info.Version, targetDir)
+	if !serveWebArgs.isInstalled(targetDir) {
+		archive, err := serveWebArgs.downloadVersion(info.Version)
+		if err != nil {
+			return err
+		}
+		err = extractArchive(archive, targetDir)
 		if err != nil {
 			return err
 		}
 	}
 
-	err = startVersion(serveWebArgs, targetDir)
+	err = serveWebArgs.startVersion(targetDir)
 	if err != nil {
 		return err
 	}
 
 	addr := fmt.Sprintf("http://%s:%d", *serveWebArgs.Host, *serveWebArgs.Port)
 	return wtf.Serve(*serveWebArgs.Relay, utils.GinLoggerMiddleware(handler.Handler(addr)))
-}
-
-func downloadAndExtract(quality string, commit string, targetDir string) error {
-	archive, err := downloadVersion(quality, commit)
-	if err != nil {
-		return err
-	}
-	err = extractArchive(archive, targetDir)
-	if err != nil {
-		return err
-	}
-	return nil
 }
 
 func executableName(quality string) string {
@@ -132,30 +128,35 @@ func executableName(quality string) string {
 	return "code-server"
 }
 
-func isInstalled(quality, path string) bool {
-	executable := filepath.Join(path, "bin", executableName(quality))
+func (args *ServeWebArgs) isInstalled(path string) bool {
+	executable := filepath.Join(path, "bin", executableName(*args.Quality))
 	_, err := os.Stat(executable)
 	return err == nil
 }
 
+// TODO support windows/zip
 func extractArchive(archive string, targetDir string) error {
 	cmd := fmt.Sprintf(`tar -xvf "%s" -C "%s" --strip 1`, archive, targetDir)
 	return exec.Command("sh", "-c", cmd).Run()
 }
 
-func startVersion(args *ServeWebArgs, path string) error {
-	log.Printf("Starting server at %s\n", *args.Host)
-
+func (args *ServeWebArgs) startVersion(path string) error {
 	executable := filepath.Join(path, "bin", executableName(*args.Quality))
-	log.Printf("Executable: %s\n", executable)
 
-	cmd := exec.Command(executable, "--host", *args.Host, "--port", fmt.Sprint(*args.Port), "--accept-server-license-terms", fmt.Sprint(*args.AcceptServerLicenseTerms))
+	cmd := exec.Command(executable,
+		"--host", *args.Host,
+		"--port", fmt.Sprint(*args.Port),
+		"--accept-server-license-terms",
+	)
 
 	// Set the input/output options of the command
 	cmd.Stdin = nil
 	cmd.Stderr = os.Stderr
 	cmd.Stdout = os.Stdout
 
+	if *args.SocketPath != "" {
+		cmd.Args = append(cmd.Args, "--socket-path", *args.SocketPath)
+	}
 	if *args.ServerBasePath != "" {
 		cmd.Args = append(cmd.Args, "--server-base-path", *args.ServerBasePath)
 	}
@@ -171,11 +172,16 @@ func startVersion(args *ServeWebArgs, path string) error {
 	if *args.WithoutConnectionToken {
 		cmd.Args = append(cmd.Args, "--without-connection-token")
 	}
+	if *args.ConnectionToken != "" {
+		cmd.Args = append(cmd.Args, "--connection-token", *args.ConnectionToken)
+	}
 	if *args.ConnectionTokenFile != "" {
 		cmd.Args = append(cmd.Args, "--connection-token-file", *args.ConnectionTokenFile)
 	}
 
-	log.Println(cmd.Args)
+	if *args.Verbose {
+		fmt.Println(cmd.String())
+	}
 
 	// Start the command
 	return cmd.Start()

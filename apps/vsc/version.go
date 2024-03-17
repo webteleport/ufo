@@ -38,9 +38,11 @@ func getARCH() string {
 }
 
 // quality: stable, insider
-func getLatestVersionInfo(quality string) (*VersionInfo, error) {
-	link := fmt.Sprintf("%s/api/latest/server-%s-%s-web/%s", VSCODE_UPDATE_URL, getOS(), getARCH(), quality)
-	log.Println(link)
+func (args *ServeWebArgs) getLatestVersionInfo() (*VersionInfo, error) {
+	link := fmt.Sprintf("%s/api/latest/server-%s-%s-web/%s", VSCODE_UPDATE_URL, getOS(), getARCH(), *args.Quality)
+	if *args.Verbose {
+		log.Println(link)
+	}
 	resp, err := http.Get(link)
 	if err != nil {
 		return nil, fmt.Errorf("failed to make request: %w", err)
@@ -61,18 +63,20 @@ func getLatestVersionInfo(quality string) (*VersionInfo, error) {
 	return &versionInfo, nil
 }
 
-// download the latest version of vscode server by quality
+// download the latest version of vscode server by quality, example:
 // /commit:be210b3a60c7d60030c1d3d92da00d008edf6ab9/server-linux-arm64-web/insider
-func downloadVersion(quality string, commit string) (string, error) {
-	link := fmt.Sprintf("%s/commit:%s/server-%s-%s-web/%s", VSCODE_UPDATE_URL, commit, getOS(), getARCH(), quality)
-	log.Println(link)
+func (args *ServeWebArgs) downloadVersion(commit string) (string, error) {
+	link := fmt.Sprintf("%s/commit:%s/server-%s-%s-web/%s", VSCODE_UPDATE_URL, commit, getOS(), getARCH(), *args.Quality)
+	if *args.Verbose {
+		log.Println(link)
+	}
 	resp, err := http.Get(link)
 	if err != nil {
 		return "", fmt.Errorf("failed to make request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	pattern := fmt.Sprintf("vscode-server-archive-%s-%s-%s-%s-*", commit, getOS(), getARCH(), quality)
+	pattern := fmt.Sprintf("vscode-server-archive-%s-%s-%s-%s-*", commit, getOS(), getARCH(), *args.Quality)
 	file, err := os.CreateTemp(os.TempDir(), pattern)
 	if err != nil {
 		return "", fmt.Errorf("failed to create file: %w", err)
