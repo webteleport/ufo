@@ -44,6 +44,7 @@ import (
 	"github.com/webteleport/ufo/apps/upgrade"
 	"github.com/webteleport/ufo/apps/upload"
 	"github.com/webteleport/ufo/apps/version"
+	"github.com/webteleport/ufo/apps/vless"
 	"github.com/webteleport/ufo/apps/vsc"
 	"github.com/webteleport/ufo/apps/who"
 	"github.com/webteleport/ufo/apps/whois"
@@ -80,6 +81,7 @@ var cmdRun multicall.RunnerFuncMap = map[string]multicall.RunnerFunc{
 	"sowcmux": sowcmux.Run,
 	"sowsmux": sowsmux.Run,
 	"naive":   naive.Run,
+	"vless":   vless.Run,
 
 	// Cli
 	// find freeport
