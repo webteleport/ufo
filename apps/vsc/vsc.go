@@ -8,6 +8,7 @@ import (
 	"path/filepath"
 
 	"github.com/btwiuse/pretty"
+	"github.com/btwiuse/tags"
 	"github.com/phayes/freeport"
 	"github.com/webteleport/ufo/apps/vsc/handler"
 	"github.com/webteleport/utils"
@@ -22,29 +23,29 @@ func Arg0(args []string, fallback string) string {
 }
 
 type ServeWebArgs struct {
-	Relay                    *string `json:"relay"`
-	Log                      *string `json:"log"`
-	Verbose                  *bool   `json:"verbose"`
-	Version                  *bool   `json:"version"`
-	Quality                  *string `json:"quality"`
-	Host                     *string `json:"host"`
-	SocketPath               *string `json:"socketPath"`
-	Port                     *int    `json:"port"`
-	ConnectionToken          *string `json:"connectionToken"`
-	ConnectionTokenFile      *string `json:"connectionTokenFile"`
-	WithoutConnectionToken   *bool   `json:"withoutConnectionToken"`
-	AcceptServerLicenseTerms *bool   `json:"acceptServerLicenseTerms"` // ignored
-	ServerBasePath           *string `json:"serverBasePath"`
-	ServerDataDir            *string `json:"serverDataDir"`
-	UserDataDir              *string `json:"userDataDir"`
-	ExtensionsDir            *string `json:"extensionsDir"`
+	Relay                    *tags.SpaceSeparatedStrings `json:"relay"`
+	Log                      *string                     `json:"log"`
+	Verbose                  *bool                       `json:"verbose"`
+	Version                  *bool                       `json:"version"`
+	Quality                  *string                     `json:"quality"`
+	Host                     *string                     `json:"host"`
+	SocketPath               *string                     `json:"socketPath"`
+	Port                     *int                        `json:"port"`
+	ConnectionToken          *string                     `json:"connectionToken"`
+	ConnectionTokenFile      *string                     `json:"connectionTokenFile"`
+	WithoutConnectionToken   *bool                       `json:"withoutConnectionToken"`
+	AcceptServerLicenseTerms *bool                       `json:"acceptServerLicenseTerms"` // ignored
+	ServerBasePath           *string                     `json:"serverBasePath"`
+	ServerDataDir            *string                     `json:"serverDataDir"`
+	UserDataDir              *string                     `json:"userDataDir"`
+	ExtensionsDir            *string                     `json:"extensionsDir"`
 }
 
 func Parse(args []string) (*ServeWebArgs, error) {
 	flagSet := flag.NewFlagSet("serveWebArgs", flag.ContinueOnError)
 
 	serveWebArgs := &ServeWebArgs{
-		Relay:                  flagSet.String("relay", "https://ufo.k0s.io", "Relay URL."),
+		Relay:                  &tags.SpaceSeparatedStrings{"https://ufo.k0s.io"},
 		Log:                    flagSet.String("log", "off", "Log level: {off,critical,error,warn,info,debug,trace}, defaults to 'off'."),
 		Verbose:                flagSet.Bool("verbose", false, "Verbose logging."),
 		Version:                flagSet.Bool("v", false, "Show version."),
@@ -60,6 +61,7 @@ func Parse(args []string) (*ServeWebArgs, error) {
 		UserDataDir:            flagSet.String("user-data-dir", "", "Specifies the directory that user data is kept in. Can be used to open multiple distinct instances of Code."),
 		ExtensionsDir:          flagSet.String("extensions-dir", "", "Set the root path for extensions."),
 	}
+	flagSet.Var(serveWebArgs.Relay, "relay", "Relay URL, can be specified multiple times.")
 
 	err := flagSet.Parse(args)
 	if err != nil {
@@ -121,7 +123,13 @@ func Run(args []string) error {
 	go serveWebArgs.startVersion(targetDir)
 
 	addr := fmt.Sprintf("http://%s:%d", *serveWebArgs.Host, *serveWebArgs.Port)
-	return wtf.Serve(*serveWebArgs.Relay, utils.GinLoggerMiddleware(handler.Handler(addr)))
+	relays := *serveWebArgs.Relay
+	if len(relays) > 1 {
+		for _, relay := range relays[1:] {
+			go wtf.Serve(relay, utils.GinLoggerMiddleware(handler.Handler(addr)))
+		}
+	}
+	return wtf.Serve(relays[0], utils.GinLoggerMiddleware(handler.Handler(addr)))
 }
 
 func executableName(quality string) string {

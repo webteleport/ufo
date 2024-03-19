@@ -6,7 +6,7 @@ go 1.22.1
 // replace github.com/webteleport/utils => ../utils
 // replace github.com/webteleport/relay => ../relay
 // replace github.com/webteleport/webteleport => ../webteleport
-replace github.com/btwiuse/multicall => ../multicall
+// replace github.com/btwiuse/multicall => ../multicall
 
 require (
 	connectrpc.com/connect v1.15.0
@@ -47,6 +47,7 @@ require (
 require (
 	github.com/btwiuse/dl v0.0.0-20240308134010-226f1d1d872f
 	github.com/btwiuse/rng v0.0.0
+	github.com/btwiuse/tags v0.0.1
 	github.com/btwiuse/version v0.0.1
 	github.com/creativeprojects/go-selfupdate v1.1.3
 	github.com/elazarl/goproxy v0.0.0-20231117061959-7cc037d33fb5
@@ -71,7 +72,6 @@ require (
 	github.com/andrew-d/go-termutil v0.0.0-20150726205930-009166a695a2 // indirect
 	github.com/asaskevich/govalidator v0.0.0-20210307081110-f21760c49a8d // indirect
 	github.com/btwiuse/better v0.0.0 // indirect
-	github.com/btwiuse/tags v0.0.0 // indirect
 	github.com/bufbuild/protocompile v0.8.0 // indirect
 	github.com/containerd/console v1.0.4 // indirect
 	github.com/coreos/go-iptables v0.6.0 // indirect
