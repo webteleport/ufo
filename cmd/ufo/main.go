@@ -43,8 +43,8 @@ import (
 	"github.com/webteleport/ufo/apps/term"
 	"github.com/webteleport/ufo/apps/upgrade"
 	"github.com/webteleport/ufo/apps/upload"
+	"github.com/webteleport/ufo/apps/v2ray"
 	"github.com/webteleport/ufo/apps/version"
-	"github.com/webteleport/ufo/apps/vless"
 	"github.com/webteleport/ufo/apps/vsc"
 	"github.com/webteleport/ufo/apps/who"
 	"github.com/webteleport/ufo/apps/whois"
@@ -73,7 +73,6 @@ var cmdRun multicall.RunnerFuncMap = map[string]multicall.RunnerFunc{
 	"dev/hdr":      hdr.Run,
 	"dev/proxy":    proxy.Run,
 	"dev/nc":       nc.Run,
-	// TODO: add proxy/vless
 	// Proxy
 	"so":      so.Run,
 	"sowc":    sowc.Run,
@@ -81,7 +80,7 @@ var cmdRun multicall.RunnerFuncMap = map[string]multicall.RunnerFunc{
 	"sowcmux": sowcmux.Run,
 	"sowsmux": sowsmux.Run,
 	"naive":   naive.Run,
-	"vless":   vless.Run,
+	"v2ray":   v2ray.Run,
 
 	// Cli
 	// find freeport

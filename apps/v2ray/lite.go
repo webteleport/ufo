@@ -1,4 +1,4 @@
-package vless
+package v2ray
 
 import (
 	// The following are necessary as they register handlers in their init functions.
@@ -14,6 +14,7 @@ import (
 	_ "github.com/v2fly/v2ray-core/v5/app/proxyman/command"
 	_ "github.com/v2fly/v2ray-core/v5/app/stats/command"
 
+	_ "github.com/v2fly/v2ray-core/v5/proxy/http"
 	_ "github.com/v2fly/v2ray-core/v5/proxy/trojan"
 	_ "github.com/v2fly/v2ray-core/v5/proxy/trojan/simplified"
 	_ "github.com/v2fly/v2ray-core/v5/proxy/vless/inbound"

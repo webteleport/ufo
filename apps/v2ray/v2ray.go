@@ -1,4 +1,4 @@
-package vless
+package v2ray
 
 import (
 	"context"
@@ -147,7 +147,7 @@ func GenerateTrojanURL(baseURL string) (string, error) {
 	host := u.Host
 	path := u.Path
 
-	trojanURL := fmt.Sprintf("trojan://%s@%s:443?&security=tls&sni=%s&fp=randomized&type=ws&host=%s&path=%s#%s", host, host, host, path, host)
+	trojanURL := fmt.Sprintf("trojan://%s:443?&security=tls&type=ws&path=%s#%s", host, path, host)
 
 	return trojanURL, nil
 }
@@ -163,7 +163,6 @@ func GenerateVlessURL(baseURL, userID string) (string, error) {
 	host := u.Host
 	path := u.Path
 
-	// Build the VLESS URL
 	vlessURL := fmt.Sprintf("vless://%s@%s:443?encryption=none&over=tls&security=tls&sni=%s&fp=randomized&type=ws&host=%s&path=%s#%s", userID, host, host, host, path, host)
 
 	return vlessURL, nil
