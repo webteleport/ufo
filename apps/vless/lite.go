@@ -14,6 +14,8 @@ import (
 	_ "github.com/v2fly/v2ray-core/v5/app/proxyman/command"
 	_ "github.com/v2fly/v2ray-core/v5/app/stats/command"
 
+	_ "github.com/v2fly/v2ray-core/v5/proxy/trojan"
+	_ "github.com/v2fly/v2ray-core/v5/proxy/trojan/simplified"
 	_ "github.com/v2fly/v2ray-core/v5/proxy/vless/inbound"
 	_ "github.com/v2fly/v2ray-core/v5/proxy/vless/outbound"
 

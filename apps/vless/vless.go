@@ -88,7 +88,7 @@ func BuildConfigJSON(port int, clients ...string) string {
 	}
 
 	// Create a single inbound with multiple clients
-	inbound := Inbound{
+	vlessInbound := Inbound{
 		Port:     port,
 		Listen:   "127.0.0.1",
 		Protocol: "vless",
@@ -99,7 +99,20 @@ func BuildConfigJSON(port int, clients ...string) string {
 		StreamSettings: StreamSettings{Network: "ws"},
 	}
 
-	builder.AddInbound(inbound)
+	builder.AddInbound(vlessInbound)
+
+	trojanInbound := Inbound{
+		Port:     port,
+		Listen:   "127.0.0.1",
+		Protocol: "trojan",
+		Settings: InboundSettings{
+			Decryption: "none",
+			Clients:    clientList,
+		},
+		StreamSettings: StreamSettings{Network: "ws"},
+	}
+
+	builder.AddInbound(trojanInbound)
 
 	outbound := Outbound{
 		Protocol: "freedom",
@@ -121,6 +134,22 @@ func BuildConfigJSON(port int, clients ...string) string {
 	}
 
 	return string(jsonData)
+}
+
+func GenerateTrojanURL(baseURL string) (string, error) {
+	// Parse the base URL
+	u, err := url.Parse(baseURL)
+	if err != nil {
+		return "", fmt.Errorf("invalid base URL: %v", err)
+	}
+
+	// Extract the host and scheme from the base URL
+	host := u.Host
+	path := u.Path
+
+	trojanURL := fmt.Sprintf("trojan://%s@%s:443?&security=tls&sni=%s&fp=randomized&type=ws&host=%s&path=%s#%s", host, host, host, path, host)
+
+	return trojanURL, nil
 }
 
 func GenerateVlessURL(baseURL, userID string) (string, error) {
@@ -181,12 +210,21 @@ func Run(args []string) error {
 	if err != nil {
 		return err
 	}
-	vlessURL, err := GenerateVlessURL(webteleport.AsciiURL(ln), uid)
+	lnAddr := webteleport.AsciiURL(ln)
+
+	vlessURL, err := GenerateVlessURL(lnAddr, uid)
 	if err != nil {
 		return err
 	}
 	qrterminal.Generate(vlessURL, qrterminal.L, os.Stdout)
 	fmt.Println(vlessURL)
+
+	trojanURL, err := GenerateTrojanURL(lnAddr)
+	if err != nil {
+		return err
+	}
+	qrterminal.Generate(trojanURL, qrterminal.L, os.Stdout)
+	fmt.Println(trojanURL)
 
 	err = http.Serve(ln, utils.GinLoggerMiddleware(utils.ReverseProxy(fmt.Sprintf(":%d", randport))))
 	if err != nil {
