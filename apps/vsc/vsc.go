@@ -3,6 +3,7 @@ package vsc
 import (
 	"flag"
 	"fmt"
+	"log/slog"
 	"os"
 	"os/exec"
 	"path/filepath"
@@ -41,11 +42,13 @@ type ServeWebArgs struct {
 	ExtensionsDir            *string                     `json:"extensionsDir"`
 }
 
+var DefaultRelay = tags.SpaceSeparatedStrings{"https://ufo.k0s.io"}
+
 func Parse(args []string) (*ServeWebArgs, error) {
 	flagSet := flag.NewFlagSet("serveWebArgs", flag.ContinueOnError)
 
 	serveWebArgs := &ServeWebArgs{
-		Relay:                  &tags.SpaceSeparatedStrings{"https://ufo.k0s.io"},
+		Relay:                  new(tags.SpaceSeparatedStrings),
 		Log:                    flagSet.String("log", "off", "Log level: {off,critical,error,warn,info,debug,trace}, defaults to 'off'."),
 		Verbose:                flagSet.Bool("verbose", false, "Verbose logging."),
 		Version:                flagSet.Bool("v", false, "Show version."),
@@ -68,6 +71,17 @@ func Parse(args []string) (*ServeWebArgs, error) {
 		return nil, err
 	}
 
+	if len(*serveWebArgs.Relay) == 0 {
+		*serveWebArgs.Relay = DefaultRelay
+		if *serveWebArgs.Verbose {
+			slog.Info("Using default relay")
+		}
+	}
+
+	if *serveWebArgs.Verbose {
+		slog.Info("relay", "relay", *serveWebArgs.Relay)
+	}
+
 	if *serveWebArgs.Port == 0 {
 		randport, err := freeport.GetFreePort()
 		if err != nil {
@@ -86,7 +100,7 @@ func Run(args []string) error {
 	}
 
 	if *serveWebArgs.Verbose {
-		fmt.Println(pretty.JSONStringLine(serveWebArgs))
+		slog.Info("Parsed", "config", pretty.JSONStringLine(serveWebArgs))
 	}
 
 	info, err := serveWebArgs.getLatestVersionInfo()
@@ -94,7 +108,7 @@ func Run(args []string) error {
 		return err
 	}
 	if *serveWebArgs.Verbose {
-		fmt.Println(pretty.JSONStringLine(info))
+		slog.Info("Latest version", "info", pretty.JSONStringLine(info))
 	}
 
 	home, err := os.UserHomeDir()
@@ -199,7 +213,7 @@ func (args *ServeWebArgs) startVersion(path string) error {
 	}
 
 	if *args.Verbose {
-		fmt.Println(cmd.String())
+		slog.Info("cmd", "args", cmd.String())
 	}
 
 	// Start the command
