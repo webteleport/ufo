@@ -1,10 +1,6 @@
 package envs
 
-import (
-	"fmt"
-
-	"github.com/webteleport/utils"
-)
+import "github.com/webteleport/utils"
 
 var (
 	HOST       = utils.EnvHost("localhost")
@@ -14,5 +10,5 @@ var (
 	HTTP_PORT  = utils.EnvHTTPPort(PORT)
 	UDP_PORT   = utils.EnvUDPPort(PORT)
 	HTTPS_PORT = utils.LookupEnvPort("HTTPS_PORT")
-	ALT_SVC    = utils.EnvAltSvc(fmt.Sprintf(`webteleport="%s"`, UDP_PORT))
+	ALT_SVC    = utils.EnvAltSvc("")
 )
