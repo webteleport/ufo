@@ -9,13 +9,6 @@ import (
 	"github.com/webteleport/wtf"
 )
 
-func Arg0(args []string, fallback string) string {
-	if len(args) > 0 {
-		return args[0]
-	}
-	return fallback
-}
-
 func info(next http.Handler) http.Handler {
 	return http.HandlerFunc(
 		func(w http.ResponseWriter, r *http.Request) {
@@ -35,6 +28,6 @@ func Run(args []string) error {
 		http.Error(w, "OK", 200)
 	})
 	handler = info(utils.GinLoggerMiddleware(handler))
-	arg0 := Arg0(args, apps.RELAY)
+	arg0 := apps.Arg0(args, apps.RELAY)
 	return wtf.Serve(arg0, handler)
 }

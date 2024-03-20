@@ -17,13 +17,6 @@ import (
 	"github.com/webteleport/wtf"
 )
 
-func Arg0(args []string, fallback string) string {
-	if len(args) > 0 {
-		return args[0]
-	}
-	return fallback
-}
-
 type ServeWebArgs struct {
 	Relay                    *tags.SpaceSeparatedStrings `json:"relay"`
 	Log                      *string                     `json:"log"`

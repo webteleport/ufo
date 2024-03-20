@@ -40,15 +40,8 @@ func newRoute() error {
 	return err
 }
 
-func Arg0(args []string, fallback string) string {
-	if len(args) > 0 {
-		return args[0]
-	}
-	return fallback
-}
-
 func Run(args []string) error {
-	wts := Arg0(args, apps.RELAY)
+	wts := apps.Arg0(args, apps.RELAY)
 	ln, err := webteleport.Listen(context.Background(), wts)
 	if err != nil {
 		return err

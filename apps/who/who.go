@@ -11,13 +11,6 @@ import (
 	"github.com/webteleport/wtf"
 )
 
-func Arg0(args []string, fallback string) string {
-	if len(args) > 0 {
-		return args[0]
-	}
-	return fallback
-}
-
 func who(w http.ResponseWriter, r *http.Request) {
 	// get request user password
 	user, pass, ok := r.BasicAuth()
@@ -34,5 +27,5 @@ func Run(args []string) error {
 	var h http.Handler
 	h = http.HandlerFunc(who)
 	h = utils.GinLoggerMiddleware(h)
-	return wtf.Serve(Arg0(args, apps.RELAY), h)
+	return wtf.Serve(apps.Arg0(args, apps.RELAY), h)
 }

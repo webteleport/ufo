@@ -43,18 +43,11 @@ type ModelList struct {
 
 var ghuToken = os.Getenv("GHU_TOKEN")
 
-func Arg0(args []string, fallback string) string {
-	if len(args) > 0 {
-		return args[0]
-	}
-	return fallback
-}
-
 func Run(args []string) error {
 	handler := copilotHandler()
 	handler = utils.GzipMiddleware(handler)
 	handler = utils.AllowAllCorsMiddleware(handler)
-	arg0 := Arg0(args, apps.RELAY)
+	arg0 := apps.Arg0(args, apps.RELAY)
 	return wtf.Serve(arg0, handler)
 }
 

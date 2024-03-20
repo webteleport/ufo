@@ -41,7 +41,7 @@ func wsfy(h string) string {
 }
 
 func Run(args []string) error {
-	ln, err := webteleport.Listen(context.Background(), Arg0(args, apps.RELAY))
+	ln, err := webteleport.Listen(context.Background(), apps.Arg0(args, apps.RELAY))
 	if err != nil {
 		return err
 	}

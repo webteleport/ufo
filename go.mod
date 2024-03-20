@@ -36,12 +36,10 @@ require (
 	github.com/webteleport/wtf v0.1.10
 	google.golang.org/grpc v1.62.1
 	google.golang.org/protobuf v1.33.0
-	k0s.io v0.1.15
 	k0s.io/pkg/agent v0.1.15
 	k0s.io/pkg/asciitransport v0.1.15
 	k0s.io/pkg/dial v0.1.15
 	k0s.io/pkg/wrap v0.1.15
-	nhooyr.io/websocket v1.8.10
 )
 
 require (
@@ -180,6 +178,8 @@ require (
 	google.golang.org/genproto/googleapis/rpc v0.0.0-20240123012728-ef4313101c80 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
+	k0s.io v0.1.15 // indirect
 	k8s.io/apimachinery v0.29.2 // indirect
+	nhooyr.io/websocket v1.8.10 // indirect
 	rsc.io/qr v0.2.0 // indirect
 )

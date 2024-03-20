@@ -12,13 +12,6 @@ import (
 	"k0s.io/pkg/wrap"
 )
 
-func Arg0(args []string, fallback string) string {
-	if len(args) > 0 {
-		return args[0]
-	}
-	return fallback
-}
-
 func Run(args []string) error {
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		conn, err := wrap.Hijack(w)
@@ -31,5 +24,5 @@ func Run(args []string) error {
 			log.Println(err)
 		}
 	})
-	return wtf.Serve(Arg0(args, apps.RELAY), utils.GinLoggerMiddleware(http.DefaultServeMux))
+	return wtf.Serve(apps.Arg0(args, apps.RELAY), utils.GinLoggerMiddleware(http.DefaultServeMux))
 }

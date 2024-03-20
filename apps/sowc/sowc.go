@@ -7,22 +7,9 @@ import (
 	"net"
 	"net/url"
 
+	"github.com/webteleport/ufo/apps"
 	"k0s.io/pkg/dial"
 )
-
-func Arg0(args []string, fallback string) string {
-	if len(args) > 0 {
-		return args[0]
-	}
-	return fallback
-}
-
-func Arg1(args []string, fallback string) string {
-	if len(args) > 1 {
-		return args[1]
-	}
-	return fallback
-}
 
 // CAVEAT: curl recognizes only lowercase http_proxy, not HTTP_PROXY
 func proxyHints(addr string) {
@@ -46,8 +33,8 @@ func proxyHints(addr string) {
 }
 
 func Run(args []string) error {
-	addr := Arg0(args, ":8123")
-	remote := Arg1(args, "wss://sows.ufo.k0s.io")
+	addr := apps.Arg0(args, ":8123")
+	remote := apps.Arg1(args, "wss://sows.ufo.k0s.io")
 	log.Println("[arg0] socks5 listening on", addr)
 	log.Println("[arg1] remote socks5+wss", remote)
 	proxyHints(addr)

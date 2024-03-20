@@ -40,16 +40,9 @@ func whoisHandler(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprint(w, string(output))
 }
 
-func Arg0(args []string, fallback string) string {
-	if len(args) > 0 {
-		return args[0]
-	}
-	return fallback
-}
-
 func Run(args []string) error {
 	var h http.Handler
 	h = http.HandlerFunc(whoisHandler)
 	h = utils.GinLoggerMiddleware(h)
-	return wtf.Serve(Arg0(args, apps.RELAY), h)
+	return wtf.Serve(apps.Arg0(args, apps.RELAY), h)
 }

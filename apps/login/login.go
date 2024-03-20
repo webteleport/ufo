@@ -10,15 +10,8 @@ import (
 	"github.com/webteleport/wtf"
 )
 
-func Arg0(args []string, fallback string) string {
-	if len(args) > 0 {
-		return args[0]
-	}
-	return fallback
-}
-
 func Run(args []string) error {
-	stationURL := Arg0(args, apps.RELAY)
+	stationURL := apps.Arg0(args, apps.RELAY)
 	u, err := url.Parse(stationURL)
 	if err != nil {
 		return err

@@ -13,15 +13,8 @@ import (
 	"github.com/webteleport/webteleport"
 )
 
-func Arg0(args []string, fallback string) string {
-	if len(args) > 0 {
-		return args[0]
-	}
-	return fallback
-}
-
 func Run(args []string) error {
-	ln, err := webteleport.Listen(context.Background(), Arg0(args, apps.RELAY))
+	ln, err := webteleport.Listen(context.Background(), apps.Arg0(args, apps.RELAY))
 	if err != nil {
 		return err
 	}
