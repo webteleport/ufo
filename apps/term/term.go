@@ -14,12 +14,10 @@ import (
 	"github.com/webteleport/ufo/apps"
 	"github.com/webteleport/utils"
 	"github.com/webteleport/wtf"
-	"k0s.io"
 	"k0s.io/pkg/agent"
 	"k0s.io/pkg/agent/tty/factory"
 	"k0s.io/pkg/asciitransport"
 	"k0s.io/pkg/wrap"
-	"nhooyr.io/websocket"
 )
 
 func Arg0(args []string, fallback string) string {
@@ -87,7 +85,7 @@ func (a *auto) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	a.nth += 1
-	conn, err := wrconn(w, r)
+	conn, err := wrap.Wrconn(w, r)
 	if err != nil {
 		log.Println(err)
 		return
@@ -164,22 +162,4 @@ func (a *auto) serveConn(conn net.Conn, nth int) {
 
 	<-server.Done()
 	term.Close()
-}
-
-func wrconn(w http.ResponseWriter, r *http.Request) (net.Conn, error) {
-	wsconn, err := websocket.Accept(w, r, &websocket.AcceptOptions{
-		InsecureSkipVerify: true,
-		CompressionMode:    websocket.CompressionDisabled,
-		// here without the Subprotocols info, Chrome/Edge won't work
-		// so must add this piece of info here
-		Subprotocols: []string{"wetty"},
-	})
-	if err != nil {
-		return nil, err
-	}
-	wsconn.SetReadLimit(k0s.MAX_WS_MESSAGE)
-	conn := wrap.NetConn(wsconn)
-	addr := wrap.NewAddr("websocket", r.RemoteAddr)
-	conn = wrap.ConnWithAddr(conn, addr)
-	return conn, nil
 }
