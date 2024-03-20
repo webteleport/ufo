@@ -1,6 +1,7 @@
 package ser
 
 import (
+	"github.com/webteleport/ufo/apps"
 	"github.com/webteleport/ufo/apps/ser/handler"
 	"github.com/webteleport/wtf"
 )
@@ -13,7 +14,7 @@ func Arg0(args []string, fallback string) string {
 }
 
 func Run(args []string) error {
-	arg0 := Arg0(args, "https://ufo.k0s.io")
+	arg0 := Arg0(args, apps.RELAY)
 	h := handler.Handler(".")
 	return wtf.Serve(arg0, h)
 }

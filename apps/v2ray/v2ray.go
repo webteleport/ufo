@@ -14,6 +14,7 @@ import (
 	"github.com/mdp/qrterminal/v3"
 	"github.com/phayes/freeport"
 	core "github.com/v2fly/v2ray-core/v5"
+	"github.com/webteleport/ufo/apps"
 	"github.com/webteleport/utils"
 	"github.com/webteleport/webteleport"
 )
@@ -179,7 +180,7 @@ func Run(args []string) error {
 		uid = id
 	}
 
-	relayURL := "https://ufo.k0s.io"
+	relayURL := apps.RELAY
 	if relay := os.Getenv("RELAY"); relay != "" {
 		relayURL = relay
 	}

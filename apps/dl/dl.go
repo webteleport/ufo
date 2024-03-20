@@ -4,6 +4,7 @@ import (
 	"net/http"
 	"os"
 
+	"github.com/webteleport/ufo/apps"
 	"github.com/webteleport/utils"
 	"github.com/webteleport/wtf"
 )
@@ -26,5 +27,5 @@ func binHandler() http.Handler {
 }
 
 func Run(args []string) error {
-	return wtf.Serve(Arg0(args, "https://ufo.k0s.io"), utils.GinLoggerMiddleware(utils.GzipMiddleware(binHandler())))
+	return wtf.Serve(Arg0(args, apps.RELAY), utils.GinLoggerMiddleware(utils.GzipMiddleware(binHandler())))
 }

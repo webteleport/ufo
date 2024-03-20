@@ -5,6 +5,7 @@ import (
 	"net/url"
 
 	"github.com/webteleport/auth"
+	"github.com/webteleport/ufo/apps"
 	"github.com/webteleport/utils"
 	"github.com/webteleport/wtf"
 )
@@ -17,7 +18,7 @@ func Arg0(args []string, fallback string) string {
 }
 
 func Run(args []string) error {
-	stationURL := Arg0(args, "https://ufo.k0s.io")
+	stationURL := Arg0(args, apps.RELAY)
 	u, err := url.Parse(stationURL)
 	if err != nil {
 		return err

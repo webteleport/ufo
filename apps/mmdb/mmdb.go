@@ -7,6 +7,7 @@ import (
 	"os/exec"
 	"path"
 
+	"github.com/webteleport/ufo/apps"
 	"github.com/webteleport/utils"
 	"github.com/webteleport/wtf"
 )
@@ -77,5 +78,5 @@ func Run(args []string) error {
 	var h http.Handler
 	h = http.HandlerFunc(mmdbHandler)
 	h = utils.GinLoggerMiddleware(h)
-	return wtf.Serve(Arg0(args, "https://ufo.k0s.io"), h)
+	return wtf.Serve(Arg0(args, apps.RELAY), h)
 }

@@ -12,6 +12,7 @@ import (
 
 	"github.com/btwiuse/gost"
 	"github.com/hashicorp/yamux"
+	"github.com/webteleport/ufo/apps"
 	"github.com/webteleport/utils"
 	"github.com/webteleport/webteleport"
 
@@ -37,7 +38,7 @@ func wsfy(h string) string {
 }
 
 func Run(args []string) error {
-	ln, err := webteleport.Listen(context.Background(), Arg0(args, "https://ufo.k0s.io"))
+	ln, err := webteleport.Listen(context.Background(), Arg0(args, apps.RELAY))
 	if err != nil {
 		return err
 	}

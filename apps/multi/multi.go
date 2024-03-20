@@ -8,6 +8,7 @@ import (
 	"net/http"
 	"strings"
 
+	"github.com/webteleport/ufo/apps"
 	"github.com/webteleport/webteleport"
 )
 
@@ -28,7 +29,7 @@ func index(w http.ResponseWriter, r *http.Request) {
 }
 
 func newRoute() error {
-	ln, err := webteleport.Listen(context.Background(), "https://ufo.k0s.io")
+	ln, err := webteleport.Listen(context.Background(), apps.RELAY)
 	if err != nil {
 		return err
 	}
@@ -47,7 +48,7 @@ func Arg0(args []string, fallback string) string {
 }
 
 func Run(args []string) error {
-	wts := Arg0(args, "https://ufo.k0s.io")
+	wts := Arg0(args, apps.RELAY)
 	ln, err := webteleport.Listen(context.Background(), wts)
 	if err != nil {
 		return err

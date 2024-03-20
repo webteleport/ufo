@@ -8,6 +8,7 @@ import (
 	"net/http"
 
 	"github.com/btwiuse/rng"
+	"github.com/webteleport/ufo/apps"
 	"github.com/webteleport/utils"
 	"github.com/webteleport/webteleport"
 )
@@ -20,7 +21,7 @@ func Arg0(args []string, fallback string) string {
 }
 
 func Run(args []string) error {
-	ln, err := webteleport.Listen(context.Background(), Arg0(args, "https://ufo.k0s.io"))
+	ln, err := webteleport.Listen(context.Background(), Arg0(args, apps.RELAY))
 	if err != nil {
 		return err
 	}

@@ -1,6 +1,7 @@
 package teleport
 
 import (
+	"github.com/webteleport/ufo/apps"
 	"github.com/webteleport/ufo/apps/teleport/handler"
 	"github.com/webteleport/wtf"
 )
@@ -20,7 +21,7 @@ func Arg1(args []string, fallback string) string {
 }
 
 func Run(args []string) error {
-	addr := Arg0(args, "https://ufo.k0s.io")
+	addr := Arg0(args, apps.RELAY)
 	upstream := Arg1(args, "https://k0s.io")
 	return wtf.Serve(addr, handler.Handler(upstream))
 }

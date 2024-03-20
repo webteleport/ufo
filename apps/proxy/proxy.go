@@ -4,6 +4,7 @@ import (
 	"log"
 	"net/http"
 
+	"github.com/webteleport/ufo/apps"
 	"github.com/webteleport/utils"
 	"github.com/webteleport/wtf"
 )
@@ -34,6 +35,6 @@ func Run(args []string) error {
 		http.Error(w, "OK", 200)
 	})
 	handler = info(utils.GinLoggerMiddleware(handler))
-	arg0 := Arg0(args, "https://ufo.k0s.io")
+	arg0 := Arg0(args, apps.RELAY)
 	return wtf.Serve(arg0, handler)
 }

@@ -15,12 +15,13 @@ import (
 
 	"github.com/btwiuse/pretty"
 	"github.com/quic-go/quic-go/http3"
+	"github.com/webteleport/ufo/apps"
 	"github.com/webteleport/webteleport"
 	"k0s.io/pkg/wrap"
 )
 
 func Run([]string) error {
-	ln, err := webteleport.Listen(context.Background(), "https://ufo.k0s.io")
+	ln, err := webteleport.Listen(context.Background(), apps.RELAY)
 	if err != nil {
 		return err
 	}

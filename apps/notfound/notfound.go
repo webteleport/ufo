@@ -5,6 +5,7 @@ import (
 	"log"
 	"net/http"
 
+	"github.com/webteleport/ufo/apps"
 	"github.com/webteleport/utils"
 	"github.com/webteleport/wtf"
 )
@@ -57,5 +58,5 @@ func NotFoundHandler() http.Handler {
 }
 
 func Run(args []string) error {
-	return wtf.Serve(Arg0(args, "https://ufo.k0s.io"), utils.GinLoggerMiddleware(utils.HostNotFoundHandler()))
+	return wtf.Serve(Arg0(args, apps.RELAY), utils.GinLoggerMiddleware(utils.HostNotFoundHandler()))
 }

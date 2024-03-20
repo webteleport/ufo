@@ -11,6 +11,7 @@ import (
 	"github.com/btwiuse/pretty"
 	"github.com/btwiuse/tags"
 	"github.com/phayes/freeport"
+	"github.com/webteleport/ufo/apps"
 	"github.com/webteleport/ufo/apps/vsc/handler"
 	"github.com/webteleport/utils"
 	"github.com/webteleport/wtf"
@@ -42,7 +43,7 @@ type ServeWebArgs struct {
 	ExtensionsDir            *string                     `json:"extensionsDir"`
 }
 
-var DefaultRelay = tags.SpaceSeparatedStrings{"https://ufo.k0s.io"}
+var DefaultRelay = tags.SpaceSeparatedStrings{apps.RELAY}
 
 func Parse(args []string) (*ServeWebArgs, error) {
 	flagSet := flag.NewFlagSet("serveWebArgs", flag.ContinueOnError)

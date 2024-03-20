@@ -11,6 +11,7 @@ import (
 	"strings"
 	"sync"
 
+	"github.com/webteleport/ufo/apps"
 	"github.com/webteleport/utils"
 	"github.com/webteleport/wtf"
 	"k0s.io"
@@ -69,7 +70,7 @@ func wettyHandler() http.Handler {
 
 func Run(args []string) error {
 	handler := wettyHandler()
-	arg0 := Arg0(args, "https://ufo.k0s.io")
+	arg0 := Arg0(args, apps.RELAY)
 	return wtf.Serve(arg0, handler)
 }
 

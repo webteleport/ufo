@@ -4,6 +4,7 @@ import (
 	"log"
 	"net/url"
 
+	"github.com/webteleport/ufo/apps"
 	"github.com/webteleport/utils"
 	"github.com/webteleport/webteleport/endpoint"
 )
@@ -26,7 +27,7 @@ func resolve(s string) {
 }
 
 func Run(args []string) error {
-	resolve("https://ufo.k0s.io")
+	resolve(apps.RELAY)
 	resolve("https://k0s.io")
 	resolve("https://hk.k0s.io")
 	resolve("https://k1s.io")
