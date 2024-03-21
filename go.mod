@@ -32,7 +32,7 @@ require (
 	github.com/webteleport/auth v0.0.8
 	github.com/webteleport/relay v0.2.30
 	github.com/webteleport/utils v0.2.10
-	github.com/webteleport/webteleport v0.4.4
+	github.com/webteleport/webteleport v0.4.5
 	github.com/webteleport/wtf v0.1.11
 	google.golang.org/grpc v1.62.1
 	google.golang.org/protobuf v1.33.0
