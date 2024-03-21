@@ -33,7 +33,7 @@ require (
 	github.com/webteleport/relay v0.2.30
 	github.com/webteleport/utils v0.2.10
 	github.com/webteleport/webteleport v0.4.4
-	github.com/webteleport/wtf v0.1.10
+	github.com/webteleport/wtf v0.1.11
 	google.golang.org/grpc v1.62.1
 	google.golang.org/protobuf v1.33.0
 	k0s.io/pkg/agent v0.1.15
@@ -43,6 +43,7 @@ require (
 )
 
 require (
+	github.com/btwiuse/better v0.0.0
 	github.com/btwiuse/dl v0.0.0-20240308134010-226f1d1d872f
 	github.com/btwiuse/rng v0.0.0
 	github.com/btwiuse/tags v0.0.1
@@ -69,7 +70,7 @@ require (
 	github.com/alexpantyukhin/go-pattern-match v0.0.0-20230301210247-d84479c117d7 // indirect
 	github.com/andrew-d/go-termutil v0.0.0-20150726205930-009166a695a2 // indirect
 	github.com/asaskevich/govalidator v0.0.0-20210307081110-f21760c49a8d // indirect
-	github.com/btwiuse/better v0.0.0 // indirect
+	github.com/briandowns/spinner v1.23.0 // indirect
 	github.com/bufbuild/protocompile v0.8.0 // indirect
 	github.com/containerd/console v1.0.4 // indirect
 	github.com/coreos/go-iptables v0.6.0 // indirect
@@ -81,6 +82,7 @@ require (
 	github.com/docker/docker v25.0.1+incompatible // indirect
 	github.com/ebfe/bcrypt_pbkdf v0.0.0-20140212075826-3c8d2dcb253a // indirect
 	github.com/ebi-yade/altsvc-go v0.1.1 // indirect
+	github.com/fatih/color v1.7.0 // indirect
 	github.com/felixge/httpsnoop v1.0.3 // indirect
 	github.com/gabriel-vasile/mimetype v1.4.3 // indirect
 	github.com/ghodss/yaml v1.0.1-0.20190212211648-25d852aebe32 // indirect
@@ -122,6 +124,7 @@ require (
 	github.com/libdns/libdns v0.2.1 // indirect
 	github.com/lukesampson/figlet v0.0.0-20190211215653-8a3ef4a6ac42 // indirect
 	github.com/lunixbochs/struc v0.0.0-20200707160740-784aaebc1d40 // indirect
+	github.com/mattn/go-colorable v0.1.13 // indirect
 	github.com/mattn/go-isatty v0.0.20 // indirect
 	github.com/mholt/acmez v1.2.0 // indirect
 	github.com/miekg/dns v1.1.58 // indirect
