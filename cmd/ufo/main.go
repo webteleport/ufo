@@ -10,6 +10,7 @@ import (
 	"github.com/btwiuse/pub"
 
 	// "github.com/webteleport/ufo/apps/caddy"
+	"github.com/webteleport/ufo/apps/agent"
 	"github.com/webteleport/ufo/apps/basicauth"
 	"github.com/webteleport/ufo/apps/cookies"
 	"github.com/webteleport/ufo/apps/dl"
@@ -137,6 +138,8 @@ var cmdRun multicall.RunnerFuncMap = map[string]multicall.RunnerFunc{
 	"mmdb": mmdb.Run,
 	// git daemon
 	"gitd": gitd.Run,
+	// agent management
+	"agent": agent.Run,
 }
 
 func Run(args []string) error {
