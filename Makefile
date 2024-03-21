@@ -163,15 +163,15 @@ build-all:      ## Build binary for every supported platform
 	@ make build-darwin
 
 build-android:  ## Build android binaries
-	@ go run ./cmd/bingo -tags "$(TAGS)" -ldflags="${LDFLAGS}" \
+	@ go run ./cmd/bingo -tags "$(TAGS)" -ldflags="${LDFLAGS}" -pkg ./cmd/ufo \
 		android/{armv6,armv7,arm64,amd64,386}
 
 build-bsd-arm:  	## Build bsd arm binaries
-	@ go run ./cmd/bingo -tags "$(TAGS)" -ldflags="${LDFLAGS}" \
+	@ go run ./cmd/bingo -tags "$(TAGS)" -ldflags="${LDFLAGS}" -pkg ./cmd/ufo \
 	  freebsd/{armv7,armv6} # ,arm64
 
 build-bsd:  	## Build bsd binaries
-	@ go run ./cmd/bingo -tags "$(TAGS)" -ldflags="${LDFLAGS}" \
+	@ go run ./cmd/bingo -tags "$(TAGS)" -ldflags="${LDFLAGS}" -pkg ./cmd/ufo \
 	  {openbsd,freebsd}/{arm,arm64,amd64,386}
 
 build-linux:  	## Build linux binaries
@@ -187,18 +187,18 @@ build-linux-others:  	## Build linux binaries
 	  linux/{{mips{,64},ppc64}{,le},s390x}
 
 build-windows:  ## Build windows binaries
-	@ go run ./cmd/bingo -tags "$(TAGS)" -ldflags="${LDFLAGS}" \
+	@ go run ./cmd/bingo -tags "$(TAGS)" -ldflags="${LDFLAGS}" -pkg ./cmd/ufo \
 		windows/{386,amd64,armv7,arm64}
 
 build-darwin:   ## Build darwin binaries
-	@ go run ./cmd/bingo -tags "$(TAGS)" -ldflags="${LDFLAGS}" \
+	@ go run ./cmd/bingo -tags "$(TAGS)" -ldflags="${LDFLAGS}" -pkg ./cmd/ufo \
 		darwin/{amd64,arm64}
 
 scratch-build:  ## Build without using existing build cache
-	@ go run ./cmd/bingo -d releases/latest -ldflags="${LDFLAGS}" -- -a
+	@ go run ./cmd/bingo -d releases/latest -ldflags="${LDFLAGS}" -pkg ./cmd/ufo -- -a
 
 scratch-build-all:      ## Build binary for every supported platform ignoring build cache
-	@ go run ./cmd/bingo -tags "$(TAGS)" -ldflags="${LDFLAGS}" -- -a\
+	@ go run ./cmd/bingo -tags "$(TAGS)" -ldflags="${LDFLAGS}" -pkg ./cmd/ufo -- -a\
 		{linux,android}/{armv6,armv7,arm64,amd64,386} {darwin,windows}/{386,amd64} \
 	  linux/{{mips{,64},ppc64}{,le},s390x}
 
