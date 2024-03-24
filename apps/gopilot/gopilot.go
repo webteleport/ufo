@@ -15,8 +15,8 @@ import (
 	"strings"
 	"time"
 
+	"github.com/btwiuse/rng"
 	"github.com/gin-gonic/gin"
-	"github.com/google/uuid"
 	"github.com/patrickmn/go-cache"
 	"github.com/tidwall/gjson"
 	"github.com/webteleport/ufo/apps"
@@ -104,10 +104,10 @@ func forwardRequest(c *gin.Context) {
 		return
 	}
 
-	sessionId := fmt.Sprintf("%s%d", uuid.New().String(), time.Now().UnixNano()/int64(time.Millisecond))
-	machineID := sha256.Sum256([]byte(uuid.New().String()))
+	sessionId := fmt.Sprintf("%s%d", rng.NewUUID(), time.Now().UnixNano()/int64(time.Millisecond))
+	machineID := sha256.Sum256([]byte(rng.NewUUID()))
 	machineIDStr := hex.EncodeToString(machineID[:])
-	accHeaders := getAccHeaders(accToken, uuid.New().String(), sessionId, machineIDStr)
+	accHeaders := getAccHeaders(accToken, rng.NewUUID(), sessionId, machineIDStr)
 	client := &http.Client{}
 
 	jsonData, err := json.Marshal(jsonBody)

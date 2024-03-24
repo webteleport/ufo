@@ -10,51 +10,47 @@ go 1.22.1
 
 require (
 	connectrpc.com/connect v1.15.0
+	github.com/btwiuse/better v0.0.0
 	github.com/btwiuse/bingo v0.0.3
+	github.com/btwiuse/dl v0.0.0-20240308134010-226f1d1d872f
 	github.com/btwiuse/gost v0.0.4
 	github.com/btwiuse/multicall v0.0.5
 	github.com/btwiuse/portmux v0.1.0
 	github.com/btwiuse/pretty v0.2.1
-	github.com/btwiuse/pub v0.2.8
+	github.com/btwiuse/pub v0.2.9
+	github.com/btwiuse/rng v0.0.0
 	github.com/btwiuse/sse v0.0.1
+	github.com/btwiuse/tags v0.0.2
+	github.com/btwiuse/version v0.0.1
 	github.com/caddyserver/certmagic v0.20.0
+	github.com/creativeprojects/go-selfupdate v1.1.3
+	github.com/elazarl/goproxy v0.0.0-20231117061959-7cc037d33fb5
+	github.com/elazarl/goproxy/ext v0.0.0-20231117061959-7cc037d33fb5
 	github.com/fermyon/spin/sdk/go/v2 v2.1.0
 	github.com/gin-gonic/gin v1.6.3
-	github.com/google/uuid v1.6.0
 	github.com/hashicorp/yamux v0.1.1
 	github.com/jpillora/go-echo-server v0.5.0
+	github.com/mdp/qrterminal/v3 v3.2.0
 	github.com/patrickmn/go-cache v2.1.0+incompatible
 	github.com/phayes/freeport v0.0.0-20220201140144-74d24b5ae9f5
-	github.com/quic-go/quic-go v0.41.0
+	github.com/quic-go/quic-go v0.42.0
+	github.com/smarty/cproxy/v2 v2.1.0
 	github.com/tidwall/gjson v1.17.0
+	github.com/v2fly/v2ray-core/v5 v5.15.1
 	github.com/vmware-labs/wasm-workers-server v1.7.0
 	// github.com/webteleport/caddy-webteleport v0.0.1
 	github.com/webteleport/auth v0.0.8
-	github.com/webteleport/relay v0.2.30
+	github.com/webteleport/relay v0.3.0
 	github.com/webteleport/utils v0.2.10
-	github.com/webteleport/webteleport v0.4.5
-	github.com/webteleport/wtf v0.1.11
+	github.com/webteleport/webteleport v0.4.6
+	github.com/webteleport/wtf v0.1.13
+	golang.org/x/net v0.22.0
 	google.golang.org/grpc v1.62.1
 	google.golang.org/protobuf v1.33.0
 	k0s.io/pkg/agent v0.1.15
 	k0s.io/pkg/asciitransport v0.1.15
 	k0s.io/pkg/dial v0.1.15
 	k0s.io/pkg/wrap v0.1.15
-)
-
-require (
-	github.com/btwiuse/better v0.0.0
-	github.com/btwiuse/dl v0.0.0-20240308134010-226f1d1d872f
-	github.com/btwiuse/rng v0.0.0
-	github.com/btwiuse/tags v0.0.1
-	github.com/btwiuse/version v0.0.1
-	github.com/creativeprojects/go-selfupdate v1.1.3
-	github.com/elazarl/goproxy v0.0.0-20231117061959-7cc037d33fb5
-	github.com/elazarl/goproxy/ext v0.0.0-20231117061959-7cc037d33fb5
-	github.com/mdp/qrterminal/v3 v3.2.0
-	github.com/smarty/cproxy/v2 v2.1.0
-	github.com/v2fly/v2ray-core/v5 v5.15.1
-	golang.org/x/net v0.22.0
 )
 
 require (
@@ -103,6 +99,7 @@ require (
 	github.com/google/go-querystring v1.1.0 // indirect
 	github.com/google/gopacket v1.1.19 // indirect
 	github.com/google/pprof v0.0.0-20230821062121-407c9e7a662f // indirect
+	github.com/google/uuid v1.6.0 // indirect
 	github.com/gorilla/handlers v1.5.2 // indirect
 	github.com/gorilla/websocket v1.5.1 // indirect
 	github.com/hashicorp/go-cleanhttp v0.5.2 // indirect
@@ -135,7 +132,7 @@ require (
 	github.com/pires/go-proxyproto v0.7.0 // indirect
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/quic-go/qpack v0.4.0 // indirect
-	github.com/quic-go/webtransport-go v0.6.0 // indirect
+	github.com/quic-go/webtransport-go v0.7.0 // indirect
 	github.com/riobard/go-bloom v0.0.0-20200614022211-cdc8013cb5b3 // indirect
 	github.com/rs/cors v1.10.1 // indirect
 	github.com/ryanuber/go-glob v1.0.0 // indirect
@@ -164,7 +161,7 @@ require (
 	gitlab.com/yawning/obfs4.git v0.0.0-20220204003609-77af0cba934d // indirect
 	go.starlark.net v0.0.0-20230612165344-9532f5667272 // indirect
 	go.uber.org/atomic v1.11.0 // indirect
-	go.uber.org/mock v0.3.0 // indirect
+	go.uber.org/mock v0.4.0 // indirect
 	go.uber.org/multierr v1.11.0 // indirect
 	go.uber.org/zap v1.24.0 // indirect
 	go4.org/netipx v0.0.0-20230303233057-f1b76eb4bb35 // indirect
@@ -175,7 +172,7 @@ require (
 	golang.org/x/sys v0.18.0 // indirect
 	golang.org/x/term v0.18.0 // indirect
 	golang.org/x/text v0.14.0 // indirect
-	golang.org/x/time v0.3.0 // indirect
+	golang.org/x/time v0.5.0 // indirect
 	golang.org/x/tools v0.18.0 // indirect
 	google.golang.org/appengine v1.6.8 // indirect
 	google.golang.org/genproto/googleapis/rpc v0.0.0-20240123012728-ef4313101c80 // indirect
