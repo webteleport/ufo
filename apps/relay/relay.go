@@ -10,7 +10,6 @@ import (
 
 	"github.com/caddyserver/certmagic"
 	"github.com/webteleport/relay"
-	"github.com/webteleport/relay/manager"
 	"github.com/webteleport/ufo/apps/relay/envs"
 	"github.com/webteleport/utils"
 )
@@ -72,12 +71,11 @@ func listenHTTP(handler http.Handler, errc chan error) {
 	errc <- http.Serve(ln, handler)
 }
 
-func listenHTTPSLocalTLS(handler http.Handler, errc chan error) {
+func listenHTTPS(handler http.Handler, errc chan error, tlsConfig *tls.Config) {
 	if envs.HTTPS_PORT == nil {
 		return
 	}
 	slog.Info("listening on HTTPS https://" + envs.HOST + *envs.HTTPS_PORT)
-	tlsConfig := LocalTLSConfig(envs.CERT, envs.KEY)
 	ln, err := tls.Listen("tcp4", *envs.HTTPS_PORT, tlsConfig)
 	if err != nil {
 		errc <- err
@@ -86,65 +84,43 @@ func listenHTTPSLocalTLS(handler http.Handler, errc chan error) {
 	errc <- http.Serve(ln, handler)
 }
 
-func listenHTTPSOnDemandTLS(handler http.Handler, errc chan error) {
-	if envs.HTTPS_PORT == nil {
-		return
-	}
-	slog.Info("listening on HTTPS https://" + envs.HOST + *envs.HTTPS_PORT + " w/ on demand tls")
-	tlsConfig, err := OnDemandTLSConfig()
-	if err != nil {
-		errc <- err
-		return
-	}
-	ln, err := tls.Listen("tcp4", *envs.HTTPS_PORT, tlsConfig)
-	if err != nil {
-		errc <- err
-		return
-	}
-	errc <- http.Serve(ln, handler)
-}
-
-func listenUDPLocalTLS(handler http.Handler, errc chan error) {
+func listenWT(s *relay.Relay, errc chan error) {
 	slog.Info("listening on UDP https://" + envs.HOST + envs.UDP_PORT)
-	tlsConfig := LocalTLSConfig(envs.CERT, envs.KEY)
-	r := relay.New(envs.HOST, envs.UDP_PORT, handler, tlsConfig)
-	errc <- r.ListenAndServe()
+	errc <- s.WTServer.ListenAndServe()
 }
 
-func listenUDPOnDemandTLS(handler http.Handler, errc chan error) {
-	slog.Info("listening on UDP https://" + envs.HOST + envs.UDP_PORT + " w/ on demand tls")
-	tlsConfig, err := OnDemandTLSConfig()
-	if err != nil {
-		errc <- err
-		return
-	}
-	r := relay.New(envs.HOST, envs.UDP_PORT, handler, tlsConfig)
-	errc <- r.ListenAndServe()
-}
-
-func listenAll(handler http.Handler) error {
+func listenAll(s *relay.Relay, tlsConfig *tls.Config) error {
 	var errc chan error = make(chan error, 3)
 
-	go listenHTTP(handler, errc)
-	if useLocalTLS() {
-		go listenUDPLocalTLS(handler, errc)
-		go listenHTTPSLocalTLS(handler, errc)
-	} else {
-		go listenUDPOnDemandTLS(handler, errc)
-		go listenHTTPSOnDemandTLS(handler, errc)
-	}
+	go listenHTTP(s, errc)
+	go listenHTTPS(s, errc, tlsConfig)
+	go listenWT(s, errc)
 
 	return <-errc
 }
 
-func Run([]string) error {
-	var dsm http.Handler = manager.DefaultSessionManager
+func Run([]string) (err error) {
+	var GlobalTLSConfig *tls.Config
 
+	if useLocalTLS() {
+		GlobalTLSConfig = LocalTLSConfig(envs.CERT, envs.KEY)
+	} else {
+		GlobalTLSConfig, err = OnDemandTLSConfig()
+		if err != nil {
+			slog.Warn("failed to get TLS config: ", err)
+		}
+	}
+
+	s := relay.New(envs.HOST, envs.UDP_PORT, GlobalTLSConfig)
+
+	var dsm http.Handler = s.SessionManager
 	// Set the Alt-Svc header for UDP port discovery && http3 bootstrapping
 	dsm = AltSvcMiddleware(dsm)
 	dsm = utils.GinLoggerMiddleware(dsm)
 
-	return listenAll(dsm)
+	s.Next = dsm
+
+	return listenAll(s, GlobalTLSConfig)
 }
 
 func AltSvcMiddleware(next http.Handler) http.Handler {

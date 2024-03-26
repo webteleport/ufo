@@ -40,10 +40,10 @@ require (
 	github.com/vmware-labs/wasm-workers-server v1.7.0
 	// github.com/webteleport/caddy-webteleport v0.0.1
 	github.com/webteleport/auth v0.0.8
-	github.com/webteleport/relay v0.3.0
+	github.com/webteleport/relay v0.3.2
 	github.com/webteleport/utils v0.2.10
-	github.com/webteleport/webteleport v0.4.6
-	github.com/webteleport/wtf v0.1.13
+	github.com/webteleport/webteleport v0.5.1
+	github.com/webteleport/wtf v0.1.14
 	golang.org/x/net v0.22.0
 	google.golang.org/grpc v1.62.1
 	google.golang.org/protobuf v1.33.0
@@ -67,6 +67,7 @@ require (
 	github.com/andrew-d/go-termutil v0.0.0-20150726205930-009166a695a2 // indirect
 	github.com/asaskevich/govalidator v0.0.0-20210307081110-f21760c49a8d // indirect
 	github.com/briandowns/spinner v1.23.0 // indirect
+	github.com/btwiuse/wsconn v0.0.1 // indirect
 	github.com/bufbuild/protocompile v0.8.0 // indirect
 	github.com/containerd/console v1.0.4 // indirect
 	github.com/coreos/go-iptables v0.6.0 // indirect
