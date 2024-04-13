@@ -19,6 +19,7 @@ import (
 	"github.com/webteleport/ufo/apps/gitd"
 	"github.com/webteleport/ufo/apps/gopilot"
 	"github.com/webteleport/ufo/apps/gotip"
+	"github.com/webteleport/ufo/apps/grafana"
 	"github.com/webteleport/ufo/apps/hdr"
 	"github.com/webteleport/ufo/apps/hello"
 	"github.com/webteleport/ufo/apps/intercept"
@@ -103,6 +104,8 @@ var cmdRun multicall.RunnerFuncMap = map[string]multicall.RunnerFunc{
 	"pub": pub.Run,
 	// serve directory
 	"ser": ser.Run,
+	// grafana
+	"grafana": grafana.Run,
 	// teleport
 	"teleport": teleport.Run,
 	// intercept
