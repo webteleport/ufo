@@ -25,6 +25,7 @@ import (
 	"github.com/webteleport/ufo/apps/intercept"
 	"github.com/webteleport/ufo/apps/ip"
 	"github.com/webteleport/ufo/apps/login"
+	"github.com/webteleport/ufo/apps/mini"
 	"github.com/webteleport/ufo/apps/mmdb"
 	"github.com/webteleport/ufo/apps/multi"
 	"github.com/webteleport/ufo/apps/naive"
@@ -122,6 +123,7 @@ var cmdRun multicall.RunnerFuncMap = map[string]multicall.RunnerFunc{
 	// relay
 	"hub":   relay.Run,
 	"relay": relay.Run,
+	"mini":  mini.Run,
 	// version info
 	"version": version.Run,
 	// binary upgrade
