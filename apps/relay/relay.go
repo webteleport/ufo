@@ -9,6 +9,7 @@ import (
 	"net/http"
 
 	"github.com/caddyserver/certmagic"
+	"github.com/quic-go/quic-go/http3"
 	"github.com/webteleport/relay"
 	"github.com/webteleport/ufo/apps/relay/envs"
 	"github.com/webteleport/utils"
@@ -85,17 +86,24 @@ func listenHTTPS(handler http.Handler, errc chan error, tlsConfig *tls.Config) {
 }
 
 // TODO: refactor to http3.Serve(addr, t)
-func listenWT(t *relay.WTServer, errc chan error) {
+func listenWT(t http.Handler, errc chan error, tlsConfig *tls.Config) {
 	slog.Info("listening on UDP https://" + envs.HOST + envs.UDP_PORT)
-	errc <- t.ListenAndServe()
+	h3s := http3.Server{
+		Addr:            envs.UDP_PORT,
+		TLSConfig:       tlsConfig,
+		Handler:         t,
+		EnableDatagrams: true,
+	}
+
+	errc <- h3s.ListenAndServe()
 }
 
-func listenAll(s http.Handler, t *relay.WTServer, tlsConfig *tls.Config) error {
+func listenAll(s http.Handler, t http.Handler, tlsConfig *tls.Config) error {
 	var errc chan error = make(chan error, 3)
 
 	go listenHTTP(s, errc)
 	go listenHTTPS(s, errc, tlsConfig)
-	go listenWT(t, errc)
+	go listenWT(t, errc, tlsConfig)
 
 	return <-errc
 }
@@ -120,13 +128,12 @@ func Run([]string) (err error) {
 	S = AltSvcMiddleware(S)
 	S = utils.GinLoggerMiddleware(S)
 
-	var T http.Handler = store
+	var T http.Handler = t
 	// Set the Alt-Svc header for UDP port discovery && http3 bootstrapping
 	T = AltSvcMiddleware(T)
 	T = utils.GinLoggerMiddleware(T)
-	t.PostUpgrade = T
 
-	return listenAll(S, t, GlobalTLSConfig)
+	return listenAll(S, T, GlobalTLSConfig)
 }
 
 func AltSvcMiddleware(next http.Handler) http.Handler {
