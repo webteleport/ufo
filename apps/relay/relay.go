@@ -119,14 +119,9 @@ func Run([]string) (err error) {
 		WithTLSConfig(GlobalTLSConfig)
 
 	var S http.Handler = s
+	// Set the Alt-Svc header for UDP port discovery && http3 bootstrapping
 	S = AltSvcMiddleware(S)
 	S = utils.GinLoggerMiddleware(S)
-
-	var T http.Handler = t
-	// Set the Alt-Svc header for UDP port discovery && http3 bootstrapping
-	T = AltSvcMiddleware(T)
-	T = utils.GinLoggerMiddleware(T)
-	t.WithHandler(T)
 
 	return listenAll(S, t, GlobalTLSConfig)
 }
