@@ -84,17 +84,18 @@ func listenHTTPS(handler http.Handler, errc chan error, tlsConfig *tls.Config) {
 	errc <- http.Serve(ln, handler)
 }
 
-func listenWT(s *relay.Relay, errc chan error) {
+// TODO: refactor to http3.Serve(addr, t)
+func listenWT(t *relay.WTServer, errc chan error) {
 	slog.Info("listening on UDP https://" + envs.HOST + envs.UDP_PORT)
-	errc <- s.WTServer.ListenAndServe()
+	errc <- t.ListenAndServe()
 }
 
-func listenAll(s *relay.Relay, tlsConfig *tls.Config) error {
+func listenAll(s http.Handler, t *relay.WTServer, tlsConfig *tls.Config) error {
 	var errc chan error = make(chan error, 3)
 
 	go listenHTTP(s, errc)
 	go listenHTTPS(s, errc, tlsConfig)
-	go listenWT(s, errc)
+	go listenWT(t, errc)
 
 	return <-errc
 }
@@ -111,16 +112,21 @@ func Run([]string) (err error) {
 		}
 	}
 
-	s := relay.New(envs.HOST, envs.UDP_PORT, GlobalTLSConfig)
+	store := relay.NewSessionStore()
+	s := relay.NewWSServer(envs.HOST, store)
+	t := relay.NewWTServer(envs.HOST, envs.UDP_PORT, store, GlobalTLSConfig)
 
-	var dsm http.Handler = s.WSServer
+	var S http.Handler = s
+	S = AltSvcMiddleware(S)
+	S = utils.GinLoggerMiddleware(S)
+
+	var T http.Handler = store
 	// Set the Alt-Svc header for UDP port discovery && http3 bootstrapping
-	dsm = AltSvcMiddleware(dsm)
-	dsm = utils.GinLoggerMiddleware(dsm)
+	T = AltSvcMiddleware(T)
+	T = utils.GinLoggerMiddleware(T)
+	t.PostUpgrade = T
 
-	s.Next = dsm
-
-	return listenAll(s, GlobalTLSConfig)
+	return listenAll(S, t, GlobalTLSConfig)
 }
 
 func AltSvcMiddleware(next http.Handler) http.Handler {
