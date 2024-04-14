@@ -113,7 +113,7 @@ func Run([]string) (err error) {
 
 	s := relay.New(envs.HOST, envs.UDP_PORT, GlobalTLSConfig)
 
-	var dsm http.Handler = s.SessionManager
+	var dsm http.Handler = s.WSServer
 	// Set the Alt-Svc header for UDP port discovery && http3 bootstrapping
 	dsm = AltSvcMiddleware(dsm)
 	dsm = utils.GinLoggerMiddleware(dsm)
