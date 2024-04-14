@@ -20,14 +20,16 @@ func listenHTTP(handler http.Handler) error {
 }
 
 func Run([]string) (err error) {
-	s := relay.NewWSServer(envs.HOST, relay.NewSessionStore())
+	store := relay.NewSessionStore()
+	s := relay.NewWSServer(envs.HOST, store).
+		WithPostUpgrade(
+			utils.GinLoggerMiddleware(
+				// Set the Alt-Svc header for UDP port discovery && http3 bootstrapping
+				AltSvcMiddleware(store),
+			),
+		)
 
-	var S http.Handler = s
-	// Set the Alt-Svc header for UDP port discovery && http3 bootstrapping
-	S = AltSvcMiddleware(S)
-	S = utils.GinLoggerMiddleware(S)
-
-	return listenHTTP(S)
+	return listenHTTP(s)
 }
 
 func AltSvcMiddleware(next http.Handler) http.Handler {

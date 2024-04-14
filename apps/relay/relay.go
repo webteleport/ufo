@@ -113,17 +113,23 @@ func Run([]string) (err error) {
 	}
 
 	store := relay.NewSessionStore()
-	s := relay.NewWSServer(envs.HOST, store)
+	s := relay.NewWSServer(envs.HOST, store).
+		WithPostUpgrade(
+			utils.GinLoggerMiddleware(
+				// Set the Alt-Svc header for UDP port discovery && http3 bootstrapping
+				AltSvcMiddleware(store),
+			),
+		)
 	t := relay.NewWTServer(envs.HOST, store).
 		WithAddr(envs.UDP_PORT).
-		WithTLSConfig(GlobalTLSConfig)
+		WithTLSConfig(GlobalTLSConfig).
+		WithPostUpgrade(
+			utils.GinLoggerMiddleware(
+				store,
+			),
+		)
 
-	var S http.Handler = s
-	// Set the Alt-Svc header for UDP port discovery && http3 bootstrapping
-	S = AltSvcMiddleware(S)
-	S = utils.GinLoggerMiddleware(S)
-
-	return listenAll(S, t, GlobalTLSConfig)
+	return listenAll(s, t, GlobalTLSConfig)
 }
 
 func AltSvcMiddleware(next http.Handler) http.Handler {
