@@ -6,7 +6,7 @@ import (
 )
 
 func init() {
-	http.Handle(handler.Handler().ServeHTTP)
+	http.Handle(handler.Handler(".").ServeHTTP)
 }
 
 func main() {}

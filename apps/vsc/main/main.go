@@ -6,5 +6,5 @@ import (
 )
 
 func main() {
-	worker.Serve(handler.Handler())
+	worker.Serve(handler.Handler("https://example.com"))
 }
