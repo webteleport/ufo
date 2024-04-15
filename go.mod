@@ -6,6 +6,7 @@ go 1.22.1
 // replace github.com/webteleport/utils => ../utils
 // replace github.com/webteleport/relay => ../relay
 // replace github.com/webteleport/webteleport => ../webteleport
+
 // replace github.com/btwiuse/multicall => ../multicall
 
 require (
@@ -42,7 +43,7 @@ require (
 	github.com/webteleport/auth v0.0.8
 	github.com/webteleport/relay v0.4.0
 	github.com/webteleport/utils v0.2.10
-	github.com/webteleport/webteleport v0.5.3
+	github.com/webteleport/webteleport v0.5.4
 	github.com/webteleport/wtf v0.1.16
 	golang.org/x/net v0.22.0
 	google.golang.org/grpc v1.62.1
