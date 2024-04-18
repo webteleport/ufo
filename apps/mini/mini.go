@@ -4,6 +4,7 @@ import (
 	"log/slog"
 	"net"
 	"net/http"
+	"os"
 
 	"github.com/webteleport/relay"
 	"github.com/webteleport/ufo/apps/relay/envs"
@@ -21,13 +22,15 @@ func listenHTTP(handler http.Handler) error {
 
 func Run([]string) (err error) {
 	store := relay.NewSessionStore()
-	s := relay.NewWSServer(envs.HOST, store).
-		WithPostUpgrade(
+	s := relay.NewWSServer(envs.HOST, store)
+	if os.Getenv("LOGGIN") != "" {
+		s.WithPostUpgrade(
 			utils.GinLoggerMiddleware(
 				// Set the Alt-Svc header for UDP port discovery && http3 bootstrapping
 				AltSvcMiddleware(store),
 			),
 		)
+	}
 
 	return listenHTTP(s)
 }
