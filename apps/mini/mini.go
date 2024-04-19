@@ -12,8 +12,8 @@ import (
 )
 
 func listenHTTP(handler http.Handler) error {
-	slog.Info("listening on HTTP http://" + envs.HOST + envs.HTTP_PORT)
-	ln, err := net.Listen("tcp4", envs.HTTP_PORT)
+	slog.Info("listening on HTTP http://0.0.0.0" + envs.HTTP_PORT, "HOST", envs.HOST)
+	ln, err := net.Listen("tcp", envs.HTTP_PORT)
 	if err != nil {
 		return err
 	}
