@@ -42,7 +42,7 @@ require (
 	github.com/webteleport/auth v0.0.8
 	github.com/webteleport/relay v0.4.8
 	github.com/webteleport/utils v0.2.11
-	github.com/webteleport/webteleport v0.5.10
+	github.com/webteleport/webteleport v0.5.11
 	github.com/webteleport/wtf v0.1.17
 	golang.org/x/net v0.24.0
 	google.golang.org/grpc v1.62.1
