@@ -24,7 +24,7 @@ func Run([]string) error {
 	ln1, err := net.Listen("tcp", ":8080")
 	log.Println("🛸 listening on", ":8080")
 	ln2, err := webteleport.Listen(context.Background(), "https://ufo.k0s.io:8444/naive?naive=1")
-	log.Println("🛸 listening on", webteleport.ClickableURL(ln2))
+	// log.Println("🛸 listening on", webteleport.ClickableURL(ln2))
 	if err != nil {
 		return err
 	}

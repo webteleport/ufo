@@ -2,7 +2,6 @@ package basicauth
 
 import (
 	"context"
-	"log"
 	"net/http"
 
 	"github.com/webteleport/ufo/apps"
@@ -15,6 +14,6 @@ func Run([]string) error {
 	if err != nil {
 		return err
 	}
-	log.Println("🛸 listening on", webteleport.ClickableURL(ln))
+	// log.Println("🛸 listening on", webteleport.ClickableURL(ln))
 	return http.Serve(ln, handler.Handler())
 }

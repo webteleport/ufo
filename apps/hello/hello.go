@@ -3,7 +3,6 @@ package hello
 import (
 	"context"
 	"io"
-	"log"
 	"net/http"
 
 	"github.com/webteleport/ufo/apps"
@@ -15,7 +14,7 @@ func Run([]string) error {
 	if err != nil {
 		return err
 	}
-	log.Println("🛸 listening on", webteleport.ClickableURL(ln))
+	// log.Println("🛸 listening on", webteleport.ClickableURL(ln))
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		io.WriteString(w, "Hello, UFO!\n")
 	})

@@ -210,7 +210,8 @@ func Run(args []string) error {
 	if err != nil {
 		return err
 	}
-	lnAddr := webteleport.AsciiURL(ln)
+	// lnAddr := webteleport.AsciiURL(ln)
+	lnAddr := "http://localhost:8080/path"
 
 	vlessURL, err := GenerateVlessURL(lnAddr, uid)
 	if err != nil {

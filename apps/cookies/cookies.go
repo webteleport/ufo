@@ -4,7 +4,6 @@ import (
 	"context"
 	"fmt"
 	"io"
-	"log"
 	"net/http"
 
 	"github.com/btwiuse/rng"
@@ -37,7 +36,7 @@ func Run(args []string) error {
 		}
 		io.WriteString(w, "🛸"+http.StatusText(200))
 	})
-	log.Println("listening on", webteleport.ClickableURL(ln))
-	log.Println("access link", webteleport.ClickableURL(ln)+secretPath)
+	// log.Println("listening on", webteleport.ClickableURL(ln))
+	// log.Println("access link", webteleport.ClickableURL(ln)+secretPath)
 	return http.Serve(ln, utils.GinLoggerMiddleware(http.DefaultServeMux))
 }

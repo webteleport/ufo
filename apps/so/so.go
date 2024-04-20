@@ -27,7 +27,7 @@ func Run(args []string) error {
 	if err != nil {
 		return err
 	}
-	log.Println("🛸 listening on", webteleport.ClickableURL(ln))
+	// log.Println("🛸 listening on", webteleport.ClickableURL(ln))
 	return autoServe(ln)
 }
 

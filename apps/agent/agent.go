@@ -2,7 +2,6 @@ package agent
 
 import (
 	"context"
-	"log"
 	"net/http"
 
 	"github.com/webteleport/ufo/apps"
@@ -21,7 +20,7 @@ func Run([]string) error {
 	if err != nil {
 		return err
 	}
-	log.Println("🛸 listening on", webteleport.ClickableURL(ln))
+	// log.Println("🛸 listening on", webteleport.ClickableURL(ln))
 	mux := http.NewServeMux()
 	for prefix, handler := range Map {
 		mux.Handle(prefix+"/", http.StripPrefix(prefix, handler))

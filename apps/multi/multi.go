@@ -3,7 +3,6 @@ package multi
 import (
 	"context"
 	"io"
-	"log"
 	"net"
 	"net/http"
 	"strings"
@@ -33,10 +32,10 @@ func newRoute() error {
 	if err != nil {
 		return err
 	}
-	log.Println("🛸 listening on", webteleport.ClickableURL(ln))
-	Map[webteleport.HumanURL(ln)] = ln
+	// log.Println("🛸 listening on", webteleport.ClickableURL(ln))
+	Map[ln.(net.Addr).String()] = ln
 	err = http.Serve(ln, nil)
-	log.Println(webteleport.HumanURL(ln), err)
+	// log.Println(webteleport.HumanURL(ln), err)
 	return err
 }
 
@@ -46,8 +45,8 @@ func Run(args []string) error {
 	if err != nil {
 		return err
 	}
-	log.Println("🛸 listening on", webteleport.ClickableURL(ln))
-	Map[webteleport.HumanURL(ln)] = ln
+	// log.Println("🛸 listening on", webteleport.ClickableURL(ln))
+	Map[ln.(net.Addr).String()] = ln
 	http.HandleFunc("/", index)
 	return http.Serve(ln, nil)
 }
