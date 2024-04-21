@@ -3,10 +3,10 @@ module github.com/webteleport/ufo
 go 1.22.2
 
 // replace github.com/btwiuse/multicall => ../multicall
-// replace github.com/webteleport/relay => ../relay
-// replace github.com/webteleport/webteleport => ../webteleport
 // replace github.com/webteleport/utils => ../utils
 // replace github.com/webteleport/wtf => ../wtf
+// replace github.com/webteleport/webteleport => ../webteleport
+// replace github.com/webteleport/relay => ../relay
 
 require (
 	connectrpc.com/connect v1.15.0
@@ -40,9 +40,9 @@ require (
 	github.com/vmware-labs/wasm-workers-server v1.7.0
 	// github.com/webteleport/caddy-webteleport v0.0.1
 	github.com/webteleport/auth v0.0.8
-	github.com/webteleport/relay v0.4.10
+	github.com/webteleport/relay v0.4.11
 	github.com/webteleport/utils v0.2.14
-	github.com/webteleport/webteleport v0.5.14
+	github.com/webteleport/webteleport v0.5.15
 	github.com/webteleport/wtf v0.1.18
 	golang.org/x/net v0.24.0
 	google.golang.org/grpc v1.62.1
