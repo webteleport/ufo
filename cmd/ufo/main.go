@@ -24,6 +24,7 @@ import (
 	"github.com/webteleport/ufo/apps/hello"
 	"github.com/webteleport/ufo/apps/intercept"
 	"github.com/webteleport/ufo/apps/ip"
+	"github.com/webteleport/ufo/apps/logbody"
 	"github.com/webteleport/ufo/apps/login"
 	"github.com/webteleport/ufo/apps/mini"
 	"github.com/webteleport/ufo/apps/mmdb"
@@ -76,6 +77,7 @@ var cmdRun multicall.RunnerFuncMap = map[string]multicall.RunnerFunc{
 	"dev/hdr":      hdr.Run,
 	"dev/proxy":    proxy.Run,
 	"dev/nc":       nc.Run,
+	"dev/logbody":  logbody.Run,
 	// Proxy
 	"so":      so.Run,
 	"sowc":    sowc.Run,
