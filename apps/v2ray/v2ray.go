@@ -147,6 +147,9 @@ func GenerateTrojanURL(baseURL string) (string, error) {
 	// Extract the host and scheme from the base URL
 	host := u.Host
 	path := u.Path
+	if path == "" {
+		path = "/"
+	}
 
 	trojanURL := fmt.Sprintf("trojan://%s:443?&security=tls&type=ws&path=%s#%s", host, path, host)
 
@@ -163,6 +166,9 @@ func GenerateVlessURL(baseURL, userID string) (string, error) {
 	// Extract the host and scheme from the base URL
 	host := u.Host
 	path := u.Path
+	if path == "" {
+		path = "/"
+	}
 
 	vlessURL := fmt.Sprintf("vless://%s@%s:443?encryption=none&over=tls&security=tls&sni=%s&fp=randomized&type=ws&host=%s&path=%s#%s", userID, host, host, host, path, host)
 
@@ -181,9 +187,6 @@ func Run(args []string) error {
 	}
 
 	relayURL := apps.RELAY
-	if relay := os.Getenv("RELAY"); relay != "" {
-		relayURL = relay
-	}
 
 	configJSON := BuildConfigJSON(randport, uid)
 	// fmt.Println(configJSON)
@@ -210,8 +213,7 @@ func Run(args []string) error {
 	if err != nil {
 		return err
 	}
-	// lnAddr := webteleport.AsciiURL(ln)
-	lnAddr := "http://localhost:8080/path"
+	lnAddr := fmt.Sprintf("%s://%s", ln.Addr().Network(), ln.Addr().String())
 
 	vlessURL, err := GenerateVlessURL(lnAddr, uid)
 	if err != nil {
