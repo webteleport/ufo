@@ -9,7 +9,7 @@ go 1.22.2
 // replace github.com/webteleport/relay => ../relay
 
 require (
-	connectrpc.com/connect v1.15.0
+	connectrpc.com/connect v1.16.1
 	github.com/btwiuse/better v0.0.0
 	github.com/btwiuse/bingo v0.0.3
 	github.com/btwiuse/dl v0.0.0-20240308134010-226f1d1d872f
@@ -17,33 +17,33 @@ require (
 	github.com/btwiuse/multicall v0.0.5
 	github.com/btwiuse/portmux v0.1.0
 	github.com/btwiuse/pretty v0.2.1
-	github.com/btwiuse/pub v0.3.1
+	github.com/btwiuse/pub v0.3.2
 	github.com/btwiuse/rng v0.0.0
 	github.com/btwiuse/sse v0.0.1
 	github.com/btwiuse/tags v0.0.2
 	github.com/btwiuse/version v0.0.1
 	github.com/caddyserver/certmagic v0.20.0
-	github.com/creativeprojects/go-selfupdate v1.1.3
+	github.com/creativeprojects/go-selfupdate v1.2.0
 	github.com/elazarl/goproxy v0.0.0-20231117061959-7cc037d33fb5
 	github.com/elazarl/goproxy/ext v0.0.0-20231117061959-7cc037d33fb5
-	github.com/fermyon/spin/sdk/go/v2 v2.1.0
-	github.com/gin-gonic/gin v1.6.3
+	github.com/fermyon/spin/sdk/go/v2 v2.2.0
+	github.com/gin-gonic/gin v1.9.1
 	github.com/hashicorp/yamux v0.1.1
 	github.com/jpillora/go-echo-server v0.5.0
 	github.com/mdp/qrterminal/v3 v3.2.0
 	github.com/patrickmn/go-cache v2.1.0+incompatible
 	github.com/phayes/freeport v0.0.0-20220201140144-74d24b5ae9f5
-	github.com/quic-go/quic-go v0.42.0
+	github.com/quic-go/quic-go v0.43.0
 	github.com/smarty/cproxy/v2 v2.1.0
 	github.com/tidwall/gjson v1.17.0
 	github.com/v2fly/v2ray-core/v5 v5.15.1
 	github.com/vmware-labs/wasm-workers-server v1.7.0
 	// github.com/webteleport/caddy-webteleport v0.0.1
 	github.com/webteleport/auth v0.0.8
-	github.com/webteleport/relay v0.4.13
+	github.com/webteleport/relay v0.4.14
 	github.com/webteleport/utils v0.2.14
-	github.com/webteleport/webteleport v0.5.16
-	github.com/webteleport/wtf v0.1.19
+	github.com/webteleport/webteleport v0.5.17
+	github.com/webteleport/wtf v0.1.20
 	golang.org/x/net v0.24.0
 	google.golang.org/grpc v1.62.1
 	google.golang.org/protobuf v1.33.0
@@ -69,6 +69,8 @@ require (
 	github.com/briandowns/spinner v1.23.0 // indirect
 	github.com/btwiuse/wsconn v0.0.1 // indirect
 	github.com/bufbuild/protocompile v0.8.0 // indirect
+	github.com/bytedance/sonic v1.9.1 // indirect
+	github.com/chenzhuoyu/base64x v0.0.0-20221115062448-fe3a3abad311 // indirect
 	github.com/containerd/console v1.0.4 // indirect
 	github.com/coreos/go-iptables v0.6.0 // indirect
 	github.com/creack/pty v1.1.21 // indirect
@@ -95,6 +97,7 @@ require (
 	github.com/go-playground/validator/v10 v10.19.0 // indirect
 	github.com/go-task/slim-sprig v0.0.0-20230315185526-52ccab3ef572 // indirect
 	github.com/gobwas/glob v0.2.3 // indirect
+	github.com/goccy/go-json v0.10.2 // indirect
 	github.com/golang/protobuf v1.5.4 // indirect
 	github.com/google/go-github/v30 v30.1.0 // indirect
 	github.com/google/go-querystring v1.1.0 // indirect
@@ -104,7 +107,7 @@ require (
 	github.com/gorilla/handlers v1.5.2 // indirect
 	github.com/gorilla/websocket v1.5.1 // indirect
 	github.com/hashicorp/go-cleanhttp v0.5.2 // indirect
-	github.com/hashicorp/go-retryablehttp v0.7.4 // indirect
+	github.com/hashicorp/go-retryablehttp v0.7.5 // indirect
 	github.com/hashicorp/go-version v1.6.0 // indirect
 	github.com/jhump/protoreflect v1.15.6 // indirect
 	github.com/jpillora/ansi v1.0.2 // indirect
@@ -130,10 +133,11 @@ require (
 	github.com/modern-go/reflect2 v1.0.2 // indirect
 	github.com/onsi/ginkgo/v2 v2.13.0 // indirect
 	github.com/pelletier/go-toml v1.9.5 // indirect
+	github.com/pelletier/go-toml/v2 v2.0.8 // indirect
 	github.com/pires/go-proxyproto v0.7.0 // indirect
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/quic-go/qpack v0.4.0 // indirect
-	github.com/quic-go/webtransport-go v0.7.0 // indirect
+	github.com/quic-go/webtransport-go v0.8.0 // indirect
 	github.com/riobard/go-bloom v0.0.0-20200614022211-cdc8013cb5b3 // indirect
 	github.com/rs/cors v1.10.1 // indirect
 	github.com/ryanuber/go-glob v1.0.0 // indirect
@@ -148,13 +152,14 @@ require (
 	github.com/tidwall/sjson v1.2.5 // indirect
 	github.com/tjfoc/gmsm v1.4.1 // indirect
 	github.com/tomasen/realip v0.0.0-20180522021738-f0c99a92ddce // indirect
-	github.com/ugorji/go/codec v1.1.7 // indirect
+	github.com/twitchyliquid64/golang-asm v0.15.1 // indirect
+	github.com/ugorji/go/codec v1.2.11 // indirect
 	github.com/ulikunitz/xz v0.5.11 // indirect
 	github.com/v2fly/BrowserBridge v0.0.0-20210430233438-0570fc1d7d08 // indirect
 	github.com/v2fly/VSign v0.0.0-20201108000810-e2adc24bf848 // indirect
 	github.com/v2fly/ss-bloomring v0.0.0-20210312155135-28617310f63e // indirect
 	github.com/webteleport/transport v0.0.0 // indirect
-	github.com/xanzy/go-gitlab v0.95.2 // indirect
+	github.com/xanzy/go-gitlab v0.100.0 // indirect
 	github.com/xtaci/kcp-go/v5 v5.6.1 // indirect
 	github.com/xtaci/smux v1.5.24 // indirect
 	github.com/xtaci/tcpraw v1.2.25 // indirect
@@ -167,10 +172,11 @@ require (
 	go.uber.org/multierr v1.11.0 // indirect
 	go.uber.org/zap v1.24.0 // indirect
 	go4.org/netipx v0.0.0-20230303233057-f1b76eb4bb35 // indirect
+	golang.org/x/arch v0.3.0 // indirect
 	golang.org/x/crypto v0.22.0 // indirect
 	golang.org/x/exp v0.0.0-20240416160154-fe59bbe5cc7f // indirect
 	golang.org/x/mod v0.17.0 // indirect
-	golang.org/x/oauth2 v0.16.0 // indirect
+	golang.org/x/oauth2 v0.18.0 // indirect
 	golang.org/x/sync v0.7.0 // indirect
 	golang.org/x/sys v0.19.0 // indirect
 	golang.org/x/term v0.19.0 // indirect
