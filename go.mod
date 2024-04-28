@@ -24,8 +24,6 @@ require (
 	github.com/btwiuse/version v0.0.1
 	github.com/caddyserver/certmagic v0.20.0
 	github.com/creativeprojects/go-selfupdate v1.2.0
-	github.com/elazarl/goproxy v0.0.0-20231117061959-7cc037d33fb5
-	github.com/elazarl/goproxy/ext v0.0.0-20231117061959-7cc037d33fb5
 	github.com/fermyon/spin/sdk/go/v2 v2.2.0
 	github.com/gin-gonic/gin v1.9.1
 	github.com/hashicorp/yamux v0.1.1
@@ -34,13 +32,12 @@ require (
 	github.com/patrickmn/go-cache v2.1.0+incompatible
 	github.com/phayes/freeport v0.0.0-20220201140144-74d24b5ae9f5
 	github.com/quic-go/quic-go v0.43.0
-	github.com/smarty/cproxy/v2 v2.1.0
 	github.com/tidwall/gjson v1.17.0
 	github.com/v2fly/v2ray-core/v5 v5.15.1
 	github.com/vmware-labs/wasm-workers-server v1.7.0
 	// github.com/webteleport/caddy-webteleport v0.0.1
 	github.com/webteleport/auth v0.0.8
-	github.com/webteleport/relay v0.4.14
+	github.com/webteleport/relay v0.4.15
 	github.com/webteleport/utils v0.2.14
 	github.com/webteleport/webteleport v0.5.17
 	github.com/webteleport/wtf v0.1.20
@@ -67,6 +64,7 @@ require (
 	github.com/andrew-d/go-termutil v0.0.0-20150726205930-009166a695a2 // indirect
 	github.com/asaskevich/govalidator v0.0.0-20210307081110-f21760c49a8d // indirect
 	github.com/briandowns/spinner v1.23.0 // indirect
+	github.com/btwiuse/connect v0.0.5 // indirect
 	github.com/btwiuse/wsconn v0.0.1 // indirect
 	github.com/bufbuild/protocompile v0.8.0 // indirect
 	github.com/bytedance/sonic v1.9.1 // indirect
@@ -110,9 +108,9 @@ require (
 	github.com/hashicorp/go-retryablehttp v0.7.5 // indirect
 	github.com/hashicorp/go-version v1.6.0 // indirect
 	github.com/jhump/protoreflect v1.15.6 // indirect
-	github.com/jpillora/ansi v1.0.2 // indirect
-	github.com/jpillora/requestlog v1.0.0 // indirect
-	github.com/jpillora/sizestr v1.0.0 // indirect
+	github.com/jpillora/ansi v0.0.0-20170202005112-f496b27cd669 // indirect
+	github.com/jpillora/requestlog v0.0.0-20181015073026-df8817be5f82 // indirect
+	github.com/jpillora/sizestr v0.0.0-20160130011556-e2ea2fa42fb9 // indirect
 	github.com/json-iterator/go v1.1.12 // indirect
 	github.com/julienschmidt/httprouter v1.3.0 // indirect
 	github.com/kataras/basicauth v0.0.3 // indirect
