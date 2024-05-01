@@ -9,6 +9,7 @@ import (
 	"github.com/webteleport/relay"
 	"github.com/webteleport/ufo/apps/relay/envs"
 	"github.com/webteleport/utils"
+	"github.com/webteleport/wtf"
 )
 
 func listenHTTP(handler http.Handler) error {
@@ -30,6 +31,15 @@ func Run([]string) (err error) {
 				AltSvcMiddleware(store),
 			),
 		)
+	}
+
+	extra := os.Getenv("EXTRA")
+	if extra != "" {
+		upgrader := &relay.WebsocketUpgrader{
+			HOST: envs.HOST,
+		}
+		go wtf.Serve(extra, upgrader)
+		go store.Subscribe(upgrader)
 	}
 
 	return listenHTTP(s)
