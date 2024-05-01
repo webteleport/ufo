@@ -40,7 +40,7 @@ require (
 	github.com/webteleport/relay v0.4.17
 	github.com/webteleport/utils v0.2.14
 	github.com/webteleport/webteleport v0.5.21
-	github.com/webteleport/wtf v0.1.20
+	github.com/webteleport/wtf v0.1.21
 	golang.org/x/net v0.24.0
 	google.golang.org/grpc v1.62.1
 	google.golang.org/protobuf v1.33.0
