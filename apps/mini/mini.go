@@ -9,6 +9,7 @@ import (
 	"github.com/webteleport/relay"
 	"github.com/webteleport/ufo/apps/relay/envs"
 	"github.com/webteleport/utils"
+	"github.com/webteleport/webteleport/transport/websocket"
 	"github.com/webteleport/wtf"
 )
 
@@ -35,7 +36,7 @@ func Run([]string) (err error) {
 
 	extra := os.Getenv("EXTRA")
 	if extra != "" {
-		upgrader := &relay.WebsocketUpgrader{
+		upgrader := &websocket.Upgrader{
 			HOST: envs.HOST,
 		}
 		go wtf.Serve(extra, upgrader)
