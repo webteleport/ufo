@@ -1,0 +1,26 @@
+# .goreleaser.yaml
+
+before:
+  hooks:
+    - go mod tidy
+
+builds:
+  - id: ufo
+    env:
+      - CGO_ENABLED=0
+    main: ./cmd/ufo
+    ldflags:
+      - -s -w -X "github.com/btwiuse/version.MajorString=0"
+      - -s -w -X "github.com/btwiuse/version.MinorString=6"
+      - -s -w -X "github.com/btwiuse/version.GitCommitString={{.Commit}}"
+      - -s -w -X "github.com/btwiuse/version.GitTreeStateString=clean"
+      - -s -w -X "github.com/btwiuse/version.GitVersionString={{.Version}}"
+      - -s -w -X "github.com/btwiuse/version.BuildDateString={{.Date}}"
+
+archives:
+  - id: archive
+    builds:
+     - ufo
+    format: zip
+    files:
+      - LICENSE
