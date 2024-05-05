@@ -76,6 +76,13 @@ var services = map[string]Service{
 
 func Handler() http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
+		if r.URL.Query().Get("go-get") == "1" {
+			template := `<meta name="go-import" content="%s git %s">`
+			root := r.Host
+			repo := fmt.Sprintf("https://%s%s", root, r.URL.Path)
+			fmt.Fprintf(w, template, root, repo)
+			return
+		}
 		// log.Printf("%s %s %s %s", r.RemoteAddr, r.Method, r.URL.Path, r.Proto)
 		for match, service := range services {
 			re, err := regexp.Compile(match)
