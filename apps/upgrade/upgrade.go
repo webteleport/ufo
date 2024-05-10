@@ -33,7 +33,7 @@ func upgrade(version string) error {
 
 	log.Println(fmt.Sprintf("found latest: %s", latest.AssetURL))
 
-	if latest.LessOrEqual(version) {
+	if version != "" && latest.LessOrEqual(version) {
 		log.Printf("Current version (%s) is the latest", version)
 		return nil
 	}
