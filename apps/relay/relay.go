@@ -7,6 +7,7 @@ import (
 	"log/slog"
 	"net"
 	"net/http"
+	"os"
 
 	"github.com/caddyserver/certmagic"
 	"github.com/webteleport/relay"
@@ -113,21 +114,14 @@ func Run([]string) (err error) {
 	}
 
 	store := relay.NewSessionStore()
-	s := relay.NewWSServer(envs.HOST, store).
-		WithPostUpgrade(
-			utils.GinLoggerMiddleware(
-				// Set the Alt-Svc header for UDP port discovery && http3 bootstrapping
-				AltSvcMiddleware(store),
-			),
-		)
+	if os.Getenv("LOGGIN") != "" {
+		store.Use(utils.GinLoggerMiddleware)
+		store.Use(AltSvcMiddleware)
+	}
+	s := relay.NewWSServer(envs.HOST, store)
 	t := relay.NewWTServer(envs.HOST, store).
 		WithAddr(envs.UDP_PORT).
-		WithTLSConfig(GlobalTLSConfig).
-		WithPostUpgrade(
-			utils.GinLoggerMiddleware(
-				store,
-			),
-		)
+		WithTLSConfig(GlobalTLSConfig)
 
 	return listenAll(s, t, GlobalTLSConfig)
 }

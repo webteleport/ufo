@@ -24,15 +24,11 @@ func listenHTTP(handler http.Handler) error {
 
 func Run([]string) (err error) {
 	store := relay.NewSessionStore()
-	s := relay.NewWSServer(envs.HOST, store)
 	if os.Getenv("LOGGIN") != "" {
-		s.WithPostUpgrade(
-			utils.GinLoggerMiddleware(
-				// Set the Alt-Svc header for UDP port discovery && http3 bootstrapping
-				AltSvcMiddleware(store),
-			),
-		)
+		store.Use(utils.GinLoggerMiddleware)
+		store.Use(AltSvcMiddleware)
 	}
+	s := relay.NewWSServer(envs.HOST, store)
 
 	extra := os.Getenv("EXTRA")
 	if extra != "" {
