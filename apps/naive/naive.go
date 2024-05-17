@@ -33,7 +33,7 @@ func Run([]string) error {
 	log.Println("🛸 listening on", fmt.Sprintf("%s://%s", ln2.Addr().Network(), ln2.Addr().String()))
 
 	os.Setenv("CONNECT_VERBOSE", "1")
-	h := relay.NewConnectHandler()
+	h := relay.NewProxyHandler()
 
 	go http.Serve(ln1, h)
 	return http.Serve(ln2, h)
