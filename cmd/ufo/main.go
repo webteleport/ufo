@@ -22,6 +22,7 @@ import (
 	"github.com/webteleport/ufo/apps/grafana"
 	"github.com/webteleport/ufo/apps/hdr"
 	"github.com/webteleport/ufo/apps/hello"
+	"github.com/webteleport/ufo/apps/raw"
 	"github.com/webteleport/ufo/apps/intercept"
 	"github.com/webteleport/ufo/apps/ip"
 	"github.com/webteleport/ufo/apps/logbody"
@@ -117,6 +118,8 @@ var cmdRun multicall.RunnerFuncMap = map[string]multicall.RunnerFunc{
 	"portmux": portmux.Run,
 	// hello world
 	"hello": hello.Run,
+	// raw
+	"raw": raw.Run,
 	// echo request
 	"echo": echo.Run,
 
