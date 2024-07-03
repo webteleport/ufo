@@ -21,6 +21,7 @@ archives:
   - id: archive
     builds:
      - ufo
-    format: zip
     files:
       - LICENSE
+    name_template: >-
+      {{ .ProjectName }}-{{- .Os }}-{{ .Arch }}
