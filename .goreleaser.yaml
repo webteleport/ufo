@@ -25,3 +25,6 @@ archives:
       - LICENSE
     name_template: >-
       {{ .ProjectName }}-{{- .Os }}-{{ .Arch }}
+    format_overrides:
+      - goos: windows
+        format: zip
