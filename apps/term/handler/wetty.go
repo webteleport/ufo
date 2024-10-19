@@ -1,7 +1,6 @@
 package handler
 
 import (
-	"fmt"
 	"log"
 	"net"
 	"net/http"
@@ -129,19 +128,9 @@ func (a *auto) serveConn(conn net.Conn, nth int) {
 		}
 	}()
 
-	logname := fmt.Sprintf("/tmp/term-%d.log", nth)
-	logfile, err := os.Create(logname)
-	if err == nil {
-		defer func() {
-			exec.Command("dkg-push", logname).Run()
-			log.Println("log written to", logname)
-		}()
-	}
-
 	opts := []asciitransport.Opt{
 		asciitransport.WithReader(term),
 		asciitransport.WithWriter(term),
-		asciitransport.WithLogger(logfile),
 	}
 	server.ApplyOpts(opts...)
 
