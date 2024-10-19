@@ -12,7 +12,7 @@ require (
 	connectrpc.com/connect v1.16.1
 	github.com/btwiuse/better v0.0.0
 	github.com/btwiuse/bingo v0.0.3
-	github.com/btwiuse/dl v0.0.0-20240308134010-226f1d1d872f
+	github.com/btwiuse/dl v0.0.1
 	github.com/btwiuse/gost v0.0.4
 	github.com/btwiuse/multicall v0.0.5
 	github.com/btwiuse/portmux v0.1.0
