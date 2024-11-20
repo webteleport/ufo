@@ -31,15 +31,15 @@ require (
 	github.com/mdp/qrterminal/v3 v3.2.0
 	github.com/patrickmn/go-cache v2.1.0+incompatible
 	github.com/phayes/freeport v0.0.0-20220201140144-74d24b5ae9f5
-	github.com/quic-go/quic-go v0.48.0
+	github.com/quic-go/quic-go v0.48.1
 	github.com/tidwall/gjson v1.14.4
 	github.com/v2fly/v2ray-core/v5 v5.15.1
 	github.com/vmware-labs/wasm-workers-server v1.7.0
 	// github.com/webteleport/caddy-webteleport v0.0.1
 	github.com/webteleport/auth v0.0.9
-	github.com/webteleport/relay v0.4.34
+	github.com/webteleport/relay v0.4.36
 	github.com/webteleport/utils v0.2.16
-	github.com/webteleport/webteleport v0.5.33
+	github.com/webteleport/webteleport v0.5.35
 	github.com/webteleport/wtf v0.1.27
 	golang.org/x/net v0.30.0
 	google.golang.org/grpc v1.62.1
@@ -66,7 +66,7 @@ require (
 	github.com/btwiuse/connect v0.0.5 // indirect
 	github.com/btwiuse/forward v0.0.0 // indirect
 	github.com/btwiuse/muxr v0.0.1 // indirect
-	github.com/btwiuse/wsconn v0.0.2 // indirect
+	github.com/btwiuse/wsconn v0.0.3 // indirect
 	github.com/bufbuild/protocompile v0.8.0 // indirect
 	github.com/bytedance/sonic v1.9.1 // indirect
 	github.com/chenzhuoyu/base64x v0.0.0-20221115062448-fe3a3abad311 // indirect
@@ -102,7 +102,7 @@ require (
 	github.com/google/pprof v0.0.0-20230821062121-407c9e7a662f // indirect
 	github.com/google/uuid v1.6.0 // indirect
 	github.com/gorilla/handlers v1.5.2 // indirect
-	github.com/gorilla/websocket v1.5.1 // indirect
+	github.com/gorilla/websocket v1.5.3 // indirect
 	github.com/hashicorp/go-cleanhttp v0.5.2 // indirect
 	github.com/hashicorp/go-retryablehttp v0.7.5 // indirect
 	github.com/hashicorp/go-version v1.6.0 // indirect
