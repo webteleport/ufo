@@ -17,7 +17,7 @@ require (
 	github.com/btwiuse/multicall v0.0.5
 	github.com/btwiuse/portmux v0.1.0
 	github.com/btwiuse/pretty v0.2.1
-	github.com/btwiuse/pub v0.3.8
+	github.com/btwiuse/pub v0.3.9
 	github.com/btwiuse/rng v0.0.1
 	github.com/btwiuse/sse v0.0.1
 	github.com/btwiuse/tags v0.0.2
