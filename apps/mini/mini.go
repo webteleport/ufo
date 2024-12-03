@@ -33,7 +33,7 @@ func Run([]string) (err error) {
 	extra := os.Getenv("EXTRA")
 	if extra != "" {
 		upgrader := &websocket.Upgrader{
-			HOST: envs.HOST,
+			RootPatterns: []string{envs.HOST},
 		}
 		go wtf.Serve(extra, upgrader)
 		go store.Subscribe(upgrader)
