@@ -31,13 +31,13 @@ require (
 	github.com/mdp/qrterminal/v3 v3.2.0
 	github.com/patrickmn/go-cache v2.1.0+incompatible
 	github.com/phayes/freeport v0.0.0-20220201140144-74d24b5ae9f5
-	github.com/quic-go/quic-go v0.48.1
+	github.com/quic-go/quic-go v0.48.2
 	github.com/tidwall/gjson v1.14.4
 	github.com/v2fly/v2ray-core/v5 v5.15.1
 	github.com/vmware-labs/wasm-workers-server v1.7.0
 	// github.com/webteleport/caddy-webteleport v0.0.1
 	github.com/webteleport/auth v0.0.9
-	github.com/webteleport/relay v0.4.36
+	github.com/webteleport/relay v0.4.37
 	github.com/webteleport/utils v0.2.16
 	github.com/webteleport/webteleport v0.5.35
 	github.com/webteleport/wtf v0.1.27
