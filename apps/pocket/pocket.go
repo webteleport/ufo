@@ -30,6 +30,11 @@ func Run(args []string) error {
 			log.Println("starting the relay server", "HOST", HOST)
 
 			store := relay.NewSessionStore()
+
+			if os.Getenv("LOGGIN") != "" {
+				store.Use(utils.GinLoggerMiddleware)
+			}
+
 			mini := relay.NewWSServer(HOST, store)
 
 			se.Router.BindFunc(func(re *core.RequestEvent) error {
