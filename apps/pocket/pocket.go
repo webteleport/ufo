@@ -1,3 +1,4 @@
+// this version of pocket doesn't support connect proxy
 package pocket
 
 import (

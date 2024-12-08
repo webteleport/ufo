@@ -77,7 +77,7 @@ func Run(args []string) error {
 	upstream := args[0]
 	cmdargs := args[1:]
 
-	log.Println("HTTPS_PORT:", HTTPS_PORT)
+	log.Println("HTTPS_PORT:", *HTTPS_PORT)
 	log.Println("PORT:", PORT)
 	log.Println("upstream:", upstream)
 	log.Println("cmdargs:", cmdargs)
@@ -92,6 +92,6 @@ func Run(args []string) error {
 		return err
 	}
 
-	router := utils.ReverseProxy(upstream)
+	router := utils.TransparentProxy(upstream)
 	return ListenAndServe(router)
 }
