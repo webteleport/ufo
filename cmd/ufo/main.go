@@ -22,7 +22,6 @@ import (
 	"github.com/webteleport/ufo/apps/grafana"
 	"github.com/webteleport/ufo/apps/hdr"
 	"github.com/webteleport/ufo/apps/hello"
-	"github.com/webteleport/ufo/apps/raw"
 	"github.com/webteleport/ufo/apps/intercept"
 	"github.com/webteleport/ufo/apps/ip"
 	"github.com/webteleport/ufo/apps/logbody"
@@ -34,7 +33,9 @@ import (
 	"github.com/webteleport/ufo/apps/nc"
 	"github.com/webteleport/ufo/apps/notfound"
 	"github.com/webteleport/ufo/apps/pkgpath"
+	"github.com/webteleport/ufo/apps/pocket"
 	"github.com/webteleport/ufo/apps/proxy"
+	"github.com/webteleport/ufo/apps/raw"
 	"github.com/webteleport/ufo/apps/relay"
 	"github.com/webteleport/ufo/apps/resolve"
 	"github.com/webteleport/ufo/apps/ser"
@@ -126,9 +127,10 @@ var cmdRun multicall.RunnerFuncMap = map[string]multicall.RunnerFunc{
 	// Core
 
 	// relay
-	"hub":   relay.Run,
-	"relay": relay.Run,
-	"mini":  mini.Run,
+	"hub":    relay.Run,
+	"relay":  relay.Run,
+	"pocket": pocket.Run,
+	"mini":   mini.Run,
 	// version info
 	"version": version.Run,
 	// binary upgrade
