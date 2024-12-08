@@ -47,6 +47,7 @@ import (
 	"github.com/webteleport/ufo/apps/sse"
 	"github.com/webteleport/ufo/apps/teleport"
 	"github.com/webteleport/ufo/apps/term"
+	"github.com/webteleport/ufo/apps/tlserve"
 	"github.com/webteleport/ufo/apps/upgrade"
 	"github.com/webteleport/ufo/apps/upload"
 	"github.com/webteleport/ufo/apps/v2ray"
@@ -127,10 +128,11 @@ var cmdRun multicall.RunnerFuncMap = map[string]multicall.RunnerFunc{
 	// Core
 
 	// relay
-	"hub":    relay.Run,
-	"relay":  relay.Run,
-	"pocket": pocket.Run,
-	"mini":   mini.Run,
+	"hub":     relay.Run,
+	"relay":   relay.Run,
+	"pocket":  pocket.Run,
+	"tlserve": tlserve.Run,
+	"mini":    mini.Run,
 	// version info
 	"version": version.Run,
 	// binary upgrade
