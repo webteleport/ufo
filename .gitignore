@@ -28,3 +28,4 @@ core
 
 # goreleaser
 /dist/
+pb_data
