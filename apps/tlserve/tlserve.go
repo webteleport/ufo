@@ -8,6 +8,7 @@ import (
 	"os"
 	"os/exec"
 
+	"github.com/webteleport/relay"
 	"github.com/webteleport/utils"
 )
 
@@ -93,5 +94,17 @@ func Run(args []string) error {
 	}
 
 	router := utils.TransparentProxy(upstream)
-	return ListenAndServe(router)
+	handler := utils.GinLoggerMiddleware(withProxy(router))
+	return ListenAndServe(handler)
+}
+
+func withProxy(next http.Handler) http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		switch {
+		case relay.IsProxy(r):
+			relay.AuthenticatedProxyHandler.ServeHTTP(w, r)
+		default:
+			next.ServeHTTP(w, r)
+		}
+	})
 }
