@@ -45,7 +45,7 @@ func (args *ServeWebArgs) getLatestVersionInfo() (*VersionInfo, error) {
 	}
 	resp, err := http.Get(link)
 	if err != nil {
-		fallbackVersion := &VersionInfo{ Version: "latest" }
+		fallbackVersion := &VersionInfo{Version: "latest"}
 		log.Println(fmt.Errorf("failed to make request: %w, falling back to: %v", err, fallbackVersion))
 		return fallbackVersion, nil
 	}

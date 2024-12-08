@@ -2,8 +2,8 @@ package raw
 
 import (
 	"bufio"
-	"errors"
 	"context"
+	"errors"
 	"io"
 	"log"
 	"net/http"

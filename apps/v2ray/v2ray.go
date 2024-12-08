@@ -115,12 +115,28 @@ func BuildConfigJSON(port int, clients ...string) string {
 
 	builder.AddInbound(trojanInbound)
 
-	outbound := Outbound{
+	freeOutbound := Outbound{
 		Protocol: "freedom",
 		Settings: make(map[string]interface{}),
 	}
 
-	builder.AddOutbound(outbound)
+	torOutbound := Outbound{
+		Protocol: "socks",
+		Settings: map[string]interface{}{
+			"servers": []map[string]interface{}{
+				{
+					"address": "127.0.0.1",
+					"port":    9050,
+				},
+			},
+		},
+	}
+
+	if os.Getenv("TOR_OUTBOUND") != "" {
+		builder.AddOutbound(torOutbound)
+	} else {
+		builder.AddOutbound(freeOutbound)
+	}
 	config, err := builder.Build()
 
 	if err != nil {
