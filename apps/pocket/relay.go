@@ -37,8 +37,8 @@ var RelayHook = &hook.Handler[*core.ServeEvent]{
 			isUI := strings.HasPrefix(r.URL.Path, "/_/")
 			isPocketbase := isPocketbaseHost && (isAPI || isUI)
 
-			if os.Getenv("DEBUG") != "" {
-				log.Println(fmt.Sprintf("isPocketbase (%v) := isPocketbaseHost (%v) && (isAPI (%v) || isUI (%v))\n", isPocketbase, isPocketbaseHost, isAPI, isUI))
+			if os.Getenv("VERBOSE") != "" {
+				log.Println(fmt.Sprintf("isPocketbase (%v) := isPocketbaseHost (%v) && (isAPI (%v) || isUI (%v))", isPocketbase, isPocketbaseHost, isAPI, isUI))
 			}
 
 			// route non pocketbase requests to relay

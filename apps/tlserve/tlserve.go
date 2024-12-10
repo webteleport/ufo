@@ -94,7 +94,11 @@ func Run(args []string) error {
 	}
 
 	router := utils.TransparentProxy(upstream)
-	handler := utils.GinLoggerMiddleware(withProxy(router))
+	handler := withProxy(router)
+	if os.Getenv("LOGGIN") != "" {
+		handler = utils.GinLoggerMiddleware(handler)
+	}
+
 	return ListenAndServe(handler)
 }
 
