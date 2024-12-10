@@ -13,7 +13,7 @@ import (
 	"github.com/btwiuse/rng"
 	"github.com/mdp/qrterminal/v3"
 	"github.com/phayes/freeport"
-	core "github.com/v2fly/v2ray-core/v5"
+	"github.com/xtls/xray-core/core"
 	"github.com/webteleport/ufo/apps"
 	"github.com/webteleport/utils"
 	"github.com/webteleport/webteleport"
@@ -206,7 +206,7 @@ func Run(args []string) error {
 
 	configJSON := BuildConfigJSON(randport, uid)
 	// fmt.Println(configJSON)
-	config, err := core.LoadConfig(core.FormatJSON, strings.NewReader(configJSON))
+	config, err := core.LoadConfig("json", strings.NewReader(configJSON))
 	if err != nil {
 		return err
 	}
