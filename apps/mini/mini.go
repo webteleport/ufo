@@ -23,12 +23,11 @@ func listenHTTP(handler http.Handler) error {
 }
 
 func Run([]string) (err error) {
-	store := relay.NewSessionStore()
+	s := relay.DefaultWSServer(envs.HOST)
 	if os.Getenv("LOGGIN") != "" {
-		store.Use(utils.GinLoggerMiddleware)
-		store.Use(AltSvcMiddleware)
+		s.Use(utils.GinLoggerMiddleware)
+		s.Use(AltSvcMiddleware)
 	}
-	s := relay.NewWSServer(envs.HOST, store)
 
 	extra := os.Getenv("EXTRA")
 	if extra != "" {
@@ -36,7 +35,7 @@ func Run([]string) (err error) {
 			RootPatterns: []string{envs.HOST},
 		}
 		go wtf.Serve(extra, upgrader)
-		go store.Subscribe(upgrader)
+		go s.Subscribe(upgrader)
 	}
 
 	return listenHTTP(s)

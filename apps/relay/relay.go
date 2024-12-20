@@ -113,13 +113,13 @@ func Run([]string) (err error) {
 		}
 	}
 
-	store := relay.NewSessionStore()
+	s := relay.DefaultWSServer(envs.HOST)
 	if os.Getenv("LOGGIN") != "" {
-		store.Use(utils.GinLoggerMiddleware)
-		store.Use(AltSvcMiddleware)
+		s.Use(utils.GinLoggerMiddleware)
+		s.Use(AltSvcMiddleware)
 	}
-	s := relay.NewWSServer(envs.HOST, store)
-	t := relay.NewWTServer(envs.HOST, store).
+
+	t := relay.DefaultWTServer(envs.HOST).
 		WithAddr(envs.UDP_PORT).
 		WithTLSConfig(GlobalTLSConfig)
 

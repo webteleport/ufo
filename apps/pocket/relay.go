@@ -22,13 +22,11 @@ var RelayHook = &hook.Handler[*core.ServeEvent]{
 
 		log.Println("starting the relay server", "HOST", HOST)
 
-		store := relay.NewSessionStore()
+		mini := relay.DefaultWSServer(HOST)
 
 		if os.Getenv("LOGGIN") != "" {
-			store.Use(utils.GinLoggerMiddleware)
+			mini.Use(utils.GinLoggerMiddleware)
 		}
-
-		mini := relay.NewWSServer(HOST, store)
 
 		se.Router.BindFunc(func(re *core.RequestEvent) error {
 			r := re.Event.Request
