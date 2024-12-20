@@ -13,10 +13,10 @@ import (
 	"github.com/btwiuse/rng"
 	"github.com/mdp/qrterminal/v3"
 	"github.com/phayes/freeport"
-	"github.com/xtls/xray-core/core"
 	"github.com/webteleport/ufo/apps"
 	"github.com/webteleport/utils"
 	"github.com/webteleport/webteleport"
+	"github.com/xtls/xray-core/core"
 )
 
 type Inbound struct {

@@ -31,7 +31,7 @@ require (
 	github.com/mdp/qrterminal/v3 v3.2.0
 	github.com/patrickmn/go-cache v2.1.0+incompatible
 	github.com/phayes/freeport v0.0.0-20220201140144-74d24b5ae9f5
-	github.com/pocketbase/pocketbase v0.23.5
+	github.com/pocketbase/pocketbase v0.23.11
 	github.com/quic-go/quic-go v0.48.2
 	github.com/tidwall/gjson v1.14.4
 	github.com/vmware-labs/wasm-workers-server v1.7.0
@@ -42,9 +42,9 @@ require (
 	github.com/webteleport/webteleport v0.5.38
 	github.com/webteleport/wtf v0.1.28
 	github.com/xtls/xray-core v1.8.24
-	golang.org/x/net v0.32.0
-	google.golang.org/grpc v1.68.1
-	google.golang.org/protobuf v1.35.2
+	golang.org/x/net v0.33.0
+	google.golang.org/grpc v1.69.2
+	google.golang.org/protobuf v1.36.0
 	k0s.io/pkg/agent v0.1.15
 	k0s.io/pkg/asciitransport v0.1.15
 	k0s.io/pkg/dial v0.1.15
@@ -172,7 +172,7 @@ require (
 	github.com/pelletier/go-toml/v2 v2.0.8 // indirect
 	github.com/pires/go-proxyproto v0.7.0 // indirect
 	github.com/pkg/errors v0.9.1 // indirect
-	github.com/pocketbase/dbx v1.10.1 // indirect
+	github.com/pocketbase/dbx v1.11.0 // indirect
 	github.com/quic-go/qpack v0.5.1 // indirect
 	github.com/quic-go/webtransport-go v0.8.1-0.20241018022711-4ac2c9250e66 // indirect
 	github.com/refraction-networking/utls v1.6.7 // indirect
@@ -186,7 +186,7 @@ require (
 	github.com/shadowsocks/go-shadowsocks2 v0.1.5 // indirect
 	github.com/shadowsocks/shadowsocks-go v0.0.0-20200409064450-3e585ff90601 // indirect
 	github.com/songgao/water v0.0.0-20200317203138-2b4b6d7c09d8 // indirect
-	github.com/spf13/cast v1.7.0 // indirect
+	github.com/spf13/cast v1.7.1 // indirect
 	github.com/spf13/cobra v1.8.1 // indirect
 	github.com/spf13/pflag v1.0.5 // indirect
 	github.com/templexxx/cpu v0.0.7 // indirect
@@ -217,7 +217,7 @@ require (
 	go4.org/netipx v0.0.0-20231129151722-fdeea329fbba // indirect
 	gocloud.dev v0.40.0 // indirect
 	golang.org/x/arch v0.3.0 // indirect
-	golang.org/x/crypto v0.30.0 // indirect
+	golang.org/x/crypto v0.31.0 // indirect
 	golang.org/x/exp v0.0.0-20241204233417-43b7b7cde48d // indirect
 	golang.org/x/image v0.23.0 // indirect
 	golang.org/x/mod v0.22.0 // indirect
@@ -231,19 +231,19 @@ require (
 	golang.org/x/xerrors v0.0.0-20240903120638-7835f813f4da // indirect
 	golang.zx2c4.com/wintun v0.0.0-20230126152724-0fa3db229ce2 // indirect
 	golang.zx2c4.com/wireguard v0.0.0-20231211153847-12269c276173 // indirect
-	google.golang.org/api v0.210.0 // indirect
-	google.golang.org/genproto/googleapis/rpc v0.0.0-20241206012308-a4fef0638583 // indirect
+	google.golang.org/api v0.213.0 // indirect
+	google.golang.org/genproto/googleapis/rpc v0.0.0-20241216192217-9240e9c98484 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 	gvisor.dev/gvisor v0.0.0-20231202080848-1f7806d17489 // indirect
 	k0s.io v0.1.15 // indirect
 	k8s.io/apimachinery v0.29.2 // indirect
 	lukechampine.com/blake3 v1.3.0 // indirect
-	modernc.org/gc/v3 v3.0.0-20241004144649-1aea3fae8852 // indirect
+	modernc.org/gc/v3 v3.0.0-20241213165251-3bc300f6d0c9 // indirect
 	modernc.org/libc v1.61.4 // indirect
 	modernc.org/mathutil v1.6.0 // indirect
 	modernc.org/memory v1.8.0 // indirect
-	modernc.org/sqlite v1.34.2 // indirect
+	modernc.org/sqlite v1.34.3 // indirect
 	modernc.org/strutil v1.2.0 // indirect
 	modernc.org/token v1.1.0 // indirect
 	nhooyr.io/websocket v1.8.17 // indirect
