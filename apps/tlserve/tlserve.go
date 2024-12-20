@@ -8,7 +8,7 @@ import (
 	"os"
 	"os/exec"
 
-	"github.com/webteleport/relay"
+	"github.com/btwiuse/proxy"
 	"github.com/webteleport/utils"
 )
 
@@ -105,8 +105,8 @@ func Run(args []string) error {
 func withProxy(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch {
-		case relay.IsProxy(r):
-			relay.AuthenticatedProxyHandler.ServeHTTP(w, r)
+		case proxy.IsProxy(r):
+			proxy.AuthenticatedProxyHandler.ServeHTTP(w, r)
 		default:
 			next.ServeHTTP(w, r)
 		}

@@ -17,6 +17,7 @@ require (
 	github.com/btwiuse/multicall v0.0.5
 	github.com/btwiuse/portmux v0.1.0
 	github.com/btwiuse/pretty v0.2.1
+	github.com/btwiuse/proxy v0.0.0
 	github.com/btwiuse/pub v0.3.9
 	github.com/btwiuse/rng v0.0.1
 	github.com/btwiuse/sse v0.0.1
@@ -37,7 +38,7 @@ require (
 	github.com/vmware-labs/wasm-workers-server v1.7.0
 	// github.com/webteleport/caddy-webteleport v0.0.1
 	github.com/webteleport/auth v0.0.9
-	github.com/webteleport/relay v0.4.48
+	github.com/webteleport/relay v0.4.49
 	github.com/webteleport/utils v0.2.17
 	github.com/webteleport/webteleport v0.5.38
 	github.com/webteleport/wtf v0.1.28
