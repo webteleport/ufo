@@ -38,7 +38,7 @@ require (
 	github.com/vmware-labs/wasm-workers-server v1.7.0
 	// github.com/webteleport/caddy-webteleport v0.0.1
 	github.com/webteleport/auth v0.0.9
-	github.com/webteleport/relay v0.4.50
+	github.com/webteleport/relay v0.4.51-alpha.1
 	github.com/webteleport/utils v0.2.17
 	github.com/webteleport/webteleport v0.5.38
 	github.com/webteleport/wtf v0.1.28
