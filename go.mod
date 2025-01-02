@@ -24,17 +24,17 @@ require (
 	github.com/btwiuse/tags v0.0.2
 	github.com/btwiuse/version v0.0.1
 	github.com/caddyserver/certmagic v0.20.0
+	github.com/chadgpt/gopilot v0.0.0
 	github.com/creativeprojects/go-selfupdate v1.2.0
 	github.com/fermyon/spin/sdk/go/v2 v2.2.0
-	github.com/gin-gonic/gin v1.9.1
 	github.com/hashicorp/yamux v0.1.1
 	github.com/jpillora/go-echo-server v0.5.0
 	github.com/mdp/qrterminal/v3 v3.2.0
-	github.com/patrickmn/go-cache v2.1.0+incompatible
+	github.com/patrickmn/go-cache v2.1.0+incompatible // indirect
 	github.com/phayes/freeport v0.0.0-20220201140144-74d24b5ae9f5
 	github.com/pocketbase/pocketbase v0.23.11
 	github.com/quic-go/quic-go v0.48.2
-	github.com/tidwall/gjson v1.14.4
+	github.com/tidwall/gjson v1.17.0 // indirect
 	github.com/vmware-labs/wasm-workers-server v1.7.0
 	// github.com/webteleport/caddy-webteleport v0.0.1
 	github.com/webteleport/auth v0.0.9
@@ -90,8 +90,6 @@ require (
 	github.com/btwiuse/forward v0.0.0 // indirect
 	github.com/btwiuse/muxr v0.0.1 // indirect
 	github.com/btwiuse/wsconn v0.0.3 // indirect
-	github.com/bytedance/sonic v1.9.1 // indirect
-	github.com/chenzhuoyu/base64x v0.0.0-20221115062448-fe3a3abad311 // indirect
 	github.com/cloudflare/circl v1.4.0 // indirect
 	github.com/containerd/console v1.0.4 // indirect
 	github.com/coreos/go-iptables v0.6.0 // indirect
@@ -115,7 +113,6 @@ require (
 	github.com/gabriel-vasile/mimetype v1.4.7 // indirect
 	github.com/ganigeorgiev/fexpr v0.4.1 // indirect
 	github.com/ghodss/yaml v1.0.1-0.20220118164431-d8423dcdf344 // indirect
-	github.com/gin-contrib/sse v0.1.0 // indirect
 	github.com/go-fed/httpsig v1.1.0 // indirect
 	github.com/go-gost/gosocks4 v0.0.1 // indirect
 	github.com/go-gost/gosocks5 v0.3.0 // indirect
@@ -123,13 +120,9 @@ require (
 	github.com/go-gost/tls-dissector v0.0.2-0.20220408131628-aac992c27451 // indirect
 	github.com/go-log/log v0.2.0 // indirect
 	github.com/go-ozzo/ozzo-validation/v4 v4.3.0 // indirect
-	github.com/go-playground/locales v0.14.1 // indirect
-	github.com/go-playground/universal-translator v0.18.1 // indirect
-	github.com/go-playground/validator/v10 v10.14.0 // indirect
 	github.com/go-sourcemap/sourcemap v2.1.4+incompatible // indirect
 	github.com/go-task/slim-sprig/v3 v3.0.0 // indirect
 	github.com/gobwas/glob v0.2.3 // indirect
-	github.com/goccy/go-json v0.10.2 // indirect
 	github.com/golang-jwt/jwt/v4 v4.5.1 // indirect
 	github.com/golang/groupcache v0.0.0-20241129210726-2c02b8208cf8 // indirect
 	github.com/google/btree v1.1.2 // indirect
@@ -157,7 +150,6 @@ require (
 	github.com/klauspost/cpuid/v2 v2.2.7 // indirect
 	github.com/klauspost/reedsolomon v1.9.15 // indirect
 	github.com/koding/websocketproxy v0.0.0-20181220232114-7ed82d81a28c // indirect
-	github.com/leodido/go-urn v1.2.4 // indirect
 	github.com/libdns/libdns v0.2.1 // indirect
 	github.com/lukesampson/figlet v0.0.0-20190211215653-8a3ef4a6ac42 // indirect
 	github.com/mattn/go-colorable v0.1.13 // indirect
@@ -170,7 +162,6 @@ require (
 	github.com/ncruces/go-strftime v0.1.9 // indirect
 	github.com/onsi/ginkgo/v2 v2.19.0 // indirect
 	github.com/pelletier/go-toml v1.9.5 // indirect
-	github.com/pelletier/go-toml/v2 v2.0.8 // indirect
 	github.com/pires/go-proxyproto v0.7.0 // indirect
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/pocketbase/dbx v1.11.0 // indirect
@@ -197,8 +188,6 @@ require (
 	github.com/tidwall/sjson v1.2.5 // indirect
 	github.com/tjfoc/gmsm v1.4.1 // indirect
 	github.com/tomasen/realip v0.0.0-20180522021738-f0c99a92ddce // indirect
-	github.com/twitchyliquid64/golang-asm v0.15.1 // indirect
-	github.com/ugorji/go/codec v1.2.11 // indirect
 	github.com/ulikunitz/xz v0.5.11 // indirect
 	github.com/v2fly/ss-bloomring v0.0.0-20210312155135-28617310f63e // indirect
 	github.com/vishvananda/netlink v1.3.0 // indirect
@@ -217,7 +206,6 @@ require (
 	go.uber.org/zap v1.27.0 // indirect
 	go4.org/netipx v0.0.0-20231129151722-fdeea329fbba // indirect
 	gocloud.dev v0.40.0 // indirect
-	golang.org/x/arch v0.3.0 // indirect
 	golang.org/x/crypto v0.31.0 // indirect
 	golang.org/x/exp v0.0.0-20241204233417-43b7b7cde48d // indirect
 	golang.org/x/image v0.23.0 // indirect
