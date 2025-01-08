@@ -53,6 +53,7 @@ import (
 	"github.com/webteleport/ufo/apps/v2ray"
 	"github.com/webteleport/ufo/apps/version"
 	"github.com/webteleport/ufo/apps/vsc"
+	"github.com/webteleport/ufo/apps/wbdv"
 	"github.com/webteleport/ufo/apps/who"
 	"github.com/webteleport/ufo/apps/whois"
 )
@@ -144,6 +145,8 @@ var cmdRun multicall.RunnerFuncMap = map[string]multicall.RunnerFunc{
 	"gopilot": gopilot.Run,
 	// web terminal
 	"term": term.Run,
+	// webdav
+	"wbdv": wbdv.Run,
 	// vscode server
 	"vsc": vsc.Run,
 	// whois lookup
