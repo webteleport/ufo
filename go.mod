@@ -24,7 +24,7 @@ require (
 	github.com/btwiuse/tags v0.0.2
 	github.com/btwiuse/version v0.0.1
 	github.com/caddyserver/certmagic v0.20.0
-	github.com/chadgpt/gopilot v0.0.2
+	github.com/chadgpt/gopilot v0.0.3
 	github.com/creativeprojects/go-selfupdate v1.2.0
 	github.com/fermyon/spin/sdk/go/v2 v2.2.0
 	github.com/hashicorp/yamux v0.1.1
