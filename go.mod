@@ -11,7 +11,7 @@ go 1.24
 require (
 	connectrpc.com/connect v1.18.1
 	github.com/btwiuse/better v0.0.0
-	github.com/btwiuse/bingo v0.0.3
+	github.com/btwiuse/bingo v0.0.5 // indirect
 	github.com/btwiuse/dl v0.0.1
 	github.com/btwiuse/gost v0.0.4
 	github.com/btwiuse/multicall v0.0.5
@@ -231,3 +231,5 @@ require (
 	nhooyr.io/websocket v1.8.17 // indirect
 	rsc.io/qr v0.2.0 // indirect
 )
+
+tool github.com/btwiuse/bingo/cmd/bingo

@@ -11,6 +11,7 @@ LDFLAGS  := $(shell ./scripts/ldflags)
 TAGS     := $(TAGS)
 SHELL    := bash
 BAZEL    := bazel
+BINGO    := go tool github.com/btwiuse/bingo/cmd/bingo
 
 default: help
 
@@ -145,10 +146,10 @@ bazel-build:          ## Build binary for current platform using bazel
 	# $(BAZEL) build # //:k0s # //cmd/{hub,client,agent}
 
 build:          ## Build binary for current platform
-	@ go run ./cmd/bingo -tags "$(TAGS)" -ldflags="${LDFLAGS}" -pkg ./cmd/ufo -d ./bin
+	@ $(BINGO) -tags "$(TAGS)" -ldflags="${LDFLAGS}" -pkg ./cmd/ufo -d ./bin
 
 dry:      ## Build binary for every supported platform
-	@ go run ./cmd/bingo -tags "$(TAGS)" -ldflags="${LDFLAGS}" -dry \
+	@ $(BINGO) -tags "$(TAGS)" -ldflags="${LDFLAGS}" -dry \
 	  linux/{{mips{,64},ppc64}{,le},s390x} \
 		{linux,android}/{armv6,armv7,arm64,amd64,386} {darwin,windows}/{386,amd64} \
 		freebsd/{armv7,armv6} {freebsd,openbsd}/{386,amd64}
@@ -163,42 +164,42 @@ build-all:      ## Build binary for every supported platform
 	@ make build-darwin
 
 build-android:  ## Build android binaries
-	@ go run ./cmd/bingo -tags "$(TAGS)" -ldflags="${LDFLAGS}" -pkg ./cmd/ufo \
+	@ $(BINGO) -tags "$(TAGS)" -ldflags="${LDFLAGS}" -pkg ./cmd/ufo \
 		android/{armv6,armv7,arm64,amd64,386}
 
 build-bsd-arm:  	## Build bsd arm binaries
-	@ go run ./cmd/bingo -tags "$(TAGS)" -ldflags="${LDFLAGS}" -pkg ./cmd/ufo \
+	@ $(BINGO) -tags "$(TAGS)" -ldflags="${LDFLAGS}" -pkg ./cmd/ufo \
 	  freebsd/{armv7,armv6} # ,arm64
 
 build-bsd:  	## Build bsd binaries
-	@ go run ./cmd/bingo -tags "$(TAGS)" -ldflags="${LDFLAGS}" -pkg ./cmd/ufo \
+	@ $(BINGO) -tags "$(TAGS)" -ldflags="${LDFLAGS}" -pkg ./cmd/ufo \
 	  {openbsd,freebsd}/{arm,arm64,amd64,386}
 
 build-linux:  	## Build linux binaries
-	@ go run ./cmd/bingo -tags "$(TAGS)" -ldflags="${LDFLAGS}" -pkg ./cmd/ufo \
+	@ $(BINGO) -tags "$(TAGS)" -ldflags="${LDFLAGS}" -pkg ./cmd/ufo \
 	  linux/{amd64,386}
 
 build-linux-arm: ## Build linux arm binaries
-	@ go run ./cmd/bingo -tags "$(TAGS)" -ldflags="${LDFLAGS}" -pkg ./cmd/ufo \
+	@ $(BINGO) -tags "$(TAGS)" -ldflags="${LDFLAGS}" -pkg ./cmd/ufo \
 	  linux/{armv6,armv7,arm64}
 
 build-linux-others:  	## Build linux binaries
-	@ go run ./cmd/bingo -tags "$(TAGS)" -ldflags="${LDFLAGS}" -pkg ./cmd/ufo -d ./bin/ \
+	@ $(BINGO) -tags "$(TAGS)" -ldflags="${LDFLAGS}" -pkg ./cmd/ufo -d ./bin/ \
 	  linux/{{mips{,64},ppc64}{,le},s390x}
 
 build-windows:  ## Build windows binaries
-	@ go run ./cmd/bingo -tags "$(TAGS)" -ldflags="${LDFLAGS}" -pkg ./cmd/ufo \
+	@ $(BINGO) -tags "$(TAGS)" -ldflags="${LDFLAGS}" -pkg ./cmd/ufo \
 		windows/{386,amd64,armv7,arm64}
 
 build-darwin:   ## Build darwin binaries
-	@ go run ./cmd/bingo -tags "$(TAGS)" -ldflags="${LDFLAGS}" -pkg ./cmd/ufo \
+	@ $(BINGO) -tags "$(TAGS)" -ldflags="${LDFLAGS}" -pkg ./cmd/ufo \
 		darwin/{amd64,arm64}
 
 scratch-build:  ## Build without using existing build cache
-	@ go run ./cmd/bingo -d releases/latest -ldflags="${LDFLAGS}" -pkg ./cmd/ufo -- -a
+	@ $(BINGO) -d releases/latest -ldflags="${LDFLAGS}" -pkg ./cmd/ufo -- -a
 
 scratch-build-all:      ## Build binary for every supported platform ignoring build cache
-	@ go run ./cmd/bingo -tags "$(TAGS)" -ldflags="${LDFLAGS}" -pkg ./cmd/ufo -- -a\
+	@ $(BINGO) -tags "$(TAGS)" -ldflags="${LDFLAGS}" -pkg ./cmd/ufo -- -a\
 		{linux,android}/{armv6,armv7,arm64,amd64,386} {darwin,windows}/{386,amd64} \
 	  linux/{{mips{,64},ppc64}{,le},s390x}
 
@@ -253,9 +254,9 @@ buildkite:      ## Generate buildkite pipeline yml definition
 	cd .buildkite && ./gen | tee /dev/stderr > pipeline.yml
 
 test-build:           ## Check all build tags will compile
-	@ go run ./cmd/bingo -tags raw        # test tag raw
-	@ go run ./cmd/bingo -tags nhooyr     # test tag nhooyr
-	@ go run ./cmd/bingo -tags gorilla    # test tag gorilla
+	@ $(BINGO) -tags raw        # test tag raw
+	@ $(BINGO) -tags nhooyr     # test tag nhooyr
+	@ $(BINGO) -tags gorilla    # test tag gorilla
 
 test:           ## Run all tests
 	@go clean --testcache && go test ./...
