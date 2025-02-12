@@ -16,7 +16,7 @@ import (
 	"github.com/webteleport/utils"
 	"github.com/webteleport/webteleport"
 
-	"k0s.io/pkg/wrap"
+	"github.com/btwiuse/wsconn"
 )
 
 func wsfy(h string) string {
@@ -43,7 +43,7 @@ func Run(args []string) error {
 type auto struct{}
 
 func (a *auto) ServeHTTP(w http.ResponseWriter, r *http.Request) {
-	conn, err := wrap.Wrconn(w, r)
+	conn, err := wsconn.Wrconn(w, r)
 	if err != nil {
 		log.Println(err)
 		return

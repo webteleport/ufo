@@ -7,8 +7,8 @@ import (
 	"net"
 	"net/url"
 
+	"github.com/btwiuse/wsdial"
 	"github.com/webteleport/ufo/apps"
-	"k0s.io/pkg/dial"
 )
 
 // CAVEAT: curl recognizes only lowercase http_proxy, not HTTP_PROXY
@@ -53,7 +53,7 @@ func Run(args []string) error {
 			continue
 		}
 		go func() {
-			wsconn, err := dial.Dial(ep)
+			wsconn, err := wsdial.Dial(ep)
 			if err != nil {
 				log.Println(err)
 				return

@@ -14,10 +14,10 @@ import (
 	"strings"
 
 	"github.com/btwiuse/pretty"
+	"github.com/btwiuse/wsconn"
 	"github.com/quic-go/quic-go/http3"
 	"github.com/webteleport/ufo/apps"
 	"github.com/webteleport/webteleport"
-	"k0s.io/pkg/wrap"
 )
 
 func Run([]string) error {
@@ -54,7 +54,7 @@ func Run([]string) error {
 // HOST=0.ufo.k0s.io PORT=300 h3 client
 // websocat --binary wss://0.ufo.k0s.io
 func handleWebsocket(w http.ResponseWriter, r *http.Request) {
-	connSrc, err := wrap.Wrconn(w, r)
+	connSrc, err := wsconn.Wrconn(w, r)
 	if err != nil {
 		log.Println(err)
 		return

@@ -10,7 +10,7 @@ import (
 	"github.com/hashicorp/yamux"
 	"github.com/webteleport/ufo/apps"
 
-	"k0s.io/pkg/dial"
+	"github.com/btwiuse/wsdial"
 )
 
 func Run(args []string) error {
@@ -35,7 +35,7 @@ func Run(args []string) error {
 
 	ep, _ := url.Parse(remote)
 
-	wsconn, err := dial.Dial(ep)
+	wsconn, err := wsdial.Dial(ep)
 	if err != nil {
 		return err
 	}

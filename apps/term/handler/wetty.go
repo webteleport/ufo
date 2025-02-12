@@ -10,23 +10,12 @@ import (
 	"strings"
 	"sync"
 
+	"github.com/btwiuse/wsconn"
 	"github.com/webteleport/utils"
 	"k0s.io/pkg/agent"
 	"k0s.io/pkg/agent/tty/factory"
 	"k0s.io/pkg/asciitransport"
-	"k0s.io/pkg/wrap"
 )
-
-func wsfy(h string) string {
-	switch h {
-	case "http":
-		return "ws"
-	case "https":
-		return "wss"
-	default:
-		return ""
-	}
-}
 
 func Handler() http.Handler {
 	var err error
@@ -69,7 +58,7 @@ func (a *auto) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	a.nth += 1
-	conn, err := wrap.Wrconn(w, r)
+	conn, err := wsconn.Wrconn(w, r)
 	if err != nil {
 		log.Println(err)
 		return
