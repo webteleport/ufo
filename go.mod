@@ -18,7 +18,7 @@ require (
 	github.com/btwiuse/portmux v0.1.0
 	github.com/btwiuse/pretty v0.2.1
 	github.com/btwiuse/proxy v0.0.0
-	github.com/btwiuse/pub v0.3.10
+	github.com/btwiuse/pub v0.3.11-alpha.2
 	github.com/btwiuse/rng v0.0.1
 	github.com/btwiuse/sse v0.0.1
 	github.com/btwiuse/tags v0.0.2
@@ -34,14 +34,14 @@ require (
 	github.com/mdp/qrterminal/v3 v3.2.0
 	github.com/phayes/freeport v0.0.0-20220201140144-74d24b5ae9f5
 	github.com/pocketbase/pocketbase v0.25.4
-	github.com/quic-go/quic-go v0.49.0
+	github.com/quic-go/quic-go v0.50.0
 	github.com/vmware-labs/wasm-workers-server v1.7.0
 	// github.com/webteleport/caddy-webteleport v0.0.1
 	github.com/webteleport/auth v0.0.9
-	github.com/webteleport/relay v0.4.52-alpha.1
-	github.com/webteleport/utils v0.2.19-alpha.1
-	github.com/webteleport/webteleport v0.5.40-alpha.1
-	github.com/webteleport/wtf v0.1.31-alpha.1
+	github.com/webteleport/relay v0.4.52-alpha.2
+	github.com/webteleport/utils v0.2.19-alpha.3
+	github.com/webteleport/webteleport v0.5.40-alpha.2
+	github.com/webteleport/wtf v0.1.31-alpha.2
 	github.com/xtls/xray-core v1.8.24
 	golang.org/x/net v0.35.0
 	google.golang.org/grpc v1.70.0
