@@ -77,11 +77,13 @@ func Run(args []string) error {
 
 	upstream := args[0]
 	cmdargs := args[1:]
+	disableProxy := os.Getenv("DISABLE_PROXY") != ""
 
 	log.Println("HTTPS_PORT:", *HTTPS_PORT)
 	log.Println("PORT:", PORT)
 	log.Println("upstream:", upstream)
 	log.Println("cmdargs:", cmdargs)
+	log.Println("DISABLE_PROXY:", disableProxy)
 
 	cmd := exec.Command(cmdargs[0], cmdargs[1:]...)
 	cmd.Stdout = os.Stdout
@@ -94,7 +96,10 @@ func Run(args []string) error {
 	}
 
 	router := utils.TransparentProxy(upstream)
-	handler := withProxy(router)
+	handler := router
+	if !disableProxy {
+		handler = withProxy(handler)
+	}
 	if os.Getenv("LOGGIN") != "" {
 		handler = utils.GinLoggerMiddleware(handler)
 	}
