@@ -41,7 +41,7 @@ require (
 	github.com/webteleport/auth v0.0.9
 	github.com/webteleport/relay v0.4.52-alpha.9
 	github.com/webteleport/utils v0.2.19-alpha.6
-	github.com/webteleport/webteleport v0.5.40-alpha.7
+	github.com/webteleport/webteleport v0.5.40-alpha.8
 	github.com/webteleport/wtf v0.1.31-alpha.6
 	github.com/xtls/xray-core v1.250803.0
 	golang.org/x/net v0.42.0
