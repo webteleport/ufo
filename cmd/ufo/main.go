@@ -8,6 +8,7 @@ import (
 	"github.com/btwiuse/multicall"
 	"github.com/btwiuse/portmux"
 	"github.com/btwiuse/pub"
+	"github.com/btwiuse/vsc"
 
 	// "github.com/webteleport/ufo/apps/caddy"
 	"github.com/webteleport/ufo/apps/agent"
@@ -52,7 +53,6 @@ import (
 	"github.com/webteleport/ufo/apps/upload"
 	"github.com/webteleport/ufo/apps/v2ray"
 	"github.com/webteleport/ufo/apps/version"
-	"github.com/webteleport/ufo/apps/vsc"
 	"github.com/webteleport/ufo/apps/wagi"
 	"github.com/webteleport/ufo/apps/wbdv"
 	"github.com/webteleport/ufo/apps/who"
