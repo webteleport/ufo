@@ -1,6 +1,6 @@
 module github.com/webteleport/ufo
 
-go 1.24
+go 1.25
 
 // replace github.com/btwiuse/multicall => ../multicall
 // replace github.com/webteleport/utils => ../utils
@@ -20,27 +20,28 @@ require (
 	github.com/btwiuse/proxy v0.0.0
 	github.com/btwiuse/pub v0.3.11-alpha.6
 	github.com/btwiuse/rng v0.0.1
-	github.com/btwiuse/sse v0.0.1
-	github.com/btwiuse/tags v0.0.2
+	github.com/btwiuse/sse v0.0.2
+	github.com/btwiuse/tags v0.0.2 // indirect
 	github.com/btwiuse/version v0.0.2
-	github.com/btwiuse/wsconn v0.0.4
-	github.com/btwiuse/wsdial v0.0.0
+	github.com/btwiuse/vsc v0.0.1
+	github.com/btwiuse/wsconn v0.0.5
+	github.com/btwiuse/wsdial v0.0.1
 	github.com/caddyserver/certmagic v0.20.0
-	github.com/chadgpt/gopilot v0.0.4
+	github.com/chadgpt/gopilot v0.0.5
 	github.com/creativeprojects/go-selfupdate v1.2.0
 	github.com/fermyon/spin/sdk/go/v2 v2.2.0
 	github.com/hashicorp/yamux v0.1.3-0.20250312043751-26e720ab6278
 	github.com/jpillora/go-echo-server v0.5.0
 	github.com/mdp/qrterminal/v3 v3.2.0
 	github.com/phayes/freeport v0.0.0-20220201140144-74d24b5ae9f5
-	github.com/pocketbase/pocketbase v0.29.1
+	github.com/pocketbase/pocketbase v0.29.2
 	github.com/quic-go/quic-go v0.54.0
 	github.com/vmware-labs/wasm-workers-server v1.7.0
 	// github.com/webteleport/caddy-webteleport v0.0.1
 	github.com/webteleport/auth v0.0.9
-	github.com/webteleport/relay v0.4.52-alpha.6
+	github.com/webteleport/relay v0.4.52-alpha.9
 	github.com/webteleport/utils v0.2.19-alpha.6
-	github.com/webteleport/webteleport v0.5.40-alpha.6
+	github.com/webteleport/webteleport v0.5.40-alpha.7
 	github.com/webteleport/wtf v0.1.31-alpha.6
 	github.com/xtls/xray-core v1.250803.0
 	golang.org/x/net v0.42.0
@@ -66,8 +67,10 @@ require (
 	github.com/btwiuse/connect v0.0.5 // indirect
 	github.com/btwiuse/dispatcher v0.0.0 // indirect
 	github.com/btwiuse/forward v0.0.0 // indirect
+	github.com/btwiuse/gmx v0.0.2 // indirect
 	github.com/btwiuse/muxr v0.0.1 // indirect
 	github.com/cloudflare/circl v1.6.1 // indirect
+	github.com/coder/websocket v1.8.13 // indirect
 	github.com/containerd/console v1.0.4 // indirect
 	github.com/coreos/go-iptables v0.6.0 // indirect
 	github.com/creack/pty v1.1.21 // indirect
@@ -202,7 +205,6 @@ require (
 	modernc.org/mathutil v1.7.1 // indirect
 	modernc.org/memory v1.11.0 // indirect
 	modernc.org/sqlite v1.38.2 // indirect
-	nhooyr.io/websocket v1.8.17 // indirect
 	rsc.io/qr v0.2.0 // indirect
 )
 
