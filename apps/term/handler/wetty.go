@@ -53,8 +53,13 @@ type auto struct {
 
 func (a *auto) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	isWS := strings.Split(r.Header.Get("Upgrade"), ",")[0] == "websocket"
+	isUI := os.Getenv("UI") != ""
 	if !isWS {
-		a.rp.ServeHTTP(w, r)
+		if isUI {
+			a.rp.ServeHTTP(w, r)
+		} else {
+			http.Error(w, "OK", 200)
+		}
 		return
 	}
 	a.nth += 1
