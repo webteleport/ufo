@@ -29,3 +29,5 @@ core
 # goreleaser
 /dist/
 pb_data
+
+.DS_Store
