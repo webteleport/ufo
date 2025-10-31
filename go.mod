@@ -24,24 +24,24 @@ require (
 	github.com/btwiuse/tags v0.0.2 // indirect
 	github.com/btwiuse/version v0.0.2
 	github.com/btwiuse/vsc v0.0.1
-	github.com/btwiuse/wsconn v0.0.5
-	github.com/btwiuse/wsdial v0.0.1
+	github.com/btwiuse/wsconn v0.0.6
+	github.com/btwiuse/wsdial v0.0.2
 	github.com/caddyserver/certmagic v0.20.0
 	github.com/chadgpt/gopilot v0.0.5
 	github.com/creativeprojects/go-selfupdate v1.2.0
 	github.com/fermyon/spin/sdk/go/v2 v2.2.0
-	github.com/hashicorp/yamux v0.1.3-0.20250312043751-26e720ab6278
+	github.com/hashicorp/yamux v0.1.3-0.20251104084018-94aaaeac4d7e
 	github.com/jpillora/go-echo-server v0.5.0
 	github.com/mdp/qrterminal/v3 v3.2.0
 	github.com/phayes/freeport v0.0.0-20220201140144-74d24b5ae9f5
 	github.com/pocketbase/pocketbase v0.29.2
-	github.com/quic-go/quic-go v0.55.0
+	github.com/quic-go/quic-go v0.56.0
 	github.com/vmware-labs/wasm-workers-server v1.7.0
 	// github.com/webteleport/caddy-webteleport v0.0.1
 	github.com/webteleport/auth v0.0.9
-	github.com/webteleport/relay v0.4.52-alpha.9
-	github.com/webteleport/utils v0.2.19-alpha.6
-	github.com/webteleport/webteleport v0.5.40-alpha.8
+	github.com/webteleport/relay v0.4.52-alpha.10
+	github.com/webteleport/utils v0.2.19-alpha.8
+	github.com/webteleport/webteleport v0.5.40-alpha.9
 	github.com/webteleport/wtf v0.1.31-alpha.6
 	github.com/xtls/xray-core v1.251015.0
 	golang.org/x/net v0.46.0
@@ -70,7 +70,7 @@ require (
 	github.com/btwiuse/gmx v0.0.2 // indirect
 	github.com/btwiuse/muxr v0.0.1 // indirect
 	github.com/cloudflare/circl v1.6.1 // indirect
-	github.com/coder/websocket v1.8.13 // indirect
+	github.com/coder/websocket v1.8.14 // indirect
 	github.com/containerd/console v1.0.4 // indirect
 	github.com/coreos/go-iptables v0.6.0 // indirect
 	github.com/creack/pty v1.1.21 // indirect
@@ -142,7 +142,7 @@ require (
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/pocketbase/dbx v1.11.0 // indirect
 	github.com/quic-go/qpack v0.5.1 // indirect
-	github.com/quic-go/webtransport-go v0.9.0 // indirect
+	github.com/quic-go/webtransport-go v0.9.1-0.20251108062013-998e07d8f1b9 // indirect
 	github.com/refraction-networking/utls v1.8.1 // indirect
 	github.com/remyoudompheng/bigfft v0.0.0-20230129092748-24d4a6f8daec // indirect
 	github.com/riobard/go-bloom v0.0.0-20200614022211-cdc8013cb5b3 // indirect
@@ -181,16 +181,16 @@ require (
 	go.uber.org/zap v1.27.0 // indirect
 	go4.org/netipx v0.0.0-20231129151722-fdeea329fbba // indirect
 	golang.org/x/crypto v0.43.0 // indirect
-	golang.org/x/exp v0.0.0-20250718183923-645b1fa84792 // indirect
+	golang.org/x/exp v0.0.0-20251023183803-a4bb9ffd2546 // indirect
 	golang.org/x/image v0.29.0 // indirect
-	golang.org/x/mod v0.28.0 // indirect
+	golang.org/x/mod v0.29.0 // indirect
 	golang.org/x/oauth2 v0.30.0 // indirect
 	golang.org/x/sync v0.17.0 // indirect
 	golang.org/x/sys v0.37.0 // indirect
 	golang.org/x/term v0.36.0 // indirect
 	golang.org/x/text v0.30.0 // indirect
-	golang.org/x/time v0.9.0 // indirect
-	golang.org/x/tools v0.37.0 // indirect
+	golang.org/x/time v0.12.0 // indirect
+	golang.org/x/tools v0.38.0 // indirect
 	golang.zx2c4.com/wintun v0.0.0-20230126152724-0fa3db229ce2 // indirect
 	golang.zx2c4.com/wireguard v0.0.0-20231211153847-12269c276173 // indirect
 	google.golang.org/genproto/googleapis/rpc v0.0.0-20250804133106-a7a43d27e69b // indirect
