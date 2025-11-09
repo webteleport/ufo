@@ -28,7 +28,7 @@ require (
 	github.com/btwiuse/wsdial v0.0.2
 	github.com/caddyserver/certmagic v0.20.0
 	github.com/chadgpt/gopilot v0.0.5
-	github.com/creativeprojects/go-selfupdate v1.2.0
+	github.com/creativeprojects/go-selfupdate v1.5.0
 	github.com/fermyon/spin/sdk/go/v2 v2.2.0
 	github.com/hashicorp/yamux v0.1.3-0.20251104084018-94aaaeac4d7e
 	github.com/jpillora/go-echo-server v0.5.0
@@ -52,13 +52,14 @@ require (
 )
 
 require (
-	code.gitea.io/sdk/gitea v0.17.1 // indirect
+	code.gitea.io/sdk/gitea v0.21.0 // indirect
 	filippo.io/edwards25519 v1.1.0 // indirect
 	git.torproject.org/pluggable-transports/goptlib.git v1.2.0 // indirect
+	github.com/42wim/httpsig v1.2.2 // indirect
 	github.com/ActiveState/termtest/conpty v0.5.0 // indirect
 	github.com/Azure/go-ansiterm v0.0.0-20230124172434-306776ec8161 // indirect
 	github.com/LiamHaworth/go-tproxy v0.0.0-20190726054950-ef7efd7f24ed // indirect
-	github.com/Masterminds/semver/v3 v3.2.1 // indirect
+	github.com/Masterminds/semver/v3 v3.3.1 // indirect
 	github.com/aead/chacha20 v0.0.0-20180709150244-8b13a72661da // indirect
 	github.com/alexpantyukhin/go-pattern-match v0.0.0-20230301210247-d84479c117d7 // indirect
 	github.com/andrew-d/go-termutil v0.0.0-20150726205930-009166a695a2 // indirect
@@ -113,8 +114,8 @@ require (
 	github.com/gorilla/handlers v1.5.2 // indirect
 	github.com/gorilla/websocket v1.5.3 // indirect
 	github.com/hashicorp/go-cleanhttp v0.5.2 // indirect
-	github.com/hashicorp/go-retryablehttp v0.7.5 // indirect
-	github.com/hashicorp/go-version v1.6.0 // indirect
+	github.com/hashicorp/go-retryablehttp v0.7.7 // indirect
+	github.com/hashicorp/go-version v1.7.0 // indirect
 	github.com/inconshreveable/mousetrap v1.1.0 // indirect
 	github.com/jpillora/ansi v0.0.0-20170202005112-f496b27cd669 // indirect
 	github.com/jpillora/requestlog v0.0.0-20181015073026-df8817be5f82 // indirect
@@ -165,11 +166,11 @@ require (
 	github.com/tidwall/sjson v1.2.5 // indirect
 	github.com/tjfoc/gmsm v1.4.1 // indirect
 	github.com/tomasen/realip v0.0.0-20180522021738-f0c99a92ddce // indirect
-	github.com/ulikunitz/xz v0.5.11 // indirect
+	github.com/ulikunitz/xz v0.5.12 // indirect
 	github.com/v2fly/ss-bloomring v0.0.0-20210312155135-28617310f63e // indirect
 	github.com/vishvananda/netlink v1.3.1 // indirect
 	github.com/vishvananda/netns v0.0.5 // indirect
-	github.com/xanzy/go-gitlab v0.100.0 // indirect
+	github.com/xanzy/go-gitlab v0.115.0 // indirect
 	github.com/xtaci/kcp-go/v5 v5.6.1 // indirect
 	github.com/xtaci/smux v1.5.16 // indirect
 	github.com/xtaci/tcpraw v1.2.25 // indirect
