@@ -42,6 +42,7 @@ func Handler() http.Handler {
 	return &auto{
 		fac: factory.New(cmd),
 		rp:  utils.ReverseProxy("https://wetty.deno.dev"),
+		tm:  map[string]agent.Tty{},
 	}
 }
 
@@ -49,6 +50,7 @@ type auto struct {
 	fac agent.TtyFactory
 	nth int
 	rp  http.Handler
+	tm  map[string]agent.Tty
 }
 
 func (a *auto) ServeHTTP(w http.ResponseWriter, r *http.Request) {
@@ -71,11 +73,34 @@ func (a *auto) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	a.serveConn(conn, a.nth)
 }
 
+func (a *auto) makeTerm(cmd []string, env map[string]string, ses string) (agent.Tty, error) {
+	if ses == "" {
+		term, err := a.fac.MakeTty()
+		if err != nil {
+			return nil, err
+		}
+		return term, nil
+	} else {
+		if term, ok := a.tm[ses]; ok {
+			log.Println("old term", ses)
+			return term, nil
+		}
+		term, err := a.fac.MakeTty()
+		if err != nil {
+			return nil, err
+		}
+		log.Println("new term", ses, len(a.tm))
+		a.tm[ses] = term
+		return term, nil
+	}
+}
+
 func (a *auto) serveConn(conn net.Conn, nth int) {
 	var (
 		tryCommandOnce = &sync.Once{}
 		cmdCh          = make(chan []string, 1)
 		envCh          = make(chan map[string]string, 1)
+		sesCh          = make(chan string, 1)
 		resizeCh       = make(chan struct{ rows, cols int }, 4)
 	)
 
@@ -85,31 +110,39 @@ func (a *auto) serveConn(conn net.Conn, nth int) {
 
 	// recv
 	go func() {
+	Loop:
 		for {
-			var (
-				re   = <-server.ResizeEvent()
-				rows = int(re.Height)
-				cols = int(re.Width)
-			)
-			tryCommandOnce.Do(func() {
-				cmdCh <- re.Command
-				envCh <- re.Env
-			})
-			resizeCh <- struct{ rows, cols int }{rows, cols}
+			select {
+			case re := <-server.ResizeEvent():
+				var (
+					rows = int(re.Height)
+					cols = int(re.Width)
+				)
+				tryCommandOnce.Do(func() {
+					cmdCh <- re.Command
+					envCh <- re.Env
+					sesCh <- re.Title
+				})
+				resizeCh <- struct{ rows, cols int }{rows, cols}
+			case <-server.Done():
+				break Loop
+			}
 		}
 		server.Close()
 	}()
 
 	cmd := <-cmdCh
 	env := <-envCh
+	ses := <-sesCh
 
-	_ = cmd
-	_ = env
-
-	term, err := a.fac.MakeTty()
+	term, err := a.makeTerm(cmd, env, ses)
 	if err != nil {
 		log.Println(err)
 		return
+	}
+
+	if ses != "" {
+		defer term.Close()
 	}
 
 	go func() {
@@ -129,5 +162,4 @@ func (a *auto) serveConn(conn net.Conn, nth int) {
 	server.ApplyOpts(opts...)
 
 	<-server.Done()
-	term.Close()
 }
