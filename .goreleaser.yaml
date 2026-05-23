@@ -36,7 +36,7 @@ builds:
 
 archives:
   - id: archive
-    builds:
+    ids:
      - ufo
     files:
       - LICENSE
@@ -44,4 +44,4 @@ archives:
       {{ .ProjectName }}-{{- .Os }}-{{ .Arch }}
     format_overrides:
       - goos: windows
-        format: zip
+        formats: [zip]
