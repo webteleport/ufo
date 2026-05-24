@@ -16,9 +16,8 @@ func resolve(s string) {
 	if err != nil {
 		panic(err)
 	}
-	log.Println("ENV:", endpoint.ENV("ALT_SVC"))
-	log.Println("TXT:", endpoint.TXT(u.Host))
-	log.Println("HEAD:", endpoint.HEAD(u.String()))
+	log.Println("ENV:", endpoint.AltSvcFromEnv("ALT_SVC"))
+	log.Println("HEAD:", endpoint.AltSvcFromHEAD(u.String()))
 
 	log.Println("endpoint.Resolve", u)
 	es := endpoint.Resolve(u)
