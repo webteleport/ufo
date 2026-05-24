@@ -39,9 +39,9 @@ require (
 	github.com/vmware-labs/wasm-workers-server v1.7.0
 	// github.com/webteleport/caddy-webteleport v0.0.1
 	github.com/webteleport/auth v0.0.9
-	github.com/webteleport/relay v0.4.52-alpha.16
+	github.com/webteleport/relay v0.4.52-alpha.17
 	github.com/webteleport/utils v0.2.19-alpha.10
-	github.com/webteleport/webteleport v0.5.40-alpha.14
+	github.com/webteleport/webteleport v0.5.40-alpha.16
 	github.com/webteleport/wtf v0.1.31-alpha.7
 	github.com/xtls/xray-core v1.251015.0
 	golang.org/x/net v0.49.0
@@ -171,6 +171,7 @@ require (
 	github.com/v2fly/ss-bloomring v0.0.0-20210312155135-28617310f63e // indirect
 	github.com/vishvananda/netlink v1.3.1 // indirect
 	github.com/vishvananda/netns v0.0.5 // indirect
+	github.com/webtransport/webtransport v0.0.1 // indirect
 	github.com/xanzy/go-gitlab v0.115.0 // indirect
 	github.com/xtaci/kcp-go/v5 v5.6.1 // indirect
 	github.com/xtaci/smux v1.5.16 // indirect
