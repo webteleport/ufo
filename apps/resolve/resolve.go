@@ -1,6 +1,7 @@
 package resolve
 
 import (
+	"context"
 	"log"
 	"net/url"
 
@@ -17,10 +18,10 @@ func resolve(s string) {
 		panic(err)
 	}
 	log.Println("ENV:", endpoint.AltSvcFromEnv("ALT_SVC"))
-	log.Println("HEAD:", endpoint.AltSvcFromHEAD(u.String()))
+	log.Println("HEAD:", endpoint.AltSvcFromHEAD(context.Background(), u.String()))
 
 	log.Println("endpoint.Resolve", u)
-	es := endpoint.Resolve(u)
+	es := endpoint.Resolve(context.Background(), u)
 	log.Println("endpoints:", es)
 	log.Println()
 }
