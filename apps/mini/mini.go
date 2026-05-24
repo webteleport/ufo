@@ -24,9 +24,11 @@ func listenHTTP(handler http.Handler) error {
 
 func Run([]string) (err error) {
 	s := relay.DefaultWSServer(envs.HOST)
+
+	s.Use(AltSvcMiddleware)
+
 	if os.Getenv("LOGGIN") != "" {
 		s.Use(utils.GinLoggerMiddleware)
-		s.Use(AltSvcMiddleware)
 	}
 
 	extra := os.Getenv("EXTRA")

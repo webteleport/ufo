@@ -114,9 +114,11 @@ func Run([]string) (err error) {
 	}
 
 	s := relay.DefaultWSServer(envs.HOST)
+
+	s.Use(AltSvcMiddleware)
+
 	if os.Getenv("LOGGIN") != "" {
 		s.Use(utils.GinLoggerMiddleware)
-		s.Use(AltSvcMiddleware)
 	}
 
 	t := relay.DefaultWTServer(envs.HOST).
