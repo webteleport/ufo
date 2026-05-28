@@ -39,10 +39,10 @@ require (
 	github.com/vmware-labs/wasm-workers-server v1.7.0
 	// github.com/webteleport/caddy-webteleport v0.0.1
 	github.com/webteleport/auth v0.0.9
-	github.com/webteleport/relay v0.4.53-alpha.2
+	github.com/webteleport/relay v0.4.53-alpha.3
 	github.com/webteleport/utils v0.2.19
-	github.com/webteleport/webteleport v0.5.43-alpha.4
-	github.com/webteleport/wtf v0.1.31-alpha.7
+	github.com/webteleport/webteleport v0.5.43-alpha.6
+	github.com/webteleport/wtf v0.1.32
 	github.com/xtls/xray-core v1.251015.0
 	golang.org/x/net v0.55.0
 	google.golang.org/grpc v1.76.0
@@ -184,16 +184,16 @@ require (
 	go.uber.org/zap v1.27.0 // indirect
 	go4.org/netipx v0.0.0-20231129151722-fdeea329fbba // indirect
 	golang.org/x/crypto v0.51.0 // indirect
-	golang.org/x/exp v0.0.0-20260112195511-716be5621a96 // indirect
+	golang.org/x/exp v0.0.0-20260508232706-74f9aab9d74a // indirect
 	golang.org/x/image v0.32.0 // indirect
-	golang.org/x/mod v0.35.0 // indirect
+	golang.org/x/mod v0.36.0 // indirect
 	golang.org/x/oauth2 v0.32.0 // indirect
 	golang.org/x/sync v0.20.0 // indirect
 	golang.org/x/sys v0.45.0 // indirect
 	golang.org/x/term v0.43.0 // indirect
 	golang.org/x/text v0.37.0 // indirect
 	golang.org/x/time v0.12.0 // indirect
-	golang.org/x/tools v0.44.0 // indirect
+	golang.org/x/tools v0.45.0 // indirect
 	golang.zx2c4.com/wintun v0.0.0-20230126152724-0fa3db229ce2 // indirect
 	golang.zx2c4.com/wireguard v0.0.0-20231211153847-12269c276173 // indirect
 	google.golang.org/genproto/googleapis/rpc v0.0.0-20250804133106-a7a43d27e69b // indirect
