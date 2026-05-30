@@ -148,6 +148,9 @@ bazel-build:          ## Build binary for current platform using bazel
 build:          ## Build binary for current platform
 	@ $(BINGO) -tags "$(TAGS)" -ldflags="${LDFLAGS}" -pkg ./cmd/ufo -d ./bin
 
+build-wasm:     ## Build js/wasm binary
+	@ GOOS=js GOARCH=wasm go build -o ./bin/ufo.wasm ./cmd/ufo
+
 dry:      ## Build binary for every supported platform
 	@ $(BINGO) -tags "$(TAGS)" -ldflags="${LDFLAGS}" -dry \
 	  linux/{{mips{,64},ppc64}{,le},s390x} \
