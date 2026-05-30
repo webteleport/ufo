@@ -10,6 +10,8 @@
 // they will not be supported by ufo server
 //
 // use sows instead
+//go:build !js && !wasip1
+
 package so
 
 import (

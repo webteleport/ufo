@@ -6,6 +6,8 @@
 
 // $ curl -v http://google.com
 // $ curl -v https://google.com
+//go:build !js && !wasip1
+
 package sows
 
 import (

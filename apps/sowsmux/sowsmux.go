@@ -2,6 +2,8 @@
 // $ export HTTP_PROXY=http://127.0.0.1:3000 HTTPS_PROXY=http://127.0.0.1:3000
 // $ curl -v http://google.com
 // $ curl -v https://google.com
+//go:build !js && !wasip1
+
 package sowsmux
 
 import (
