@@ -1,6 +1,6 @@
-// this version of pocket doesn't support connect proxy
-
 //go:build !js && !wasip1
+
+// this version of pocket doesn't support connect proxy
 
 package pocket
 

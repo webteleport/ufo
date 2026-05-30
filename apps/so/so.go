@@ -1,3 +1,5 @@
+//go:build !js && !wasip1
+
 // it doesn't work:
 //
 // $ export HTTP_PROXY=https://26.ufo.k0s.io HTTPS_PROXY=https://26.ufo.k0s.io
@@ -10,7 +12,6 @@
 // they will not be supported by ufo server
 //
 // use sows instead
-//go:build !js && !wasip1
 
 package so
 
