@@ -1,6 +1,7 @@
 package sowcmux
 
 import (
+	"context"
 	"fmt"
 	"io"
 	"log"
@@ -35,7 +36,7 @@ func Run(args []string) error {
 
 	ep, _ := url.Parse(remote)
 
-	wsconn, err := wsdial.Dial(ep)
+	wsconn, err := wsdial.Dial(context.Background(), ep, nil)
 	if err != nil {
 		return err
 	}

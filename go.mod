@@ -1,6 +1,6 @@
 module github.com/webteleport/ufo
 
-go 1.25.0
+go 1.25.7
 
 // replace github.com/btwiuse/multicall => ../multicall
 // replace github.com/webteleport/utils => ../utils
@@ -24,8 +24,8 @@ require (
 	github.com/btwiuse/tags v0.0.2 // indirect
 	github.com/btwiuse/version v0.0.2
 	github.com/btwiuse/vsc v0.0.1
-	github.com/btwiuse/wsconn v0.0.6
-	github.com/btwiuse/wsdial v0.0.2
+	github.com/btwiuse/wsconn v0.0.9
+	github.com/btwiuse/wsdial v0.1.2
 	github.com/caddyserver/certmagic v0.20.0
 	github.com/chadgpt/gopilot v0.0.5
 	github.com/creativeprojects/go-selfupdate v1.5.0
@@ -125,8 +125,8 @@ require (
 	github.com/juju/ratelimit v1.0.2 // indirect
 	github.com/julienschmidt/httprouter v1.3.0 // indirect
 	github.com/kataras/basicauth v0.0.3 // indirect
-	github.com/klauspost/compress v1.17.8 // indirect
-	github.com/klauspost/cpuid/v2 v2.2.7 // indirect
+	github.com/klauspost/compress v1.18.0 // indirect
+	github.com/klauspost/cpuid/v2 v2.2.10 // indirect
 	github.com/klauspost/reedsolomon v1.9.15 // indirect
 	github.com/koding/websocketproxy v0.0.0-20181220232114-7ed82d81a28c // indirect
 	github.com/libdns/libdns v0.2.1 // indirect
