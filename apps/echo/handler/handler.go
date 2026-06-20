@@ -3,7 +3,6 @@ package handler
 import (
 	"expvar"
 	"io"
-	"io/ioutil"
 	"net/http"
 	"path"
 
@@ -32,11 +31,11 @@ func Handler() http.Handler {
 		}
 		lastSegment := path.Base(path.Clean(r.URL.Path))
 		bodyVar := getVar(lastSegment)
-		bodyStr, err := ioutil.ReadAll(r.Body)
+		defer r.Body.Close()
+		bodyStr, err := io.ReadAll(r.Body)
 		if err != nil {
 			return
 		}
-		defer r.Body.Close()
 		switch r.Method {
 		case http.MethodPut, http.MethodPost:
 			bodyVar.Set(string(bodyStr))
