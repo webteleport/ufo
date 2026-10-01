@@ -1,0 +1,143 @@
+name: release
+
+on:
+  push:
+    tags:
+      - v*.*.*
+  workflow_dispatch:
+
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+env:
+  VERSION: ${{ github.ref_name }}
+  COMMIT_SHA: ${{ github.sha }}
+  BUILD_DATE: ${{ github.event.repository.updated_at }}
+
+jobs:
+  binary:
+    name: ${{ matrix.goos }}/${{ matrix.goarch }}${{ matrix.goarm }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - { goos: linux,   goarch: amd64,   goarm: ""    }
+          - { goos: linux,   goarch: arm64,   goarm: ""    }
+          - { goos: linux,   goarch: "386",   goarm: ""    }
+          - { goos: linux,   goarch: arm,     goarm: "6"   }
+          - { goos: linux,   goarch: arm,     goarm: "7"   }
+          - { goos: linux,   goarch: riscv64, goarm: ""    }
+          - { goos: darwin,  goarch: amd64,   goarm: ""    }
+          - { goos: darwin,  goarch: arm64,   goarm: ""    }
+          - { goos: windows, goarch: amd64,   goarm: ""    }
+          - { goos: windows, goarch: arm64,   goarm: ""    }
+          - { goos: windows, goarch: "386",   goarm: ""    }
+          - { goos: android, goarch: arm64,   goarm: ""    }
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-go@v5
+        with:
+          go-version: '1.27.x'
+          cache: true
+      - name: Run go mod tidy
+        env:
+          GOTOOLCHAIN: go1.27.1
+          GOPROXY: https://proxy.golang.org,https://goproxy.cn,https://goproxy.io,direct
+          GONOSUMDB: "*"
+        run: go mod tidy
+      - name: Compute archive suffix
+        id: arch
+        run: |
+          raw="${{ matrix.goarch }}${{ matrix.goarm }}"
+          if   [ "${{ matrix.goarch }}" = "arm" ]; then raw="armv${{ matrix.goarm }}"
+          fi
+          ext="tar.gz"; [ "${{ matrix.goos }}" = "windows" ] && ext="zip"
+          # Match goreleaser's name_template (ufo-{os}-{arch}{armvN}.{ext})
+          # so `ufo upgrade` finds assets regardless of which workflow
+          # produced the release.
+          archive="ufo-${{ matrix.goos }}-${raw}.${ext}"
+          echo "raw=$raw"        >> "$GITHUB_OUTPUT"
+          echo "archive=$archive" >> "$GITHUB_OUTPUT"
+      - name: Build binary
+        env:
+          GOOS: ${{ matrix.goos }}
+          GOARCH: ${{ matrix.goarch }}
+          GOARM: ${{ matrix.goarm }}
+          CGO_ENABLED: "0"
+          GONOSUMDB: "*"
+          GOTOOLCHAIN: go1.27.1
+          GOPROXY: https://proxy.golang.org,https://goproxy.cn,https://goproxy.io,direct
+        run: |
+          set -euo pipefail
+          raw_staging="stage-${{ steps.arch.outputs.raw }}"
+          archive="${{ steps.arch.outputs.archive }}"
+          mkdir -p "$raw_staging" dist
+          bin="$raw_staging/ufo"
+          [ "$GOOS" = "windows" ] && bin="$raw_staging/ufo.exe"
+          ldflags="-s -w \
+            -X github.com/btwiuse/version.MajorString=0 \
+            -X github.com/btwiuse/version.MinorString=6 \
+            -X github.com/btwiuse/version.GitCommitString=${COMMIT_SHA} \
+            -X github.com/btwiuse/version.GitTreeStateString=clean \
+            -X github.com/btwiuse/version.GitVersionString=${VERSION} \
+            -X github.com/btwiuse/version.BuildDateString=${BUILD_DATE}"
+          go build -trimpath -ldflags "$ldflags" -o "$bin" ./cmd/ufo
+          chmod +x "$bin"
+
+          # Mirror goreleaser's archive layout: files at the archive root,
+          # not wrapped in a per-target subdirectory. This keeps the
+          # archive contract stable across both release pipelines.
+          cp "$bin" "dist/ufo"
+          [ "$GOOS" = "windows" ] && mv "dist/ufo" "dist/ufo.exe"
+          cp LICENSE "dist/LICENSE" 2>/dev/null || true
+
+          if [ "$GOOS" = "windows" ]; then
+            (cd dist && zip -r -q "../$archive" .)
+          else
+            (cd dist && tar -czf "../$archive" *)
+          fi
+          mkdir -p dist && mv "$archive" "dist/$archive"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: bin-archive-${{ matrix.goos }}-${{ matrix.goarch }}${{ matrix.goarm }}
+          path: dist/${{ steps.arch.outputs.archive }}
+          if-no-files-found: error
+          retention-days: 7
+
+  publish:
+    needs: binary
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+          merge-multiple: true
+      - name: Build checksums.txt
+        working-directory: artifacts
+        run: |
+          find . -type f -print0 | sort -z \
+            | xargs -0 sha256sum > ../checksums.txt
+          cat ../checksums.txt
+      - name: Publish release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          cp checksums.txt artifacts/checksums.txt
+          cd artifacts
+          files=$(find . -type f | sort | sed 's|^\./||')
+          gh release create "$VERSION" \
+            --title "$VERSION" \
+            --generate-notes \
+            --draft \
+            $files
+          gh release edit "$VERSION" --draft=false
