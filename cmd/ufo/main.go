@@ -11,6 +11,7 @@ import (
 	"github.com/btwiuse/vsc"
 
 	// "github.com/webteleport/ufo/apps/caddy"
+	_ "github.com/webteleport/ufo/internal/dns"
 	"github.com/webteleport/ufo/apps/agent"
 	"github.com/webteleport/ufo/apps/basicauth"
 	"github.com/webteleport/ufo/apps/cookies"
