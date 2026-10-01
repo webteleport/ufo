@@ -15,13 +15,8 @@ permissions:
 
 env:
   VERSION: ${{ github.ref_name }}
-  MAJOR: -X github.com/btwiuse/version.MajorString=0
-  MINOR: -X github.com/btwiuse/version.MinorString=6
-  COMMIT: -X github.com/btwiuse/version.GitCommitString=${{ github.sha }}
-  TREE: -X github.com/btwiuse/version.GitTreeStateString=clean
-  VERSION_LD: -X github.com/btwiuse/version.GitVersionString=${{ github.ref_name }}
-  DATE: -X github.com/btwiuse/version.BuildDateString=${{ github.event.repository.updated_at }}
-  LD_VERSION: -s -w $MAJOR $MINOR $COMMIT $TREE $VERSION_LD $DATE
+  COMMIT_SHA: ${{ github.sha }}
+  BUILD_DATE: ${{ github.event.repository.updated_at }}
 
 jobs:
   binary:
@@ -86,7 +81,14 @@ jobs:
           mkdir -p "$raw_staging" dist
           bin="$raw_staging/ufo"
           [ "$GOOS" = "windows" ] && bin="$raw_staging/ufo.exe"
-          go build -trimpath -ldflags "$LD_VERSION" -o "$bin" ./cmd/ufo
+          ldflags="-s -w \
+            -X github.com/btwiuse/version.MajorString=0 \
+            -X github.com/btwiuse/version.MinorString=6 \
+            -X github.com/btwiuse/version.GitCommitString=${COMMIT_SHA} \
+            -X github.com/btwiuse/version.GitTreeStateString=clean \
+            -X github.com/btwiuse/version.GitVersionString=${VERSION} \
+            -X github.com/btwiuse/version.BuildDateString=${BUILD_DATE}"
+          go build -trimpath -ldflags "$ldflags" -o "$bin" ./cmd/ufo
           chmod +x "$bin"
           cp LICENSE "$raw_staging/LICENSE" 2>/dev/null || true
 
