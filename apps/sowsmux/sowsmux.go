@@ -10,9 +10,9 @@ import (
 	"net"
 	"net/http"
 
-	"github.com/btwiuse/gost"
 	"github.com/hashicorp/yamux"
 	"github.com/webteleport/ufo/apps"
+	"github.com/webteleport/ufo/internal/autohandler"
 	"github.com/webteleport/utils"
 	"github.com/webteleport/webteleport"
 
@@ -63,7 +63,7 @@ func (a *auto) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	autoConn(stream)
 }
 
-var autoHandler = gost.AutoHandler()
+var autoHandler = autohandler.New()
 
 func autoServe(ln net.Listener) error {
 	for {

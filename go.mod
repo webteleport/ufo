@@ -1,6 +1,6 @@
 module github.com/webteleport/ufo
 
-go 1.25.12
+go 1.27
 
 // replace github.com/btwiuse/multicall => ../multicall
 // replace github.com/webteleport/utils => ../utils
@@ -11,9 +11,7 @@ go 1.25.12
 require (
 	connectrpc.com/connect v1.18.1
 	github.com/btwiuse/better v0.0.0
-	github.com/btwiuse/bingo v0.0.5 // indirect
 	github.com/btwiuse/dl v0.0.1
-	github.com/btwiuse/gost v0.0.4
 	github.com/btwiuse/multicall v0.0.5
 	github.com/btwiuse/portmux v0.1.0
 	github.com/btwiuse/pretty v0.2.1
@@ -21,7 +19,6 @@ require (
 	github.com/btwiuse/pub v0.3.11-alpha.6
 	github.com/btwiuse/rng v0.0.1
 	github.com/btwiuse/sse v0.0.2
-	github.com/btwiuse/tags v0.0.2 // indirect
 	github.com/btwiuse/version v0.0.2
 	github.com/btwiuse/vsc v0.0.1
 	github.com/btwiuse/wsconn v0.0.9
@@ -30,6 +27,8 @@ require (
 	github.com/chadgpt/gopilot v0.0.5
 	github.com/creativeprojects/go-selfupdate v1.6.0
 	github.com/fermyon/spin/sdk/go/v2 v2.2.0
+	github.com/go-gost/gosocks4 v0.0.1
+	github.com/go-gost/gosocks5 v0.3.0
 	github.com/hashicorp/yamux v0.1.3-0.20260522072409-90aa224fb777
 	github.com/jpillora/go-echo-server v0.5.0
 	github.com/mdp/qrterminal/v3 v3.2.0
@@ -53,30 +52,26 @@ require (
 
 require (
 	code.gitea.io/sdk/gitea v0.23.2 // indirect
-	filippo.io/edwards25519 v1.1.0 // indirect
-	git.torproject.org/pluggable-transports/goptlib.git v1.2.0 // indirect
 	github.com/42wim/httpsig v1.2.4 // indirect
 	github.com/ActiveState/termtest/conpty v0.5.0 // indirect
 	github.com/Azure/go-ansiterm v0.0.0-20230124172434-306776ec8161 // indirect
-	github.com/LiamHaworth/go-tproxy v0.0.0-20190726054950-ef7efd7f24ed // indirect
 	github.com/Masterminds/semver/v3 v3.5.0 // indirect
-	github.com/aead/chacha20 v0.0.0-20180709150244-8b13a72661da // indirect
 	github.com/alexpantyukhin/go-pattern-match v0.0.0-20230301210247-d84479c117d7 // indirect
 	github.com/andrew-d/go-termutil v0.0.0-20150726205930-009166a695a2 // indirect
 	github.com/andybalholm/brotli v1.1.0 // indirect
 	github.com/asaskevich/govalidator v0.0.0-20230301143203-a9d515a09cc2 // indirect
+	github.com/btwiuse/bingo v0.0.5 // indirect
 	github.com/btwiuse/connect v0.0.5 // indirect
 	github.com/btwiuse/dispatcher v0.0.0 // indirect
 	github.com/btwiuse/forward v0.0.0 // indirect
 	github.com/btwiuse/gmx v0.0.2 // indirect
 	github.com/btwiuse/muxr v0.0.1 // indirect
+	github.com/btwiuse/tags v0.0.2 // indirect
 	github.com/cloudflare/circl v1.6.1 // indirect
 	github.com/coder/websocket v1.8.14 // indirect
 	github.com/containerd/console v1.0.4 // indirect
-	github.com/coreos/go-iptables v0.6.0 // indirect
 	github.com/creack/pty v1.1.21 // indirect
 	github.com/davidmz/go-pageant v1.0.2 // indirect
-	github.com/dchest/siphash v1.2.2 // indirect
 	github.com/denisbrodbeck/machineid v1.0.1 // indirect
 	github.com/dgryski/go-metro v0.0.0-20211217172704-adc40b04c140 // indirect
 	github.com/disintegration/imaging v1.6.2 // indirect
@@ -96,20 +91,13 @@ require (
 	github.com/ganigeorgiev/fexpr v0.5.0 // indirect
 	github.com/ghodss/yaml v1.0.1-0.20220118164431-d8423dcdf344 // indirect
 	github.com/go-fed/httpsig v1.1.0 // indirect
-	github.com/go-gost/gosocks4 v0.0.1 // indirect
-	github.com/go-gost/gosocks5 v0.3.0 // indirect
-	github.com/go-gost/relay v0.1.1-0.20211123134818-8ef7fd81ffd7 // indirect
-	github.com/go-gost/tls-dissector v0.0.2-0.20220408131628-aac992c27451 // indirect
-	github.com/go-log/log v0.2.0 // indirect
 	github.com/go-ozzo/ozzo-validation/v4 v4.3.0 // indirect
 	github.com/go-sourcemap/sourcemap v2.1.4+incompatible // indirect
 	github.com/go-sql-driver/mysql v1.8.1 // indirect
-	github.com/gobwas/glob v0.2.3 // indirect
 	github.com/golang-jwt/jwt/v5 v5.3.0 // indirect
 	github.com/google/btree v1.1.2 // indirect
 	github.com/google/go-github/v86 v86.0.0 // indirect
 	github.com/google/go-querystring v1.2.0 // indirect
-	github.com/google/gopacket v1.1.19 // indirect
 	github.com/google/pprof v0.0.0-20251007162407-5df77e3f7d1d // indirect
 	github.com/google/uuid v1.6.0 // indirect
 	github.com/gorilla/handlers v1.5.2 // indirect
@@ -127,7 +115,6 @@ require (
 	github.com/kataras/basicauth v0.0.3 // indirect
 	github.com/klauspost/compress v1.18.0 // indirect
 	github.com/klauspost/cpuid/v2 v2.2.10 // indirect
-	github.com/klauspost/reedsolomon v1.9.15 // indirect
 	github.com/koding/websocketproxy v0.0.0-20181220232114-7ed82d81a28c // indirect
 	github.com/libdns/libdns v0.2.1 // indirect
 	github.com/lukesampson/figlet v0.0.0-20190211215653-8a3ef4a6ac42 // indirect
@@ -149,37 +136,25 @@ require (
 	github.com/remyoudompheng/bigfft v0.0.0-20230129092748-24d4a6f8daec // indirect
 	github.com/riobard/go-bloom v0.0.0-20200614022211-cdc8013cb5b3 // indirect
 	github.com/rs/cors v1.11.1 // indirect
-	github.com/ryanuber/go-glob v1.0.0 // indirect
 	github.com/sagernet/sing v0.5.1 // indirect
 	github.com/sagernet/sing-shadowsocks v0.2.7 // indirect
 	github.com/seiflotfy/cuckoofilter v0.0.0-20240715131351-a2f2c23f1771 // indirect
-	github.com/shadowsocks/go-shadowsocks2 v0.1.5 // indirect
-	github.com/shadowsocks/shadowsocks-go v0.0.0-20200409064450-3e585ff90601 // indirect
-	github.com/songgao/water v0.0.0-20200317203138-2b4b6d7c09d8 // indirect
 	github.com/spf13/cast v1.10.0 // indirect
 	github.com/spf13/cobra v1.10.1 // indirect
 	github.com/spf13/pflag v1.0.10 // indirect
-	github.com/templexxx/cpu v0.0.7 // indirect
-	github.com/templexxx/xorsimd v0.4.1 // indirect
 	github.com/tidwall/gjson v1.17.0 // indirect
 	github.com/tidwall/match v1.1.1 // indirect
 	github.com/tidwall/pretty v1.2.1 // indirect
 	github.com/tidwall/sjson v1.2.5 // indirect
-	github.com/tjfoc/gmsm v1.4.1 // indirect
 	github.com/tomasen/realip v0.0.0-20180522021738-f0c99a92ddce // indirect
 	github.com/ulikunitz/xz v0.5.15 // indirect
 	github.com/v2fly/ss-bloomring v0.0.0-20210312155135-28617310f63e // indirect
 	github.com/vishvananda/netlink v1.3.1 // indirect
 	github.com/vishvananda/netns v0.0.5 // indirect
 	github.com/webtransport/webtransport v0.0.1 // indirect
-	github.com/xtaci/kcp-go/v5 v5.6.1 // indirect
-	github.com/xtaci/smux v1.5.16 // indirect
-	github.com/xtaci/tcpraw v1.2.25 // indirect
 	github.com/xtls/reality v0.0.0-20251014195629-e4eec4520535 // indirect
 	github.com/zeebo/blake3 v0.2.3 // indirect
 	gitlab.com/gitlab-org/api/client-go v1.46.0 // indirect
-	gitlab.com/yawning/edwards25519-extra.git v0.0.0-20211229043746-2f91fcc9fbdb // indirect
-	gitlab.com/yawning/obfs4.git v0.0.0-20220204003609-77af0cba934d // indirect
 	go.uber.org/multierr v1.11.0 // indirect
 	go.uber.org/zap v1.27.0 // indirect
 	go4.org/netipx v0.0.0-20231129151722-fdeea329fbba // indirect

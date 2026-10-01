@@ -17,8 +17,8 @@ import (
 	"log"
 	"net"
 
-	"github.com/btwiuse/gost"
 	"github.com/webteleport/ufo/apps"
+	"github.com/webteleport/ufo/internal/autohandler"
 	"github.com/webteleport/webteleport"
 )
 
@@ -31,7 +31,7 @@ func Run(args []string) error {
 	return autoServe(ln)
 }
 
-var autoHandler = gost.AutoHandler()
+var autoHandler = autohandler.New()
 
 func autoServe(ln net.Listener) error {
 	for {
